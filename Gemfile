@@ -73,11 +73,11 @@ group :production do
 end
 
 
-gem ‘haml-rails’
-gem ‘erb2haml’
-gem ‘carrierwave’
-gem ‘mini_magick’
-gem ‘pry-rails’
-gem ‘devise’
-gem ‘kaminari’
-gem ‘jquery-rails’
+gem 'haml-rails'
+gem 'erb2haml'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'pry-rails'
+gem 'devise'
+gem 'kaminari'
+gem 'jquery-rails'
