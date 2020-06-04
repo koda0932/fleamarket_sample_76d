@@ -1,0 +1,54 @@
+-# %h2 Sign up
+-# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+-#   = render "devise/shared/error_messages", resource: resource
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     - if @minimum_password_length
+-#       %em
+-#         (#{@minimum_password_length} characters minimum)
+-#     %br/
+-#     = f.password_field :password, autocomplete: "new-password"
+-#   .field
+-#     = f.label :password_confirmation
+-#     %br/
+-#     = f.password_field :password_confirmation, autocomplete: "new-password"
+-#   .actions
+-#     = f.submit "Sign up"
+-# = render "devise/shared/links"
+.user-new
+  .user-new__header
+    .user-new__header__top
+      = link_to root_path do
+        %image.icon{src: "/assets/logo.png", class: "user-new__header__logo"}
+  .user-new__main
+    .user-new__container
+      .user-new__registration
+        会員情報入力
+      .user-new__field
+        %label.user-new__field--text
+          ニックネーム
+        %span.user-new__field--require
+          必須
+        %input.user-new__field--input
+      .user-new__field
+        %label.user-new__field--text
+          メールアドレス
+        %span.user-new__field--require
+          必須
+        %input.user-new__field--input
+      .user-new__field
+        %label.user-new__field--text
+          パスワード
+        %span.user-new__field--require
+          必須
+        %input.user-new__field--input
+      .user-new__field
+        %label.user-new__field--text
+          パスワード（確認）
+        %span.user-new__field--require
+          必須
+        %input.user-new__field--input
