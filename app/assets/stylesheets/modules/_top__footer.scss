@@ -1,0 +1,114 @@
+.top__footer {
+  width: 100%;
+  background-color: #272727;
+  &__contents {
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 60px 0 10px 30px;
+    &--left {
+      padding: 0 20px;
+      &--top {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      &--list {
+        &--item {
+          font-size: 12px;
+          margin-bottom: 10px;
+          a {
+            color: white;
+            text-decoration: none;
+          }
+          a:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &--center {
+      padding: 0 30px;
+      margin: 0 100px;
+      &--top {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      &--list {
+        &--item {
+          font-size: 12px;
+          margin-bottom: 10px;
+          a {
+            color: white;
+            text-decoration: none;
+          }
+          a:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &--right {
+      padding: 0 30px;
+      &--top {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      &--list {
+        &--item {
+          font-size: 12px;
+          margin-bottom: 10px;
+          a {
+            color: white;
+            text-decoration: none;
+          }
+          a:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  &__logo {
+    max-width: 160px;
+    margin: 0 auto;
+    &--image {
+      width: 100%;
+    }
+    &--item {
+      color: white;
+      font-size: 14px;
+      padding-left: 45px;
+    }
+  }
+}
+
+.top__camera__icon {
+  background-color: #3CCBCD;
+  width: 140px;
+  height: 140px;
+  text-align: center;
+  border-radius: 8px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  &--list {
+    padding: 15px;
+    color: white;
+    &--text {
+      font-size: 18px;
+    }
+    &--image {
+      width: 85%;
+      padding-left: 8px;
+      &--item {
+        width: 100%;
+      }
+    }
+  }
+}
