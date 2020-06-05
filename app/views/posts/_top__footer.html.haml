@@ -29,7 +29,7 @@
           = link_to "お知らせ", "#"
   .top__footer__logo
     = link_to "#" do
-      = image_tag "/assets/logo-white.png", class: "top__footer__logo--image"
+      = image_tag asset_path("logo-white.png"), class: "top__footer__logo--image"
     %p.top__footer__logo--item © FURIMA
 
 .top__camera__icon
@@ -37,4 +37,4 @@
     %li.top__camera__icon--list--text
       出品する
     %li.top__camera__icon--list--image
-      = image_tag "/assets/icon_camera.png", class: "top__camera__icon--list--image--item"
+      = image_tag asset_path("icon_camera.png"), class: "top__camera__icon--list--image--item"
