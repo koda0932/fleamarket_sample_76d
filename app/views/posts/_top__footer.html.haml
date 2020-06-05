@@ -1,0 +1,40 @@
+.top__footer
+  .top__footer__contents
+    .top__footer__contents--left
+      %p.top__footer__contents--left--top FURIMAについて
+      %ul.top__footer__contents--left--list
+        %li.top__footer__contents--left--list--item
+          = link_to "会社概要（運営会社）", "#"
+        %li.top__footer__contents--left--list--item
+          = link_to "プライバシーポリシー", "#"
+        %li.top__footer__contents--left--list--item
+          = link_to "FURIMA利用規約", "#"
+        %li.top__footer__contents--left--list--item
+          = link_to "ポイントに関する特約", "#"
+    .top__footer__contents--center
+      %p.top__footer__contents--center--top FURIMAを見る
+      %ul.top__footer__contents--center--list
+        %li.top__footer__contents--center--list--item
+          = link_to "カテゴリー一覧", "#"
+        %li.top__footer__contents--center--list--item
+          = link_to "ブランド一覧", "#"
+    .top__footer__contents--right
+      %p.top__footer__contents--right--top ヘルプ＆ガイド
+      %ul.top__footer__contents--right--list
+        %li.top__footer__contents--right--list--item
+          = link_to "FURIMAガイド", "#"
+        %li.top__footer__contents--right--list--item
+          = link_to "FURIMAロゴ利用ガイドライン", "#"
+        %li.top__footer__contents--right--list--item
+          = link_to "お知らせ", "#"
+  .top__footer__logo
+    = link_to "#" do
+      = image_tag "/assets/logo-white.png", class: "top__footer__logo--image"
+    %p.top__footer__logo--item © FURIMA
+
+.top__camera__icon
+  %ul.top__camera__icon--list
+    %li.top__camera__icon--list--text
+      出品する
+    %li.top__camera__icon--list--image
+      = image_tag "/assets/icon_camera.png", class: "top__camera__icon--list--image--item"

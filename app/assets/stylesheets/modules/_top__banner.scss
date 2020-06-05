@@ -1,0 +1,53 @@
+.top__banner {
+  background-image: url("/assets/bg-appBanner-pict.jpg");
+  padding: 170px;
+  background-size: cover;
+  background-position: center;
+  &__inner {
+    position: relative;
+      &--text {
+        position: absolute;
+        font-weight: bold;
+        color: white;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        margin:0;
+        padding:0;
+        width: 100%;
+        &--top {
+          font-size: 24px;
+          text-shadow: 0 0 5px rgba(0,0,0,0.4);
+          text-align: center;
+        }
+        &--bottom {
+          font-size: 35px;
+          text-shadow: 0 0 5px rgba(0,0,0,0.4);
+          text-align: center;
+        }
+    }
+    &--badge {
+      justify-content: center;
+      display: flex;
+      &--apple {
+        width: 155px;
+        height: 60px;
+        padding-top: 10px;
+      }
+      &--apple:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      &--google {
+        width: 175px;
+        height: 80px;
+      }
+      &--google:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+  }
+}
