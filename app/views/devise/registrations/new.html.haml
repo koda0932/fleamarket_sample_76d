@@ -1,54 +1,87 @@
--# %h2 Sign up
--# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
--#   = render "devise/shared/error_messages", resource: resource
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   .field
--#     = f.label :password
--#     - if @minimum_password_length
--#       %em
--#         (#{@minimum_password_length} characters minimum)
--#     %br/
--#     = f.password_field :password, autocomplete: "new-password"
--#   .field
--#     = f.label :password_confirmation
--#     %br/
--#     = f.password_field :password_confirmation, autocomplete: "new-password"
--#   .actions
--#     = f.submit "Sign up"
--# = render "devise/shared/links"
 .user-new
-  .user-new__header
-    .user-new__header__top
-      = link_to root_path do
-        %image.icon{src: "/assets/logo.png", class: "user-new__header__logo"}
+  = render 'devise/shared/header'
   .user-new__main
-    .user-new__container
+    = form_for(@user, url: user_registration_path) do |f|
+      = render "devise/shared/error_messages", resource: @user
       .user-new__registration
         会員情報入力
-      .user-new__field
-        %label.user-new__field--text
-          ニックネーム
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input
-      .user-new__field
-        %label.user-new__field--text
-          メールアドレス
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input
-      .user-new__field
-        %label.user-new__field--text
-          パスワード
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input
-      .user-new__field
-        %label.user-new__field--text
-          パスワード（確認）
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input
+      .user-new__container
+        .user-new__field
+          %label.user-new__field--text
+            ニックネーム
+          %span.user-new__field--require
+            必須
+          = f.text_field :nickname, class: "user-new__field--input", placeholder: "例）フリマ太郎"
+        .user-new__field
+          %label.user-new__field--text
+            メールアドレス
+          %span.user-new__field--require
+            必須
+          = f.email_field :email, class: "user-new__field--input", placeholder: "PC・携帯どちらでも可"
+        .user-new__field
+          %label.user-new__field--text
+            パスワード
+          %span.user-new__field--require
+            必須
+          = f.password_field :password, class: "user-new__field--input user-pass", placeholder: "7文字以上で入力してください"
+        .user-new__field
+          %label.user-new__field--text
+            パスワード（確認）
+          %span.user-new__field--require
+            必須
+          = f.password_field :password_confirmation, class: "user-new__field--input user-pass", placeholder: "1度入力してください"
+          .user-new__field--checkBox
+            %input.user-new__field--check{type: "checkbox"}
+              パスワードを表示する
+        .user-new__field
+          %label.user-new__field--text.user-new__field__identification
+            本人確認
+          %div.user-new__field__identification
+            安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        .user-new__field
+          %label.user-new__field--text
+            お名前(全角) 
+          %span.user-new__field--require
+            必須
+          .display-flex
+            = f.text_field :family_name, class: "user-new__field--input user-new__field--half", placeholder: "例）大石"
+            = f.text_field :first_name, class: "user-new__field--input user-new__field--half", placeholder: "例）海渡"
+        .user-new__field
+          %label.user-new__field--text
+            お名前カナ(全角) 
+          %span.user-new__field--require
+            必須
+          .display-flex
+            = f.text_field :family_name_kana, class: "user-new__field--input user-new__field--half", placeholder: "例）オオイシ"
+            = f.text_field :first_name_kana, class: "user-new__field--input user-new__field--half", placeholder: "例）カイト"
+        .user-new__field
+          %label.user-new__field--text
+            生年月日
+          %span.user-new__field--require
+            必須
+          .user-new__field--birthday
+            != sprintf(f.date_select(:birthday, prefix:'birthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+          .user-new__field--birthday--text
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        .user-new__field
+          .user-new__field--anounce.user-new-link 
+            %p
+              「次へ進む」のボタンを押すことにより、
+              = link_to "利用規約", root_path
+            に同意したものとみなします
+        .user-new__field
+          = f.submit class: "user-new__field--submit", type: "submit", value: "次へ進む"
+        = render "devise/shared/links"
+        .user-new__field
+          .user-new__field--confirmation.user-new-link
+            = link_to root_path do
+              本人情報の登録について
+              %i.fa.fa-angle-right
+        .user-new__field
+          .user-new__field--english.user-new-link
+            This site is protected by reCAPTCHA and the Google 
+            = link_to "Privacy Policy", root_path
+            and 
+            = link_to "Terms of Service", root_path
+            apply.
+  = render 'devise/shared/footer'
