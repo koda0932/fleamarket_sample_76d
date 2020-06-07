@@ -17,10 +17,13 @@
         %li.top__header__inner__nav__left__brand
           =link_to "#" do
             ブランド
-      %ul.top__header__inner__nav__right
-        %li.top__header__inner__nav__right__login
-          =link_to "#" do
-            ログイン
-        %li.top__header__inner__nav__right__new
-          =link_to "#" do
-            新規会員登録
+      - if user_signed_in?
+        .top__header__inner__nav__right
+          %li.top__header__inner__nav__right__new
+            = link_to "マイページ", destroy_user_session_path, method: :delete
+      - else
+        %ul.top__header__inner__nav__right
+          %li.top__header__inner__nav__right__login
+            =link_to "ログイン", new_user_session_path 
+          %li.top__header__inner__nav__right__new
+            =link_to "新規会員登録", new_user_registration_path 
