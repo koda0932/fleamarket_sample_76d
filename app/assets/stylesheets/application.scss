@@ -2,3 +2,12 @@
 @import "config/colors";
 @import "modules/common";
 @import "modules/users";
+
+
+// トップ----------------------
+@import "modules/top__header";
+@import "modules/top__contents";
+@import "modules/top__main";
+@import "modules/top__banner";
+@import "modules/top__footer";
+// ---------------------------

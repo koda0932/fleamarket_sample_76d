@@ -1,0 +1,120 @@
+.top__main
+
+  -# 特徴--------------------------------------------------------
+  .top__main__keyfeatures
+    .top__main__keyfeatures--top
+      %h2 FURIMAの特徴
+
+    .top__main__keyfeatures--main
+
+      .top__main__keyfeatures--main--list
+        .top__main__keyfeatures--main--list--image
+          = image_tag asset_path('icon-01.png'), class: 'top__main__keyfeatures--main--list--image--icon'
+        .top__main__keyfeatures--main--list--title
+          簡単に売り買いできる
+        .top__main__keyfeatures--main--list--text
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+
+      .top__main__keyfeatures--main--list
+        .top__main__keyfeatures--main--list--image
+          = image_tag asset_path('icon-03.png'), class: 'top__main__keyfeatures--main--list--image--icon'
+        .top__main__keyfeatures--main--list--title
+          売上金は即日振込みに対応
+        .top__main__keyfeatures--main--list--text
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+
+      .top__main__keyfeatures--main--list
+        .top__main__keyfeatures--main--list--image
+          = image_tag asset_path('icon-04.png'), class: 'top__main__keyfeatures--main--list--image--icon'
+        .top__main__keyfeatures--main--list--title
+          様々な支払いに対応
+        .top__main__keyfeatures--main--list--text
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  -# -----------------------------------------------------------
+
+
+  -# カテゴリー--------------------------------------------------------
+  .top__main__pickupcategory
+    .top__main__pickupcategory
+    .top__main__pickupcategory--top
+      .top__main__pickupcategory--top--title ピックアップカテゴリー
+      = link_to "新規投稿商品", "#", class: "top__main__pickupcategory--top--archiver" 
+    .top__main__pickupcategory--main
+
+      .top__main__pickupcategory--main--list
+        = image_tag asset_path('IMG_9064.JPG'), class: 'top__main__pickupcategory--main--list--image'
+        .top__main__pickupcategory--main--list--text
+          .top__main__pickupcategory--main--list--text--left
+            %p product3
+            %p 30000円
+            %p.top__main__pickupcategory--main--list--text--left--item （税込）
+          .top__main__pickupcategory--main--list--text--right
+            %i.fas.fa-star
+            0
+
+      .top__main__pickupcategory--main--list
+        = image_tag asset_path('IMG_9068.JPG'), class: 'top__main__pickupcategory--main--list--image'
+        .top__main__pickupcategory--main--list--text
+          .top__main__pickupcategory--main--list--text--left
+            %p product2
+            %p 20000円
+            %p.top__main__pickupcategory--main--list--text--left--item （税込）
+          .top__main__pickupcategory--main--list--text--right
+            %i.fas.fa-star
+            0
+
+      .top__main__pickupcategory--main--list
+        = image_tag asset_path('IMG_9074.JPG'), class: 'top__main__pickupcategory--main--list--image'
+        .top__main__pickupcategory--main--list--text
+          .top__main__pickupcategory--main--list--text--left
+            %p product1
+            %p 10000円
+            %p.top__main__pickupcategory--main--list--text--left--item （税込）
+          .top__main__pickupcategory--main--list--text--right
+            %i.fas.fa-star
+            0
+  -# ----------------------------------------------------------------
+
+
+  -# ブランド--------------------------------------------------------
+
+  .top__main__pickupbrand
+    .top__main__pickupbrand--top
+      .top__main__pickupbrand--top--title ピックアップブランド
+      = link_to "アーカイバ", "#", class: "top__main__pickupbrand--top--archiver"
+    .top__main__pickupbrand--main
+
+      .top__main__pickupbrand--main--list
+        = image_tag asset_path('IMG_9064.JPG'), class: 'top__main__pickupbrand--main--list--image'
+        .top__main__pickupbrand--main--list--text
+          .top__main__pickupbrand--main--list--text--left
+            %p product3
+            %p 30000円
+            %p.top__main__pickupbrand--main--list--text--left--item （税込）
+          .top__main__pickupbrand--main--list--text--right
+            %i.fas.fa-star
+            0
+
+      .top__main__pickupbrand--main--list
+        = image_tag asset_path('IMG_9068.JPG'), class: 'top__main__pickupbrand--main--list--image'
+        .top__main__pickupbrand--main--list--text
+          .top__main__pickupbrand--main--list--text--left
+            %p product2
+            %p 20000円
+            %p.top__main__pickupbrand--main--list--text--left--item （税込）
+          .top__main__pickupbrand--main--list--text--right
+            %i.fas.fa-star
+            0
+
+      .top__main__pickupbrand--main--list
+        = image_tag asset_path('IMG_9074.JPG'), class: 'top__main__pickupbrand--main--list--image'
+        .top__main__pickupbrand--main--list--text
+          .top__main__pickupbrand--main--list--text--left
+            %p product1
+            %p 10000円
+            %p.top__main__pickupbrand--main--list--text--left--item （税込）
+          .top__main__pickupbrand--main--list--text--right
+            %i.fas.fa-star
+            0
+
+  -# -----------------------------------------------------------------

@@ -1,7 +1,7 @@
 .user-new
   = render 'devise/shared/header'
   .user-new__main
-    = form_for @address do |f|
+    = form_for(@address, url: user_address_path) do |f|
       = render "devise/shared/error_messages", resource: @address
       .user-new__registration
         住所情報入力
@@ -15,7 +15,7 @@
         .user-new__field
           %label.user-new__field--text
             都道府県
-          %span.user-new__field
+          %span.user-new__field--require
             必須
           = f.text_field :prefecture, class: "user-new__field--input", placeholder: "例）東京都"
         .user-new__field
@@ -39,8 +39,8 @@
         .user-new__field
           %label.user-new__field--text
             電話番号
-          %span.user-new__field--require
-            必須
+          %span.user-new__field--require.user-new__field--require--any
+            任意
           = f.text_field :telephone, class: "user-new__field--input", placeholder: "例）0120117117"
         .user-new__field
           = f.submit class: "user-new__field--submit", value: "登録する"

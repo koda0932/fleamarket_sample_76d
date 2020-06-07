@@ -36,7 +36,7 @@
       font-size: 14px;
     }
     &--require{
-      background-color: #ea352d;
+      background-color: $light_blue;
       margin-left: 8px;
       padding: 4px;
       border-radius: 2px;
@@ -73,7 +73,7 @@
       color: $light_dark;
     }
     &--half{
-      width: calc(50% - 6px);
+      width: 133.5px;
       &:first-of-type {
         margin-right: 8px;
       }
@@ -82,12 +82,6 @@
       line-height: 48px;
       padding-top: 8px;
       color: $light_dark;
-      &--text{
-        padding-top: 8px;
-        font-size: 14px;
-        color: $light_gray;
-      }
-    
       & select{
         height: 48px;
         width: 76px;
@@ -99,8 +93,13 @@
         &:not(:first-of-type){
           margin-left: 8px;
         }
-      } 
-  }
+      }
+      &--text{
+        padding-top: 8px;
+        font-size: 14px;
+        color: $light_gray;
+      }
+    }
     &--anounce{
       font-size: 14px;
       text-align: center;
@@ -114,7 +113,7 @@
       transition: all ease-out .3s;
       cursor: pointer;
       text-align: center;
-      background-color: #ea352d;
+      background-color: $light_blue;
       color: white;
       outline: none;
       &:focus {
@@ -175,8 +174,8 @@
     display: block;
     width: 100%;
     margin-top: 25px;
-    border: 1px solid #0099e8;
-    background: #0099e8;
+    border: 1px solid #F5B759;
+    background: #F5B759;
     color: white;
     line-height: 40px;
     cursor: pointer;

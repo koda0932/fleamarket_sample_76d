@@ -5,11 +5,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new 
     @user = User.new
   end
-
-  # def create
-    
-  #   @user = User.new(user_params)
-  # end
   
   def create
     params[:user][:birthday] = birthday_join
@@ -20,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"] [:user] ["password"] = params[:user] [:password]
-    @address = @user.build_address
+    @address = @user.build_user_address
     render :new_address
   end
   
@@ -28,12 +23,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def create_address
     @user = User.new(session["devise.regist_data"] ["user"])
-    @address = Address.new(address_params)
+    @address = UserAddress.new(address_params)
     unless @address.valid?
       flash.now[:alert] = @address.errors.full.messages
       render :new_address and return
     end
-    @user.build_address(@address.attributes)
+    @user.build_user_address(@address.attributes)
     @user.save
     session["devise.regist_data"] ["user"].clear
     sign_in(:user, @user)
@@ -80,7 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     protected
   
     def address_params
-      params.require(:address).permit(:postcode, :prefecture, :city, :address, :apartment, :telephone)
+      params.require(:user_address).permit(:postcode, :prefecture, :city, :address, :apartment, :telephone)
     end
   
     # If you have extra params to permit, append them to the sanitizer.
