@@ -1,16 +1,17 @@
 .user-new
   = render 'devise/shared/header'
   .user-new__main
-    .user-new__registration
-      会員情報入力
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = form_for(@user, url: user_registration_path) do |f|
+      = render "devise/shared/error_messages", resource: @user
+      .user-new__registration
+        会員情報入力
       .user-new__container
         .user-new__field
           %label.user-new__field--text
             ニックネーム
           %span.user-new__field--require
             必須
-          %input.user-new__field--input{placeholder: "例）フリマ太郎"}
+          = f.text_field :nickname, class: "user-new__field--input", placeholder: "例）フリマ太郎"
         .user-new__field
           %label.user-new__field--text
             メールアドレス
@@ -22,16 +23,16 @@
             パスワード
           %span.user-new__field--require
             必須
-          = f.password_field :password, autocomplete: "new-password", class: "user-new__field--input user-pass", placeholder: "8文字以上で入力してください"
+          = f.password_field :password, class: "user-new__field--input user-pass", placeholder: "7文字以上で入力してください"
         .user-new__field
           %label.user-new__field--text
             パスワード（確認）
           %span.user-new__field--require
             必須
-          = f.password_field :password_confirmation, autocomplete: "new-password", class: "user-new__field--input user-pass", placeholder: "もう1度入力してください"
+          = f.password_field :password_confirmation, class: "user-new__field--input user-pass", placeholder: "1度入力してください"
           .user-new__field--checkBox
             %input.user-new__field--check{type: "checkbox"}
-            パスワードを表示する
+              パスワードを表示する
         .user-new__field
           %label.user-new__field--text.user-new__field__identification
             本人確認
@@ -43,31 +44,23 @@
           %span.user-new__field--require
             必須
           .display-flex
-            %input.user-new__field--input.user-new__field--half{placeholder: "例）大石"}
-            %input.user-new__field--input.user-new__field--half{placeholder: "例）海渡"}
+            = f.text_field :family_name, class: "user-new__field--input user-new__field--half", placeholder: "例）大石"
+            = f.text_field :first_name, class: "user-new__field--input user-new__field--half", placeholder: "例）海渡"
         .user-new__field
           %label.user-new__field--text
             お名前カナ(全角) 
           %span.user-new__field--require
             必須
           .display-flex
-            %input.user-new__field--input.user-new__field--half{placeholder: "例）オオイシ"}
-            %input.user-new__field--input.user-new__field--half{placeholder: "例）カイト"}
+            = f.text_field :family_name_kana, class: "user-new__field--input user-new__field--half", placeholder: "例）オオイシ"
+            = f.text_field :first_name_kana, class: "user-new__field--input user-new__field--half", placeholder: "例）カイト"
         .user-new__field
           %label.user-new__field--text
             生年月日
           %span.user-new__field--require
             必須
           .user-new__field--birthday
-            %select.user-new__field--select
-              %option --
-            年      
-            %select.user-new__field--select
-              %option --
-            月
-            %select.user-new__field--select
-              %option --
-            日
+            != sprintf(f.date_select(:birthday, prefix:'birthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
           .user-new__field--birthday--text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
         .user-new__field
@@ -75,9 +68,9 @@
             %p
               「次へ進む」のボタンを押すことにより、
               = link_to "利用規約", root_path
-              に同意したものとみなします
+            に同意したものとみなします
         .user-new__field
-          %input.user-new__field--submit{type: "submit", value: "次へ進む"}
+          = f.submit class: "user-new__field--submit", type: "submit", value: "次へ進む"
         .user-new__field
           .user-new__field--confirmation.user-new-link
             = link_to root_path do

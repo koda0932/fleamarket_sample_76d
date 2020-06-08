@@ -1,16 +1,17 @@
 .user-new
   = render 'devise/shared/header'
   .user-login
-    .user-login__no-account
-      アカウントをお持ちでない方はこちら
-      .user-login--btn
-        = link_to new_user_registration_path do
-          新規会員登録
-    .user-login__main
-      .user-new__field
-        %input.user-new__field--input{placeholder: "例）メールアドレス"}
-      .user-new__field
-        %input.user-new__field--input{placeholder: "例）パスワード"}
-      .user-new__field
-        %input.user-new__field--submit{type: "submit", value: "ログイン"}
+    = form_with model: @user, url: user_session_path, local: true do |f|
+      .user-login__no-account
+        アカウントをお持ちでない方はこちら
+        .user-login--btn
+          = link_to new_user_registration_path do
+            新規会員登録
+      .user-login__main
+        .user-new__field
+          = f.email_field :email, class: "user-new__field--input", placeholder: "例）メールアドレス"
+        .user-new__field
+          = f.password_field :password, class: "user-new__field--input", placeholder: "例）パスワード"
+        .user-new__field
+          = f.submit class: "user-new__field--submit", type: "submit", value: "ログイン"
   = render 'devise/shared/footer'

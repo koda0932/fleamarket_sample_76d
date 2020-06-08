@@ -1,45 +1,48 @@
 .user-new
   = render 'devise/shared/header'
   .user-new__main
-    .user-new__registration
-      住所入力
-    .user-new__container
-      .user-new__field
-        %label.user-new__field--text
-          郵便番号
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input{placeholder: "例）〒123-0000"}
-      .user-new__field
-        %label.user-new__field--text
-          都道府県
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input{placeholder: "例）東京都"}
-      .user-new__field
-        %label.user-new__field--text
-          市区町村
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input{placeholder: "例）横浜市緑区"}
-      .user-new__field
-        %label.user-new__field--text
-          番地
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input{placeholder: "例）青山1-1-1"}
-      .user-new__field
-        %label.user-new__field--text
-          建物名
-        %span.user-new__field--require.user-new__field--require--any
-          任意
-        %input.user-new__field--input{placeholder: "例）フォンティスビル101"}
-      .user-new__field
-        %label.user-new__field--text
-          電話番号
-        %span.user-new__field--require
-          必須
-        %input.user-new__field--input{placeholder: "例）0120117117"}
-      .user-new__field
-        %input.user-new__field--submit{type: "submit", value: "登録する"}
+    = form_for(@address, url: user_address_path) do |f|
+      = render "devise/shared/error_messages", resource: @address
+      .user-new__registration
+        住所情報入力
+      .user-new__container
+        .user-new__field
+          %label.user-new__field--text
+            郵便番号
+          %span.user-new__field--require
+            必須
+          = f.text_field :postcode, class: "user-new__field--input", placeholder: "例）〒123-0000"
+        .user-new__field
+          %label.user-new__field--text
+            都道府県
+          %span.user-new__field--require
+            必須
+          = f.text_field :prefecture, class: "user-new__field--input", placeholder: "例）東京都"
+        .user-new__field
+          %label.user-new__field--text
+            市区町村
+          %span.user-new__field--require
+            必須
+          = f.text_field :city, class: "user-new__field--input", placeholder: "例）大石市海渡区"
+        .user-new__field
+          %label.user-new__field--text
+            番地
+          %span.user-new__field--require
+            必須
+          = f.text_field :address, class: "user-new__field--input", placeholder: "例）大石1-1-1"
+        .user-new__field
+          %label.user-new__field--text
+            建物名
+          %span.user-new__field--require.user-new__field--require--any
+            任意
+          = f.text_field :apartment, class: "user-new__field--input", placeholder: "例）フォンティスビル101"
+        .user-new__field
+          %label.user-new__field--text
+            電話番号
+          %span.user-new__field--require.user-new__field--require--any
+            任意
+          = f.text_field :telephone, class: "user-new__field--input", placeholder: "例）0120117117"
+        .user-new__field
+          = f.submit class: "user-new__field--submit", value: "登録する"
   = render 'devise/shared/footer'
+= render "devise/shared/links"
