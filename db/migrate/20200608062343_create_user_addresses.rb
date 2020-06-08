@@ -8,7 +8,6 @@ class CreateUserAddresses < ActiveRecord::Migration[5.2]
       t.string :apartment  
       t.string :telephone    
       t.integer :user_id
-
       t.timestamps
     end
   end
