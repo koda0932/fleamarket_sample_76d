@@ -15,6 +15,8 @@ class Post < ApplicationRecord
   validates :shipping, presence: true
   validates :price, presence: true
   validates :user_id, presence: true
+
+  accepts_nested_attributes_for :post_images
   
   enum category: { "シャツ": 0, "トップス": 1}
   enum status: { "新品/未使用": 0, "目立った汚れや傷なし": 1, "汚れ、傷あり": 2}

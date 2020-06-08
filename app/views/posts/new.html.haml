@@ -11,7 +11,8 @@
     = form.select :shipping, Post.shippings.keys
     = form.text_field :price
     = form.text_field :delivery_fee
-    = form.submit "投稿する"
-
+    
     = form.fields_for :post_images do |image|
       = image.file_field :image
+
+    = form.submit "投稿する"
