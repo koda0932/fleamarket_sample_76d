@@ -50,10 +50,9 @@ ActiveRecord::Schema.define(version: 2020_06_05_100735) do
     t.string "address"
     t.string "apartment"
     t.string "telephone"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -71,5 +70,4 @@ ActiveRecord::Schema.define(version: 2020_06_05_100735) do
   add_foreign_key "post_images", "posts"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
-  add_foreign_key "user_addresses", "users"
 end
