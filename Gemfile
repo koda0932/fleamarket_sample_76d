@@ -72,6 +72,10 @@ group :production do
   gem 'unicorn'
 end
 
+group :development, :production, :test do
+  gem 'devise'
+  gem 'jquery-rails'
+end
 
 gem 'haml-rails'
 gem 'erb2haml'
