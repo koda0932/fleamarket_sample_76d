@@ -7,7 +7,7 @@ class CreateUserAddresses < ActiveRecord::Migration[5.2]
       t.string :address      
       t.string :apartment  
       t.string :telephone    
-      t.integer :user_id
+      t.bigint :user_id, null: false
       t.timestamps
     end
   end
