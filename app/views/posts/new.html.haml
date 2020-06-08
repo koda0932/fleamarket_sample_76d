@@ -1,0 +1,18 @@
+%h1 新規投稿
+
+= form_with model: @post, local: true do |form|
+  = form.text_field :name
+  = form.text_area :introduce
+  = form.select :category, Post.categories.keys
+  = form.select :status, Post.statuses.keys
+  = form.select :delivery_status, Post.delivery_statuses.keys
+  = form.text_field :user_address
+  = form.select :shipping, Post.shippings.keys
+  = form.text_field :price
+  = form.text_field :delivery_fee
+  = form.submit "投稿する"
+
+  = form.fields_for :post_images
+
+
+  -# = f.file_field :image

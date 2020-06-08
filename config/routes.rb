@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     post 'user_address', to: 'users/registrations#create_address'
   end
   root 'posts#index'
+  resources :posts, only: [:new, :create]
 end

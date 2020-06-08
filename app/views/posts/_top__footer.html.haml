@@ -36,5 +36,6 @@
   %ul.top__camera__icon--list
     %li.top__camera__icon--list--text
       出品する
-    %li.top__camera__icon--list--image
-      = image_tag asset_path("icon_camera.png"), class: "top__camera__icon--list--image--item"
+    = link_to new_post_path do
+      %li.top__camera__icon--list--image
+        = image_tag asset_path("icon_camera.png"), class: "top__camera__icon--list--image--item"
