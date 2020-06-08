@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_062343) do
     t.string "apartment"
     t.string "telephone"
     t.bigint "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
