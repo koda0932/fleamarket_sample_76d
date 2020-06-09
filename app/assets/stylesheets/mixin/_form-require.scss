@@ -1,0 +1,17 @@
+@mixin form-require($color){
+  background-color: $color;
+  margin-left: 8px;
+  padding: 4px;
+  border-radius: 2px;
+  color: white;
+  font-size: 13px;
+}
+
+.form{
+  &-require{
+    @include form-require($light_blue);
+  }
+  &-any{
+    @include form-require($light_gray);
+  }
+}
