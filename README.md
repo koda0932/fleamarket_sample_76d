@@ -124,7 +124,7 @@ Things you may want to cover:
 |introduce|text|null: false|
 |category_id|references|null: false, foreign_key: true|
 |delivery_fee|integer|null: false|
-|user_address|string|null: false|
+|user_address|integer|null: false|
 |shipping|integer|null: false|
 |price|integer|null: false|
 |status|integer|null: false|

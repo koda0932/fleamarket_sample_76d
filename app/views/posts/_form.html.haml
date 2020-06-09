@@ -1,0 +1,37 @@
+%h1 新規投稿
+= current_user.nickname
+= current_user.id
+
+
+= form_with model: @post, local: true do |form|
+  = form.text_field :name
+  = form.text_area :introduce
+  = form.collection_select :category_id, Category.all, :id, :name
+  = form.select :status, Post.statuses.keys
+  = form.select :delivery_status, Post.delivery_statuses.keys
+  = form.select :user_address, Post.user_addresses.keys
+  = form.select :shipping, Post.shippings.keys
+  = form.text_field :price
+  = form.text_field :delivery_fee
+  #image-box
+    #previews
+      - if @post.persisted?
+        - @post.post_images.each_with_index do |image, i|
+          = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+    = form.fields_for :post_images do |image|
+      .js-file_group{"data-index" => "#{image.index}"}
+        = image.file_field :image, class: 'js-file'
+        %br
+        .js-remove
+          削除
+      
+      - if @post.persisted?
+        .hidden-destroy
+        = image.check_box :_destroy, data:{ index: image.index }
+        
+    - if @post.persisted?
+      .js-file_group{"data-index" => "#{@post.post_images.count}"}
+        = file_field_tag :image, name: "post[images_attributes][#{@post.post_images.count}][image]", class: 'js-file'
+        .js-remove
+          削除
+  = form.submit "投稿する"
