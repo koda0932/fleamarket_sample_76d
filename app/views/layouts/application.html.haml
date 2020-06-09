@@ -5,8 +5,10 @@
     %title FleamarketSample76d
     = csrf_meta_tags
     = csp_meta_tag
+    -# = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    -# = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %script{crossorigin: "anonymous", src: "https://kit.fontawesome.com/b167c0ffa1.js"}
     = yield
