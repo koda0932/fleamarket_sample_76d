@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.post_images.new
-    @parents = Category.all.order(“id asc”).limit(13)
+    @parents = Category.all.order("id asc").limit(13)
   end
 
   def create

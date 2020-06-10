@@ -4,7 +4,7 @@
 = form_with model: @post, local: true do |form|
   = form.text_field :name
   = form.text_area :introduce
-  = form.collection_select :category_id, Category.all, :id, :name
+  = form.collection_select :category_id, @parents, :id, :name
   = form.select :status, Post.statuses.keys
   = form.select :delivery_status, Post.delivery_statuses.keys
   = form.select :user_address, Post.user_addresses.keys
