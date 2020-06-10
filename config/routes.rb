@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'user_address', to: 'users/registrations#new_address'
     post 'user_address', to: 'users/registrations#create_address'
   end
+
   root 'posts#index'
   resources :posts
 end
