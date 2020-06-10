@@ -11,6 +11,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :status, null: false
       t.integer :delivery_status, null: false
       t.references :user, null: false, foreign_key: true
+      t.boolean :purchased, default: false, null: false
       t.timestamps
     end
   end

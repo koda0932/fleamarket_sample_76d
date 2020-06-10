@@ -130,6 +130,7 @@ Things you may want to cover:
 |status|integer|null: false|
 |delivery_status|integer|null: false|
 |user_id|references|null: false, foreign_key: true|
+|purchased|boolean|default: false, null: false|
 ### Association
 - belongs_to :category
 - belongs_to :user
