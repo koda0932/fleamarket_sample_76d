@@ -2,9 +2,6 @@ class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
   has_many :post_images, dependent: :destroy
-  
-  # has_many :comments, dependent: :destroy
-  # has_many :likes, dependent: :destroy
 
   validates :name, presence: true
   validates :introduce, presence: true
