@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create]
+  before_action :set_parents, only: [:new, :create]
 
   def index
     @posts = Post.includes(:post_images)
@@ -8,15 +9,18 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.post_images.new
-    @parents = Category.all.order("id asc").limit(13)
   end
 
   def create
     @post = Post.new(post_params)
-    if @post.save
-      redirect_to root_path
+    if @post.post_images.present?
+      if @post.save
+        redirect_to root_path
+      else
+        render action: :new
+      end
     else
-      render :new
+      render partial:"form" ,locals: {post:new}
     end
   end
 
@@ -47,6 +51,10 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_parents
+    @parents = Category.all.order("id asc").limit(13)
   end
 
 end
