@@ -44,12 +44,13 @@
           height: 20px;
         }
       }
-      &--item{
+      & li{
         width: 25%;
-        & input{
-          display: none;
-        }
       }
+      & input{
+        display: none;
+      }
+      
     }
     &--input{
       @include form-input(598px);

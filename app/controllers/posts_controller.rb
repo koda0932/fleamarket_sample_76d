@@ -13,15 +13,18 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.post_images.present?
+    # if @post.post_images.present?
       if @post.save
         redirect_to root_path
       else
+        # render partial:"form" ,locals: {post:new}
         render action: :new
       end
-    else
-      render partial:"form" ,locals: {post:new}
-    end
+    # else
+      # render partial:"form" ,locals: {post:new}
+      # render :new
+      # render action: :new
+    # end
   end
 
   def edit
@@ -47,10 +50,11 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+  
 
   private
   def post_params
-    params.require(:post).permit(:name, :introduce, :category_id, :delivery_fee, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_post
