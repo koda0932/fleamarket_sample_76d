@@ -1,7 +1,7 @@
 .show-main__contents__left
   %ul.show-main__contents__left--list__top
     %li.show-main__contents__left--list__top__item
-      = link_to "/users/#{current_user.id}" do
+      = link_to mypage_path do
         %h6 マイページ
         %i.fas.fa-chevron-right.menu-icon
     %li.show-main__contents__left--list__top__item
@@ -73,7 +73,7 @@
         %h6 住所特定
         %i.fas.fa-chevron-right.menu-icon
     %li.show-main__contents__left--list__footer-item
-      = link_to "/cards/new" do
+      = link_to new_card_path do
         %h6 支払い方法
         %i.fas.fa-chevron-right.menu-icon
     %li.show-main__contents__left--list__footer-item
@@ -89,6 +89,6 @@
         %h6 電話番号の確認
         %i.fas.fa-chevron-right.menu-icon
     %li.show-main__contents__left--list__footer-item
-      = link_to "/mypage/destroy" do
+      = link_to mypage_destroy_path do
         %h6 ログアウト
         %i.fas.fa-chevron-right.menu-icon
