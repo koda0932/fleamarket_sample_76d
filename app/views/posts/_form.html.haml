@@ -10,7 +10,6 @@
   = form.select :user_address, Post.user_addresses.keys
   = form.select :shipping, Post.shippings.keys
   = form.text_field :price
-  = form.text_field :delivery_fee
   #image-box
     #previews
       - if @post.persisted?

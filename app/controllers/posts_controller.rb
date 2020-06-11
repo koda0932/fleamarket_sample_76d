@@ -28,6 +28,10 @@ class PostsController < ApplicationController
     
   end
 
+  def show
+    @images = @post.post_images.includes(:post)
+  end
+
   def update
     if @post.update(post_params)
       redirect_to root_path
