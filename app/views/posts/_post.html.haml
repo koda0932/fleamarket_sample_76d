@@ -1,0 +1,17 @@
+.top__main__pickupcategory--main--list
+  = image_tag asset_path("#{post.post_images[0].image}"), class: 'top__main__pickupcategory--main--list--image'
+  -if post.purchased == true
+    .top__main__pickupcategory--main--list--sold
+      %h3 sold
+  .top__main__pickupcategory--main--list--text
+    .top__main__pickupcategory--main--list--text--left
+      = post.name
+      %br
+      = post.price
+      円
+      %p.top__main__pickupcategory--main--list--text--left--item （税込）
+    .top__main__pickupcategory--main--list--text--right
+      %i.fas.fa-star
+      -# likes_count機能をつける時に記載
+      -# = post.likes_count
+      ０
