@@ -1,8 +1,19 @@
 @import "reset";
 @import "config/colors";
-@import "modules/common";
-@import "modules/users";
 
+// @mixin---------------------
+@import "mixin/form-require";
+@import "mixin/submit-btn";
+@import "mixin/form-input";
+// ---------------------------
+
+// 共通のcss---------------------
+@import "modules/common";
+// ---------------------------
+
+// ログイン画面と新規登録---------------
+@import "modules/users";
+// ---------------------------
 
 // トップ----------------------
 @import "modules/top__header";
@@ -16,3 +27,6 @@
 @import "modules/show";
 @import "modules/destroy";
 // -----------------------------
+// ポスト----------------------
+@import "modules/post-new";
+// ---------------------------

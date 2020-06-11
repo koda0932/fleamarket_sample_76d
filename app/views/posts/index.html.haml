@@ -3,3 +3,15 @@
 = render 'top__main'
 = render 'top__banner'
 = render 'top__footer'
+
+
+
+
+-# 次の実装をするため
+
+- @posts.each do |post|
+  = post.name
+  -# = image_tag "#{post.post_images[0].image}"
+  = link_to '詳細', post_path(post)
+  = link_to '編集', edit_post_path(post)
+  = link_to '削除', post_path(post), method: :delete
