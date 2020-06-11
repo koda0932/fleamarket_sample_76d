@@ -1,0 +1,48 @@
+= render 'posts/top__header'
+
+.show-header
+  .show-header__contents  FURIMA > マイページ
+
+.show-main
+  .show-main__contents
+    .show-main__contents__right 
+      .show-main__contents__right__top
+        .show-main__contents__right__top__contents
+          .show-main__contents__right__top__icon
+          %h3.show-main__contents__right__top__contents--name
+            = current_user.nickname
+          .show-main__contents__right__top__evaluation
+            評価 0
+          .show-main__contents__right__top__goods
+            出品数 0
+      .show-main__contents__right__mypage-tabs
+        .tab
+          %input#notice{:checked => "checked", :name => "tab_item", :type => "radio"}/
+          %label.tab_item{:for => "notice"} お知らせ
+          %input#task{:name => "tab_item", :type => "radio"}/
+          %label.tab_item{:for => "task"} やることリスト
+          #notice_content.tab_content
+            .tab_content_description.nothing_image
+              %p 現在、お知らせはありません。
+          #task_content.tab_content
+            .tab_content_description.nothing_image
+              %p 現在、やることリストはありません。
+      .show-main__contents__right__container
+        .show-main__contents__right__container__title
+          %h2 購入した商品
+        .tabs2
+          %input#trading{checked: "checked", name: "tab_item2", type: "radio"}/
+          %label.tab_item2{for: "trading"} 取引中
+          %input#traded{name: "tab_item2", type: "radio"}/
+          %label.tab_item2{for: "traded"} 過去の取引
+          #trading_content.tab_content
+            .tab_content_description.nothing_image
+              %p 現在取引している商品がありません。
+          #traded_content.tab_content
+            .tab_content_description.nothing_image
+              %p 過去に取引した商品がありません。
+    = render 'show__left'    
+
+  -# footer
+  = render 'posts/top__banner'
+  = render 'posts/top__footer'

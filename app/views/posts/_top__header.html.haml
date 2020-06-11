@@ -20,7 +20,7 @@
       - if user_signed_in?
         .top__header__inner__nav__right
           %li.top__header__inner__nav__right__new
-            = link_to "マイページ", destroy_user_session_path, method: :delete
+            = link_to "マイページ", mypage_path
       - else
         %ul.top__header__inner__nav__right
           %li.top__header__inner__nav__right__login
