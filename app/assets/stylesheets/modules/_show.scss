@@ -26,7 +26,7 @@
       &__top{
         height: 200px;
         width: 700px;
-        background-image: url(seen.jpg);
+        background-image: image-url(seen.jpg);
         &__contents{
           height: 160px;
           width: 660px;
@@ -36,7 +36,7 @@
           height: 60px;
           width: 60px;
           border-radius: 50%;
-          background-image: url(human.jpg);
+          background-image: image-url(human.jpg);
           background-position: 60% 40%;
           margin: 0 auto;
         }
