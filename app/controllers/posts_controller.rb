@@ -15,12 +15,14 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+
       if @post.save
         redirect_to root_path
       else
 
         render action: :new
       end
+
 
   end
 
@@ -61,6 +63,7 @@ class PostsController < ApplicationController
 
   def set_parents
     @parents = Category.where(ancestry: nil)
+
   end
 
 end
