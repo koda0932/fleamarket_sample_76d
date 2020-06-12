@@ -1,5 +1,5 @@
 .top__main__pickupcategory--main--list
-  =link_to post_path(@post) do
+  =link_to post_path(post) do
     = image_tag asset_path("#{post.post_images[0].image}"), class: 'top__main__pickupcategory--main--list--image'
     -if post.purchased == true
       .top__main__pickupcategory--main--list--sold
