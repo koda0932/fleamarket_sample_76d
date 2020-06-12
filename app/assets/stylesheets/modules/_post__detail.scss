@@ -8,7 +8,6 @@
     &__top{
       &__item{
         background-color: white;
-        padding-bottom: 40px;
         padding: 20px 40px 40px;
         &__name{
           text-align: center;
@@ -48,36 +47,19 @@
           }
         }
         &__buy{
-          display: block;
-          margin-top: 16px;
-          background: #3CCACE;;
-          line-height: 56px;
-          text-align: center;
+          @include detail-btn();
+          background: #3CCACE;
           -webkit-transition: all ease-out .3s;
           transition: all ease-out .3s;
-          a{
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-          }
         }
         &__change{
-          display: block;
-          margin-top: 16px;
-          line-height: 56px;
-          text-align: center;
-          a{
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-          }
+          @include detail-btn();
           &__edit{
-            background: #3CCACE;
-            margin: 16px 0 16px 0;
+            @include change-btn;
           }
           &__delete{
+            @include change-btn();
             background: #aaa;
-            margin: 16px 0 16px 0;
           }
         }
         &__introduce{
