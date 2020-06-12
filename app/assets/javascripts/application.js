@@ -9,7 +9,9 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+// turbolinksは消して下さい！by大石
+
 //= require jquery
 //= require rails-ujs
 //= require activestorage
