@@ -48,6 +48,7 @@
         }
         &__buy{
           @include detail-btn(16px);
+          background: #3CCACE;
           -webkit-transition: all ease-out .3s;
           transition: all ease-out .3s;
         }
