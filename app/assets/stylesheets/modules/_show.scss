@@ -1,59 +1,14 @@
-@mixin tabses() {
-  margin-top: 50px;
-  background-color: white;
-  width: 100%;
-  margin: 0 auto;
-}
 @mixin tab_items() {
   width: calc(100%/2);
   height: 72px;
   background-color: #cccccc;
   line-height: 72px;
-  font-size: 16px;
   text-align: center;
   color: #565656;
   display: block;
   float: left;
-  text-align: center;
   font-weight: bold;
   transition: all 0.2s ease;
-}
-@mixin des() {
-  box-sizing: border-box;
-  padding: 160px 0 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: rgb(174, 174, 174);
-}
-@mixin lists() {
-  background-color: #fff;
-  border-top: 1px solid #eee;
-  padding: 16px;
-  font-size: 14px;
-  color: #333;
-}
-@mixin as() {
-  color: #333;
-  text-decoration: none;
-  position: relative;
-}
-@mixin is() {
-  position: absolute;
-  top: 10%;
-  left: 240px;
-}
-@mixin change() {
-  background-color: white;
-  border-top: 2px solid #5ab4bd;
-  box-sizing: border-box;
-}
-@mixin contents() {
-  box-sizing: border-box;
-  display: none;
-  clear: both;
-  align-content: space-between;
 }
 .show-header{
   padding: 0 60px;
@@ -75,7 +30,7 @@
   padding: 40px 0 0 0;
   &__contents{
     width: 1020px;
-    height: 1355px;
+    height: 1301px;
     margin: 0 auto;
     &__right{
       float: right;
@@ -115,29 +70,41 @@
             margin-top: 8px;
           }
       }
-      .tab {
-        @include tabses();
+      .tab-first {
+        margin-top: 50px;
+        background-color: white;
+        width: 100%;
+        margin: 0 auto;
       }
-      .tab_item {
+      .tab-first_item {
         @include tab_items();
         &:hover{
           opacity: 0.75;
         }
       }
-      input[name="tab_item"] {
+      input[name="tab-first_item"] {
         display: none;
       }
-      .tab_content {
-        @include contents();
+      .tab_content_top {
+        box-sizing: border-box;
+        display: none;
+        clear: both;
+        align-content: space-between;
         .tab_content_description{
-          @include des();
+          padding: 160px 0 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: rgb(174, 174, 174);
         }
       }
       #notice:checked ~ #notice_content,#task:checked  ~ #task_content{
         display: block;
       }
-      .tab input:checked + .tab_item {
-        @include change();
+      .tab-first input:checked + .tab-first_item {
+        background-color: white;
+        border-top: 2px solid #5ab4bd;
+        box-sizing: border-box;
       }
       &__container{
         margin-top: 40px;
@@ -152,29 +119,28 @@
             font-weight: bold;
           }
         }
-        .tabs2 {
-          @include tabses();
+        .tab-second {
+          margin-top: 50px;
+          background-color: white;
+          width: 100%;
+          margin: 0 auto;
         }
-        .tab_item2 {
+        .tab-second_item {
           @include tab_items();
           &:hover{
             opacity: 0.75;
           }
         }
-        input[name="tab_item2"] {
+        input[name="tab-second_item"] {
           display: none;
-        }
-        .tab_content {
-          @include contents();
-          .tab_content_description{
-            @include des();
-          }
         }
         #trading:checked ~ #trading_content,#traded:checked  ~ #traded_content{
           display: block;
         }
-        .tabs2 input:checked + .tab_item2 {
-          @include change();
+        .tab-second input:checked + .tab-second_item {
+          background-color: white;
+          border-top: 2px solid #5ab4bd;
+          box-sizing: border-box;
         }
       }
     }
@@ -183,15 +149,23 @@
       height:100%;
       margin-right: 40px;
       float: left;
-      &--list__top{
+      &--list{
           li{
-            @include lists();
+            background-color: #fff;
+            border-top: 1px solid #eee;
+            padding: 14px;
+            font-size: 14px;
+            color: #333;
             a{
-              @include as();
+              color: #333;
+              text-decoration: none;
+              position: relative;
               i{
-                @include is();
+                position: absolute;
+                top: 11%;
+                left: 240px;
               }
-            }                   
+            } 
           }
           li:hover{
             background-color: #f7f6f5;
@@ -201,36 +175,6 @@
         font-size: 16px;
         margin: 40px 0 0;
         font-weight: bold;
-      }
-      &--list__bottom{
-        width: 280px;
-        li{
-          @include lists();
-          a{
-            @include as();
-          }
-          i{
-            @include is();
-          }
-        }
-        li:hover{
-          background-color: #f7f6f5;
-        }
-      }
-      &--list__footer{
-        height: 48px;
-        li{
-          @include lists();
-          a{
-            @include as();
-          }
-          i{
-            @include is();
-          }
-        }
-        li:hover{
-          background-color: #f7f6f5;
-        }
       }
     }
   }
