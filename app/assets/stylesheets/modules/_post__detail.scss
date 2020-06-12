@@ -47,19 +47,17 @@
           }
         }
         &__buy{
-          @include detail-btn();
-          background: #3CCACE;
+          @include detail-btn(16px);
           -webkit-transition: all ease-out .3s;
           transition: all ease-out .3s;
         }
         &__change{
-          @include detail-btn();
+          @include detail-btn(50px);
           &__edit{
-            @include change-btn;
+            @include change-btn(#3CCACE);
           }
           &__delete{
-            @include change-btn();
-            background: #aaa;
+            @include change-btn(#aaa);
           }
         }
         &__introduce{

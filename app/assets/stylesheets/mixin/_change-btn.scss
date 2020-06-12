@@ -1,4 +1,4 @@
-@mixin change-btn() {
-  background: #3CCACE;
+@mixin change-btn($color) {
+  background-color: $color;
   margin: 16px 0 16px 0;
 }
