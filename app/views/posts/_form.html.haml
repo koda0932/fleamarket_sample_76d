@@ -1,25 +1,26 @@
--# #image-box
--#   #previews
--#     - if @post.persisted?
--#       - @post.post_images.each_with_index do |image, i|
--#         = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
--#   = form.fields_for :post_images do |image|
--#     .js-file_group{"data-index" => "#{image.index}"}
--#       = image.file_field :image, class: 'js-file'
--#       %br
--#       .js-remove
--#         削除
-    
--#     - if @post.persisted?
--#       .hidden-destroy
--#       = image.check_box :_destroy, data:{ index: image.index }
-      
--#   - if @post.persisted?
--#     .js-file_group{"data-index" => "#{@post.post_images.count}"}
--#       = file_field_tag :image, name: "post[images_attributes][#{@post.post_images.count}][image]", class: 'js-file'
--#       .js-remove
--#         削除
-
+-# .new-product
+-#   .main
+-#     .head
+-#       %h2 商品の情報を入力
+-#     = form_with model: @post, class: "form", id: "product-form" do |f|
+-#       .form-image
+-#         .form-image__title
+-#           %label 出品画像
+-#           %span 必須
+-#           .form-image__text 最大10枚までアップロードできます
+-#           = f.fields_for :post_images do |image|
+-#             .clearfix
+-#               // 写真のプレビューとインプットボタンのul
+-#               %ul#previews
+-#                 %li.input
+-#                   // 画像を取り込むインプットボタン
+-#                   %label.upload-label
+-#                     .upload-label__text
+-#                       ドラッグアンドドロップ
+-#                       %br
+-#                       またはクリックしてファイルをアップロード
+-#                       .input-area
+-#                         = image.file_field :name, class: "hidden image_upload"
 .bgc-gray
   = render 'devise/shared/header'
   .post-new__main
@@ -31,50 +32,25 @@
       .post-new__section
         .post-new__field
           %label
-            出品画像
+            商品名
           %span.form-require
             必須
-          %p 最大4枚までアップロードできます
-          %ul.post-new__field__uploader
-            .post-new__field__uploader--info
-              %p ドラッグアンドドロップ
-              %p またはクリックしてアップロード
-            -# image_fieldにはdisplay: none;しなくてokです！
-            -# 理由は、post-new__field__uploader--itemクラスの中のinputタグにはdisplay: none;を当てるようにしてます。
-            -# なので、そのままinputタグをimage_fieldを変えたら自動的にdisplay: none;が当たります。
-            %li.post-new__field__uploader--item
-              %label 画像1
-              %input
-            %li.post-new__field__uploader--item
-              %label 画像2
-              %input
-            %li.post-new__field__uploader--item
-              %label 画像3
-              %input
-            %li.post-new__field__uploader--item
-              %label 画像4
-              %input
-        #image-box
-          #previews
-            - if @post.persisted?
-              - @post.post_images.each_with_index do |image, i|
-                = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
-          = form.fields_for :post_images do |image|
-            .js-file_group{"data-index" => "#{image.index}"}
-              = image.file_field :image, class: 'js-file', required: "require"
-              %br
-              .js-remove
-                削除
-            
-            - if @post.persisted?
-              .hidden-destroy
-              = image.check_box :_destroy, data:{ index: image.index }
-              
-          - if @post.persisted?
-            .js-file_group{"data-index" => "#{@post.post_images.count}"}
-              = file_field_tag :image, name: "post[images_attributes][#{@post.post_images.count}][image]", class: 'js-file'
-              .js-remove
-                削除
+          %br
+          最大4枚までアップロードできます
+          .post-new__field__uploader
+            = form.fields_for :images do |image|
+              // 写真のプレビューとインプットボタンのul
+              %ul#previews.display-flex.width-100
+                %li.input.width-100
+                  // 画像を取り込むインプットボタン
+                  %label.upload-label{for: "sampleId"}
+                    .upload-label__text
+                      %div
+                        %p ドラッグアンドドロップ
+                        %p またはクリックしてファイルをアップロード
+                    .input-area.display-none
+                      = image.file_field :name, class: "hidden image_upload", id: "sampleId"
+
       -# 商品名と商品説明---------------------------------------------------------------------------------
       .post-new__section
         .post-new__field

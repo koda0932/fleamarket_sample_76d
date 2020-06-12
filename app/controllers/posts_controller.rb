@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create]
   before_action :set_parents, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new]
 
   def index
     @posts = Post.includes(:post_images)
@@ -62,7 +63,8 @@ class PostsController < ApplicationController
   end
 
   def set_parents
-    @parents = Category.all.order("id asc").limit(13)
+    @parents = Category.where(ancestry: nil)
+    # @parents = Category.all.order("id asc").limit(13)
   end
 
 end
