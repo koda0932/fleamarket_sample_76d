@@ -34,20 +34,6 @@
       background-color: #f8f8f8;
       border: 0.5px dashed #ccc;
       position: relative;
-      // line-height: 184px;
-      // min-height: 184px;
-      // text-align: center;
-      // display: flex;
-      // &--info{
-      //   position: absolute;
-      //   top: -70px;
-      //   left: 210px;
-      //   z-index: 3;
-      //   & p{
-      //     height: 20px;
-      //   }
-      // }
-      
     }
     &--input{
       @include form-input(598px);
