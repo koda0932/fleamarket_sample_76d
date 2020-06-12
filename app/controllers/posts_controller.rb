@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
-    @posts = Post.includes(:post_images)
+    @posts = Post.includes(:post_images).last(3).reverse
   end
 
   def new
