@@ -1,0 +1,106 @@
+.post__detail
+  .post__detail__inner
+    .post__detail__inner__top
+      .post__detail__inner__top__item
+        %h1.post__detail__inner__top__item__name
+          = @post.name
+        .post__detail__inner__top__item__body
+          .post__detail__inner__top__item__body__picture
+            = image_tag asset_path("#{@post.post_images[0].image}"),height: "300",width: "300"
+          .post__detail__inner__top__item__body__subpicture
+            %ul.post__detail__inner__top__item__body__subpicture__lists
+              - @images.each_with_index do |i, index|
+                %li.post__detail__inner__top__item__body__subpicture__lists__list
+                  = image_tag asset_path("#{i.image}")
+        .post__detail__inner__top__item__price
+          ¥
+          =@post.price
+          .post__detail__inner__top__item__price-detail
+            %span (税込み)
+            - if @post.delivery_status == "購入者負担"
+              着払い
+            - else
+              送料込み
+        .post__detail__inner__top__item__buy
+          - if user_signed_in? && current_user.id != @post.user_id
+            .post__detail__inner__top__item__buy
+              =link_to "#" do
+                購入画面へ進む
+        .post__detail__inner__top__item__change
+          - if user_signed_in? && current_user.id == @post.user_id
+            .post__detail__inner__top__item__change__edit
+              = link_to edit_post_path(@post) do
+                商品の編集
+            .post__detail__inner__top__item__change__delete
+              = link_to post_path(@post), method: :delete do
+                この商品を削除する
+        .post__detail__inner__top__item__introduce
+          = @post.introduce
+        .post__detail__inner__top__item__table
+          %table
+            %tr
+              %th 出品者  
+              %td
+                = @post.user.nickname
+            %tr
+              %th カテゴリー
+              %td
+                = @post.category.name
+            %tr
+              %th ブランド
+              %td
+            %tr
+              %th 商品のサイズ
+              %td
+            %tr
+              %th 商品の状態
+              %td
+                = @post.status
+            %tr
+              %th 配送料の負担
+              %td
+                = @post.delivery_status
+            %tr
+              %th 発送元の地域
+              %td
+                = @post.user_address
+            %tr
+              %th 発送日の目安
+              %td
+                = @post.shipping
+        .post__detail__inner__top__item__option
+          %ul.post__detail__inner__top__item__option__favorite
+            %li.post__detail__inner__top__item__option__favorite--icon
+              = icon('fas', 'star', class: 'star-icon')
+            %li.post__detail__inner__top__item__option__favorite--text
+              お気に入り
+            %li.post__detail__inner__top__item__option__favorite--count
+              0
+          %ul.post__detail__inner__top__item__option__report
+            %li.post__detail__inner__top__item__option__report--icon
+              = icon('fas', 'flag', class: 'flag-icon')
+            %li.post__detail__inner__top__item__option__report--text
+              不適切な商品の通報
+      .post__detail__inner__top__comment
+        =form_for "#" do |f|
+          .post__detail__inner__top__comment__field
+            = f.text_field :content, class:"post__detail__inner__top__comment__field--input"
+          %p.post__detail__inner__top__comment__text
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          =f.submit class:"post__detail__inner__top__comment__btn", value:"コメントする"
+          = icon('fas', 'comment', class: 'post__detail__inner__top__comment__icon')
+ 
+    %ul.post__detail__inner__links
+      %li.post__detail__inner__links__previous
+        =link_to "#" do
+          = icon('fas', 'chevron-left', class: 'left-icon')
+          前の商品
+      %li.post__detail__inner__links__following
+        =link_to "#" do
+          次の商品
+          = icon('fas', 'chevron-right', class: 'right-icon')
+    .post__detail__inner__relatedItems
+      %h1.post__detail__inner__relatedItems--text
+        ベビー・キッズをもっと見る

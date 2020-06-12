@@ -6,7 +6,6 @@ class Post < ApplicationRecord
   validates :name, presence: true
   validates :introduce, presence: true
   validates :category_id, presence: true
-  validates :delivery_fee, presence: true
   validates :status, presence: true
   validates :delivery_status, presence: true
   validates :user_address, presence: true
@@ -19,7 +18,7 @@ class Post < ApplicationRecord
   enum status: { "新品/未使用": 0, "目立った汚れや傷なし": 1, "汚れ、傷あり": 2}
   enum delivery_status: { "購入者負担": 0, "出品者負担": 1}
   enum user_address: { "東京都": 0, "神奈川県": 1}
-  enum shipping: { "1~2": 0, "2~4": 1, "5~7": 2 }
+  enum shipping: { "1~2日": 0, "2~4日": 1, "5~7日": 2 }
 
 
 end
