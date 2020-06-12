@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, except: [:index, :new, :create]
+  before_action :set_post, except: [:index, :new, :create, :search]
   before_action :set_parents, only: [:new, :create, :edit, :update]
   before_action :authenticate_user!, only: [:new]
 
@@ -14,16 +14,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
-
-      if @post.save
+    # 投稿のsaveと、1枚以上画像が投稿されてたら保存可能！
+      if @post.save && @post.post_images.present?
         redirect_to root_path
       else
-
-        render action: :new
+        render :new
       end
-
-
   end
 
   def edit
@@ -51,6 +47,18 @@ class PostsController < ApplicationController
     end
   end
   
+  def search
+    respond_to do |format|
+      format.html
+      format.json do
+        if params[:parent_id]
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChild = Category.find(params[:children_id]).children
+        end
+      end
+    end
+  end
 
   private
   def post_params
@@ -63,7 +71,6 @@ class PostsController < ApplicationController
 
   def set_parents
     @parents = Category.where(ancestry: nil)
-
   end
 
 end
