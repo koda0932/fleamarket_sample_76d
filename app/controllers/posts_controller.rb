@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create]
-  before_action :set_parents, only: [:new, :create]
+  before_action :set_parents, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new]
 
   def index
     @posts = Post.includes(:post_images).last(3).reverse
@@ -13,15 +14,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.post_images.present?
+
+
       if @post.save
         redirect_to root_path
       else
+
         render action: :new
       end
-    else
-      render partial:"form" ,locals: {post:new}
-    end
+
+
   end
 
   def edit
@@ -40,6 +42,7 @@ class PostsController < ApplicationController
     end
   end
 
+
   def destroy
     if @post.destroy
       redirect_to root_path
@@ -47,10 +50,11 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+  
 
   private
   def post_params
-    params.require(:post).permit(:name, :introduce, :category_id, :delivery_fee, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_post
@@ -58,7 +62,8 @@ class PostsController < ApplicationController
   end
 
   def set_parents
-    @parents = Category.all.order("id asc").limit(13)
+    @parents = Category.where(ancestry: nil)
+
   end
 
 end
