@@ -16,31 +16,34 @@
           .show-main__contents__right__top__goods
             出品数 0
       .show-main__contents__right__mypage-tabs
+      #tabs
         .tab-first
-          %input#notice{:checked => "checked", :name => "tab-first_item", :type => "radio"}/
-          %label.tab-first_item{:for => "notice"} お知らせ
-          %input#task{:name => "tab-first_item", :type => "radio"}/
-          %label.tab-first_item{:for => "task"} やることリスト
-          #notice_content.tab_content_top
-            .tab_content_description
-              %p 現在、お知らせはありません。
-          #task_content.tab_content_top
-            .tab_content_description
-              %p 現在、やることリストはありません。
+          .contains
+            %ul.menu
+              %li
+                %a.about.menu_item.active お知らせ
+              %li
+                %a.about.menu_item やることリスト
+            %ul.contents
+              %li.content.show
+                現在、お知らせはありません。
+              %li.content
+                現在、やることはありません。
       .show-main__contents__right__container
         .show-main__contents__right__container__title
-          %h2 購入した商品
-        .tab-second
-          %input#trading{checked: "checked", name: "tab-second_item", type: "radio"}/
-          %label.tab-second_item{for: "trading"} 取引中
-          %input#traded{name: "tab-second_item", type: "radio"}/
-          %label.tab-second_item{for: "traded"} 過去の取引
-          #trading_content.tab_content_top
-            .tab_content_description
-              %p 現在取引している商品がありません。
-          #traded_content.tab_content_top
-            .tab_content_description
-              %p 過去に取引した商品がありません。
+          購入した商品
+        .tab-first
+          .contains
+            %ul.menu
+              %li
+                %a.trade.menu_item.move 取引中
+              %li
+                %a.trade.menu_item 過去の取引
+            %ul.contents
+              %li.content_bottom.show
+                現在取引している商品がありません。
+              %li.content_bottom
+                過去に取引した商品がありません。
     = render 'show__left'    
 
   -# footer

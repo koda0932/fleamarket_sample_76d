@@ -1,14 +1,9 @@
-@mixin tab_items() {
-  width: calc(100%/2);
-  height: 72px;
-  background-color: #cccccc;
-  line-height: 72px;
+@mixin active_show() {
+  border-top: 2px solid #5ab4bd;
+  line-height: 0px;
   text-align: center;
-  color: #565656;
-  display: block;
-  float: left;
-  font-weight: bold;
-  transition: all 0.2s ease;
+  padding: 35px;
+  background-color: white;
 }
 .show-header{
   padding: 0 60px;
@@ -75,74 +70,71 @@
         background-color: white;
         width: 100%;
         margin: 0 auto;
-      }
-      .tab-first_item {
-        @include tab_items();
-        &:hover{
-          opacity: 0.75;
+        .contains {
+          width: 700px;
+          background: #cccccc;
         }
-      }
-      input[name="tab-first_item"] {
-        display: none;
-      }
-      .tab_content_top {
-        box-sizing: border-box;
-        display: none;
-        clear: both;
-        align-content: space-between;
-        .tab_content_description{
-          padding: 160px 0 60px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: rgb(174, 174, 174);
-        }
-      }
-      #notice:checked ~ #notice_content,#task:checked  ~ #task_content{
-        display: block;
-      }
-      .tab-first input:checked + .tab-first_item {
-        background-color: white;
-        border-top: 2px solid #5ab4bd;
-        box-sizing: border-box;
-      }
-      &__container{
-        margin-top: 40px;
-        width: 700px;
-        background-color: white;
-        &__title{
-          padding: 0 16px;
-          height: 72px;
-          display: flex;
-          align-items: center;
-          h2{
-            font-weight: bold;
+        ul {
+          &.menu {
+            li {
+              display: inline-block;
+              width: calc(100%/2);
+              height: 226px;
+              line-height: 72px;
+              text-align: center;
+              display: block;
+              float: left;
+              font-weight: bold;
+              transition: all 0.2s ease;
+              .menu_item {
+                display: inline-block;
+                background-color: #cccccc;
+                color: black;
+                width: 280px;
+                padding: 0px 35px 0px 35px;
+              }
+              .active {
+                @include active_show();
+              }
+              .move {
+                @include active_show();
+              }
+              :not(.active):hover {
+                opacity: 0.5;
+                transition: .8s;
+              }
+            }
+          }
+          &.contents li {
+            list-style: none;
+            font-size: 14px;
+            padding: 7px 10px 60px 10px;
+            line-height: 1.4;
+            background: white;
+            color: black;
+            display: none;
+            &.show {
+              display: block;
+              text-align: center;
+              font-size: 16px;
+              color: #eee;
+              font-weight: bold;
+            }
           }
         }
-        .tab-second {
-          margin-top: 50px;
-          background-color: white;
-          width: 100%;
-          margin: 0 auto;
-        }
-        .tab-second_item {
-          @include tab_items();
-          &:hover{
-            opacity: 0.75;
-          }
-        }
-        input[name="tab-second_item"] {
-          display: none;
-        }
-        #trading:checked ~ #trading_content,#traded:checked  ~ #traded_content{
-          display: block;
-        }
-        .tab-second input:checked + .tab-second_item {
-          background-color: white;
-          border-top: 2px solid #5ab4bd;
-          box-sizing: border-box;
-        }
       }
+    &__container{
+      height: 382px;
+      width: 700px;
+      margin-top: 40px;
+      background-color: white;
+      &__title{
+        height: 72px;
+        padding: 0 16px;
+        font-weight: bold;
+        line-height: 72px;
+      }
+    }
     }
     &__left{
       width: 280px;
