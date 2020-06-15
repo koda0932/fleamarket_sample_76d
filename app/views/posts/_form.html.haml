@@ -1,0 +1,111 @@
+-# 商品名と商品説明---------------------------------------------------------------------------------
+.post-new__section
+  .post-new__field
+    %label
+      商品名
+    %span.form-require
+      必須
+    -# #name
+    = form.text_field :name, class: "post-new__field--input", placeholder: "40文字まで", required: "require"
+  .post-new__field
+    %label
+      商品の説明
+    %span.form-require
+      必須
+    -# #introduce
+    = form.text_area :introduce, class: "post-new__field--input", rows: 7, placeholder: "商品の説明（色、素材、重さ、定価、注意点など）", required: "require"
+-# カテゴリと状態-------------------------------------------------------------------------------------
+.post-new__section
+  .post-new__section--title
+    商品の詳細
+    %i.fa.fa-question-circle
+  .post-new__field
+    %label
+      カテゴリ
+    %span.form-require
+      必須
+    -# #category_id
+    #category_field
+      = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected:"" }, id: "category_form", class: "post-new__field--input", required: "require"
+    -# = form.collection_select :category_id, @parents, :id, :name, { prompt: "---" }, id: "category_form", class: "post-new__field--input"
+  .post-new__field
+    %label
+      商品の状態
+    %span.form-require
+      必須
+    -# #status
+    = form.select :status, Post.statuses.keys, { include_blank: "---", selected:"" }, class: "post-new__field--input"
+-# 配送関係-------------------------------------------------------------------------------------
+.post-new__section
+  .post-new__section--title
+    配送について
+    %i.fa.fa-question-circle
+  .post-new__field
+    %label
+      配送料の負担
+    %span.form-require
+      必須
+    -# #delivery_status
+    = form.select :delivery_status, Post.delivery_statuses.keys, { include_blank: "---", selected:"" }, class: "post-new__field--input", required: "require"
+  .post-new__field
+    %label
+      発送元の地域
+    %span.form-require
+      必須
+    -# #user_address
+    = form.select :user_address, Post.user_addresses.keys, { include_blank: "---", selected:"" }, class: "post-new__field--input", required: "require"
+  .post-new__field
+    %label
+      発送までの日数
+    %span.form-require
+      必須
+    -# #shipping
+    = form.select :shipping, Post.shippings.keys, { include_blank: "---", selected:"" }, class: "post-new__field--input", required: "require"
+-# 金額---------------------------------------------------------------------------------
+.post-new__section
+  .post-new__section--title
+    価格（¥300〜9,999,999）
+    %i.fa.fa-question-circle
+  .post-new__field
+    .post-new__field__money
+      %div
+        %label
+          販売価格
+        %span.form-require
+          必須
+      -# #price
+      %div
+        ¥
+        -# #money-inputで入力金額を取得
+        = form.text_field :price, class: "post-new__field--input", id: "money-input", type: "number", placeholder: "例）10,000", required: "require"
+  .post-new__field
+    .post-new__field__money
+      %div
+        %label
+          販売手数料（10%）
+      -# #delivery-feeで販売手数料を表示
+      #delivery-fee
+        = "-"
+  .post-new__field
+    .post-new__field__money
+      %div
+        %label
+          販売利益
+      -# #form-profitで販売利益を表示
+      #form-profit
+        = "-"
+-# 送信---------------------------------------------------------------------------
+.post-new__section
+  .post-new__field
+    .post-new__field__confirmation
+      %p
+        禁止されている出品 、 行為 を必ずご確認ください。
+        %br
+        またブランド品でシリアルナンバー等がある場合はご記載ください。 偽ブランドの販売 は犯罪であり処罰される可能性があります。
+        %br
+        また、出品をもちまして 加盟店規約 に同意したことになります。
+    .post-new__field
+      = form.submit "出品する", class: "post-new__field__confirmation--submit"
+    .post-new__field
+      .post-new__field__confirmation__close
+        = link_to "閉じる", root_path
