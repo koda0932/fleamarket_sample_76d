@@ -1,7 +1,7 @@
 .show-main__contents__left
   %ul.show-main__contents__left--list
     %li.show-main__contents__left--list__item
-      = link_to mypage_path do
+      = link_to mypage_users_path do
         %h6 マイページ
         %i.fas.fa-chevron-right.menu-icon
     %li.show-main__contents__left--list__item
@@ -89,6 +89,6 @@
         %h6 電話番号の確認
         %i.fas.fa-chevron-right.menu-icon
     %li.show-main__contents__left--list__item
-      = link_to mypage_destroy_path do
+      = link_to logout_users_path do
         %h6 ログアウト
         %i.fas.fa-chevron-right.menu-icon

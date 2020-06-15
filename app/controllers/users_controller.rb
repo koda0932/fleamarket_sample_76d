@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def mypage
   end
 
-  def destroy
+  def logout
   end
 
   private
