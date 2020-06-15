@@ -1,0 +1,52 @@
+= render 'posts/top__header'
+
+.show-header
+  .show-header__contents  FURIMA > マイページ
+
+.show-main
+  .show-main__contents
+    .show-main__contents__right 
+      .show-main__contents__right__top
+        .show-main__contents__right__top__contents
+          .show-main__contents__right__top__icon
+          %h3.show-main__contents__right__top__contents--name
+            = current_user.nickname
+          .show-main__contents__right__top__evaluation
+            評価 0
+          .show-main__contents__right__top__goods
+            出品数 0
+      .show-main__contents__right__mypage-tabs
+      #tabs
+        .tab-first
+          .contains
+            %ul.menu
+              %li
+                %a.about.menu_item.active お知らせ
+              %li
+                %a.about.menu_item やることリスト
+            %ul.contents
+              %li.content.show
+                現在、お知らせはありません。
+              %li.content
+                現在、やることはありません。
+      .show-main__contents__right__container
+        .show-main__contents__right__container__title
+          購入した商品
+        .tab-first
+          .contains
+            %ul.menu
+              %li
+                %a.trade.menu_item.move 取引中
+              %li
+                %a.trade.menu_item 過去の取引
+            %ul.contents
+              %li.content_bottom.show
+                現在取引している商品がありません。
+              %li.content_bottom
+                過去に取引した商品がありません。
+    = render 'show__left'    
+
+  -# footer
+  = render 'posts/top__banner'
+  = render 'posts/top__footer'
+

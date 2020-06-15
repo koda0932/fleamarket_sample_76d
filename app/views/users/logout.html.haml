@@ -1,0 +1,16 @@
+= render 'posts/top__header'
+
+.show-header
+  .show-header__contents  FURIMA > マイページ
+
+.show-main
+  .show-main__contents
+    .show-main__contents__right 
+      .show-main__logout-field
+        = link_to destroy_user_session_path, method: :delete, class: "show-main__logout-field__btn show-main__logout-field__btn--type" do
+          ログアウト
+
+    = render 'show__left'
+  -# footer
+  = render 'posts/top__banner'
+  = render 'posts/top__footer'

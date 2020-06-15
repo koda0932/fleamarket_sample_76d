@@ -8,9 +8,19 @@ Rails.application.routes.draw do
   end
 
   root 'posts#index'
+  resources :users do
+    collection do
+      get :mypage, :logout
+    end
+  end
+  
+  resources :cards, only: [:new]
+  resources :posts
+
   resources :posts do
     collection do
       get :search
     end
   end
 end
+
