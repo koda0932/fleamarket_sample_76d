@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, except: [:index, :new, :create]
+  before_action :set_post, except: [:index, :new, :create, :search]
   before_action :set_parents, only: [:new, :create, :edit, :update]
   before_action :authenticate_user!, only: [:new]
 
@@ -14,18 +14,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    # if @post.post_images.present?
-      if @post.save
+    # 投稿内容のsaveと、画像が投稿されてるか確認！（今回の場合は1枚以上）
+      if @post.post_images.present? && @post.save 
         redirect_to root_path
       else
-        # render partial:"form" ,locals: {post:new}
-        render action: :new
+        render :new
       end
-    # else
-      # render partial:"form" ,locals: {post:new}
-      # render :new
-      # render action: :new
-    # end
   end
 
   def edit
@@ -36,43 +30,44 @@ class PostsController < ApplicationController
     @images = @post.post_images.includes(:post)
   end
 
-  def update
-    if @post.update(post_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
+  def edit
+    
   end
 
-#   def update
-#     @parents = Category.where(ancestry: nil)
-    
-#     if params[:post].keys.include?("image") || params[:post].keys.include?("images_attributes")
-#       if @post.valid?
-#         if params[:post].keys.include?("image")
-#           update_images_ids = params[:post][:image].values
-#           before_images_ids = @post.post_images.ids
 
-#           before_images_ids.each do |before_img_id|
-#             Image.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}")
-#           end
-#         else
-#           before_images_ids.each do |before_img_id|
-#             Image.find(before_img_id).destroy 
-#           end
-#       end
+  def update
+    @parents = Category.where(ancestry: nil)
+    # each do で並べた画像が image
+    # 新しくinputに追加された画像が image_attributes
+    # この二つがない時はupdateしない
+    if params[:post].keys.include?("image") || params[:post].keys.include?("images_attributes")
+      if @post.valid?
+        if params[:post].keys.include?("image")
+        # dbにある画像がedit画面で一部削除してるか確認
+          update_images_ids = params[:post][:image].values #投稿済み画像 
+          before_images_ids = @post.post_images.ids
 
-#       @post.update(post_params)
-#       # @size = @post.categories[1].sizes[0]
-#       # @post.update(size: nil) unless @size
-#       redirect_to root_path, notice: "更新しました"
-#     else
-#       render 'edit'
-#     end
-#   else
-#     redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
-#   end
-# end
+          # 商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
+          # before_images_ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
+          before_images_ids.each do |before_img_id|
+            PostImage.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}")
+          end
+        else
+           # imageハッシュがない = 投稿済みの画像をすべてedit画面で消しているので、商品に紐づく投稿済み画像を削除する。
+            before_images_ids.each do |before_img_id|
+            PostImage.find(before_img_id).destroy 
+          end
+      end
+
+      @post.update(post_params)
+      redirect_to root_path, notice: "更新しました"
+    end
+
+  else
+    flash.now[:alert] = "画像がありません"
+    render 'edit'
+  end
+end
 
   def destroy
     if @post.destroy
@@ -82,6 +77,18 @@ class PostsController < ApplicationController
     end
   end
   
+  def search
+    respond_to do |format|
+      format.html
+      format.json do
+        if params[:parent_id]
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
+      end
+    end
+  end
 
   private
   def post_params
@@ -94,7 +101,6 @@ class PostsController < ApplicationController
 
   def set_parents
     @parents = Category.where(ancestry: nil)
-    # @parents = Category.all.order("id asc").limit(13)
   end
 
 end

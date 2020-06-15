@@ -1,6 +1,4 @@
 $(function () {
-  //newにおいては、下記が本題
-
   // プレビュー機能
   //'change'イベントでは$(this)で要素が取得できないため、 'click'イベントを入れた。
   //これにより$(this)で'input'を取得することができ、inputの親要素である'li'まで辿れる。
@@ -22,10 +20,8 @@ $(function () {
     $('.image_upload').on('change', function (e) {
       //inputで選択した画像を読み込む
       var reader = new FileReader();
-
       // プレビューに追加させるために、inputから画像ファイルを読み込む。
       reader.readAsDataURL(e.target.files[0]);
-
       //画像ファイルが読み込んだら、処理が実行される。 
       reader.onload = function (e) {
         //previewをappendで追加する前に、プレビューできるようにinputで選択した画像を<img>に'src'で付与させる
@@ -37,7 +33,7 @@ $(function () {
       $li.append(preview);
       // 生成したliの横幅を決める
       $('#previews li').css({
-        'width': `157.5px`
+        'width': `25%`
       })
 
       //プレビュー完了後は、inputを非表示にさせる。これによりプレビューだけが残る。
@@ -46,13 +42,6 @@ $(function () {
       $li.removeClass('input');     // inputのクラスはjQueryで数を数える時に邪魔なので除去
       $li.addClass('image-preview'); // inputのクラスからプレビュー用のクラスに変更した
       $lis = $ul.find('.image-preview'); // クラス変更が完了したところで、プレビューの数を数える。 
-
-      // inputボタンのサイズを更新する、または追加させる
-      // まずはプレビューの数を数える。
-      $label = $ul.find('.input');
-      if ($lis.length <= 3) {
-        // inputのサイズを変更
-      }
 
       // 画像が4枚以内なら文字とインプットを追加
       if ($lis.length < 4) {
@@ -82,8 +71,6 @@ $(function () {
     var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text">ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード<div class="input-area display-none"><input class="hidden image_upload" type="file"></div></div></label></li>`)
     $ul = $('#previews')
     $lis = $ul.find('.image-preview');
-    $input = $ul.find('.input');
-    $ul = $('#previews')
     $li = $(this).parents('.image-preview');
 
     //"li"ごと削除して、previewとinputを削除させる。

@@ -1,10 +1,13 @@
 @import "reset";
 @import "config/colors";
+@import "modules/flash";
 
 // @mixin---------------------
 @import "mixin/form-require";
 @import "mixin/submit-btn";
 @import "mixin/form-input";
+@import "mixin/detail_btn";
+@import "mixin/change-btn";
 // ---------------------------
 
 // 共通のcss---------------------
@@ -25,4 +28,13 @@
 
 // ポスト----------------------
 @import "modules/post-new";
+@import "modules/post-edit";
 // ---------------------------
+
+
+
+// ポスト詳細----------------------
+@import "modules/post__detail";
+// ---------------------------
+
+
