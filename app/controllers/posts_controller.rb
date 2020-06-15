@@ -71,8 +71,9 @@ end
 
   def destroy
     if @post.destroy
-      redirect_to root_path
+      redirect_to root_path, notice: "投稿を削除しました"
     else
+      flash.now[:alert] = "削除に失敗しました"
       render :edit
     end
   end
