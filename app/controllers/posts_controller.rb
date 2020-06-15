@@ -22,16 +22,13 @@ class PostsController < ApplicationController
       end
   end
 
-  def edit
-    
-  end
 
   def show
     @images = @post.post_images.includes(:post)
   end
 
   def edit
-    
+
   end
 
 
@@ -61,6 +58,10 @@ class PostsController < ApplicationController
 
       @post.update(post_params)
       redirect_to root_path, notice: "更新しました"
+
+    # else
+    #   flash.now[:alert] = "画像がなし"
+    #   render 'edit'
     end
 
   else

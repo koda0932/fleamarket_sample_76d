@@ -7,7 +7,7 @@ var append_input = $(`<li class="input"><label class="upload-label"><div class="
     if($lis.length < 4 ){
       $ul.append(append_input)
       $('#previews .input').css({
-        'width': `calc(100% - (20% * ${$lis.length}))`
+        'width': `calc(100% - (25% * ${$lis.length}))`
       })
     }
 });

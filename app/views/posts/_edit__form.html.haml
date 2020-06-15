@@ -26,7 +26,9 @@
       必須
     -# #category_id
     #category_field
-      = form.collection_select :category_id, @parents, :id, :name, class: "post-new__field--input", id: "category_form", required: "require"
+      = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected: "#{@post.category.parent.parent.id}" }, id: "category_form", class: "post-new__field--input"
+      = form.collection_select :category_id, @post.category.parent.siblings, :id, :name, { include_blank: "---", selected: "#{@post.category.parent.id}" }, id: "category_form", class: "post-new__field--input child_category_id"
+      = form.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---"}, id: "category_form", class: "post-new__field--input gc_category_id"
   .post-new__field
     %label
       商品の状態
