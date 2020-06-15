@@ -2,7 +2,7 @@ $(function () {
   // 子のselectタグを追加
   function build_childSelect() {
     let child_select = `
-              <select name="post[category_id]" id="post_category_id" class="post-new__field--input child_category_id">
+              <select name="post[category_id]" class="post-new__field--input child_category_id" required="require">
                 <option value="">---</option>
               </select>
               `
@@ -12,7 +12,7 @@ $(function () {
   // 孫のselectタグを追加
   function build_gcSelect() {
     let gc_select = `
-              <select name="post[category_id]" id="post_category_id" class="post-new__field--input gc_category_id">
+              <select name="post[category_id]" class="post-new__field--input gc_category_id" required="require">
               </select>
               `
     return gc_select;

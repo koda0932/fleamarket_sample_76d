@@ -14,8 +14,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    # 投稿のsaveと、1枚以上画像が投稿されてたら保存可能！
-      if @post.save && @post.post_images.present?
+    # 投稿内容のsaveと、画像が投稿されてるか確認！（今回の場合は1枚以上）
+      if @post.post_images.present? && @post.save 
         redirect_to root_path
       else
         render :new
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
         if params[:parent_id]
           @childrens = Category.find(params[:parent_id]).children
         elsif params[:children_id]
-          @grandChild = Category.find(params[:children_id]).children
+          @grandChilds = Category.find(params[:children_id]).children
         end
       end
     end
