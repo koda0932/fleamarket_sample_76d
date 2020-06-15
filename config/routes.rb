@@ -14,8 +14,13 @@ Rails.application.routes.draw do
     end
   end
   
-  
   resources :cards, only: [:new]
   resources :posts
+
+  resources :posts do
+    collection do
+      get :search
+    end
+  end
 end
 
