@@ -1,0 +1,23 @@
+.show-main__container
+  .show-main__container--text
+    支払い方法
+  .show-main__container__section
+    .show-main__container__section__content
+      クレジットカード一覧
+    %ul.show-main__container__section__lists
+      %li.show-main__container__section__lists__list
+        .show-main__container__section__lists__list__top
+          .show-main__container__section__lists__list__top__image
+            = image_tag asset_path("google-play-badge.png"), height: '20', width: '34',class: "card--image"
+          .show-main__container__section__lists__list__top__delete
+            = link_to "削除する", mypage_users_path, class: 'btn'
+            
+        .show-main__container__section__lists__list__number
+          ************0000
+        .show-main__container__section__lists__list__date
+          12/23
+
+  .show-main__container__link
+    .show-main__container__link__btn
+      = link_to new_card_path do
+        カードを追加

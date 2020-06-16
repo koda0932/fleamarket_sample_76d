@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :cards, only: [:new]
+  resources :cards, only: [:index, :new]
   resources :posts
 
   resources :posts do
