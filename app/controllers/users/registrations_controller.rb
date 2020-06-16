@@ -10,7 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params[:user][:birthday] = birthday_join
     @user = User.new(sign_up_params)
     unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
@@ -25,7 +24,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"] ["user"])
     @address = UserAddress.new(address_params)
     unless @address.valid?
-      flash.now[:alert] = @address.errors.full.messages
       render :new_address and return
     end
     @user.build_user_address(@address.attributes)

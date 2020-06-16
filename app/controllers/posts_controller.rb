@@ -94,6 +94,10 @@ end
     end
   end
 
+  def buy
+    @address = UserAddress.find_by(user_id: current_user.id)
+  end
+
   def pay
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     charge = Payjp::Charge.create(
