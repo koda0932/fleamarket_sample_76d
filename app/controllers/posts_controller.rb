@@ -18,6 +18,7 @@ class PostsController < ApplicationController
       if @post.post_images.present? && @post.save 
         redirect_to root_path
       else
+        @post.post_images.new
         render :new
       end
   end
