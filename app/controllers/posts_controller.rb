@@ -20,9 +20,12 @@ class PostsController < ApplicationController
       else
         @post.post_images.new
         render :new
+        flash.now[:alert] = "画像がありません"
       end
   end
 
+  def edit
+  end
 
   def show
     @images = @post.post_images.includes(:post)
@@ -91,17 +94,15 @@ end
     end
   end
 
-  def search
-    respond_to do |format|
-      format.html
-      format.json do
-        if params[:parent_id]
-          @childrens = Category.find(params[:parent_id]).children
-        elsif params[:children_id]
-          @grandChilds = Category.find(params[:children_id]).children
-        end
-      end
-    end
+  def pay
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    charge = Payjp::Charge.create(
+    amount: @post.price,
+    card: params['payjp-token'],
+    currency: 'jpy'
+    )
+    @post.update(purchased: true)
+    redirect_to root_path, notice: '購入しました！'
   end
 
   private

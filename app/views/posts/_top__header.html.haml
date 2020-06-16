@@ -2,7 +2,7 @@
   .top__header__inner
     .top__header__inner__main
       %h1.top__header__inner__main__icon
-        =link_to "#" do
+        =link_to root_path do
           = image_tag asset_path('logo.png'), height: '40', width: '140', class: 'top__header__inner__main__icon__logo'
       .top__header__inner__main__search__box
         %input{type: "text", class: "top__header__inner__main__search__box__text", placeholder: "キーワードから探す"}

@@ -1,12 +1,24 @@
 = render 'posts/top__header'
-
 .show-header
-  .show-header__contents  FURIMA > マイページ
+  .show-header__contents  FURIMA > マイページ > 支払い方法
 
 .show-main
   .show-main__contents
     .show-main__contents__right
-      =render 'cards/card'
+      .show-main__registration-field
+        .show-main__container
+          .show-main__container--text
+            支払い方法
+          .show-main__container__section
+            .show-main__container__section__content
+              - if @cards
+                クレジットカード一覧
+                = render @cards
+        .show-main__container__link
+          .show-main__container__link__btn
+            = link_to new_card_path do
+              カードを追加
+
     = render 'users/show__left'
   -# footer
   = render 'posts/top__banner'
