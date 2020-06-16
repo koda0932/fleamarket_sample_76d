@@ -1,0 +1,47 @@
+.show-main__container{
+  width: 700px;
+  background-color: white;
+  padding-bottom: 50px;
+  &--text{
+    text-align: center;
+    padding: 8px 24px;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 24px;
+  }
+  &__section{
+    width: 343px;
+    margin: 0 auto;
+    padding: 64px;
+    &__content{
+      max-width: 320px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+    &__lists{
+      padding: 24px 0;
+      border-bottom: 1px solid #eee;
+      &__list{
+        &__top{
+          display: flex;
+          justify-content: space-between;
+        }
+        &__number{
+          margin: 8px 0 0;
+          font-size: 16px;
+        }
+        &__date{
+          margin: 8px 0 0;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  &__link{
+    padding: 0 30px;
+    &__btn{
+      text-align: right;
+    }
+  }
+}

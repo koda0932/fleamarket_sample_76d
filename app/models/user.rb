@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :first_name, :family_name, format: {with: /\A[ぁ-んァ-ン一-龥]/}
   validates :first_name_kana, :family_name_kana, format: {with: /\A[ァ-ヶー－]+\z/}
   has_one :user_address
+  has_one :card
 end

@@ -143,5 +143,6 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |card_id|string|null: false|
+|customor_id|string|null: false|
 ### Association
 - belongs_to :user

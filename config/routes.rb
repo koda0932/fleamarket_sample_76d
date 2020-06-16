@@ -13,16 +13,18 @@ Rails.application.routes.draw do
       get :mypage, :logout
     end
   end
-  
-  resources :cards, only: [:new]
 
   resources :posts do
     collection do
       get :search
+      post 'pay/:id'=>   'posts#pay'
     end
     member do
       get :buy
     end
   end
+
+  resources :cards, only: [:index, :new, :create, :destroy]
+
 end
 

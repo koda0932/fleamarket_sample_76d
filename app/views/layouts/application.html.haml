@@ -9,4 +9,6 @@
     = javascript_include_tag 'application'
   %body
     %script{crossorigin: "anonymous", src: "https://kit.fontawesome.com/b167c0ffa1.js"}
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    = render 'layouts/notifications'
     = yield

@@ -1,5 +1,6 @@
 @import "reset";
 @import "config/colors";
+@import "modules/flash";
 
 // @mixin---------------------
 @import "mixin/form-require";
@@ -31,6 +32,7 @@
 // -----------------------------
 // ポスト----------------------
 @import "modules/post-new";
+@import "modules/post-edit";
 // ---------------------------
 
 // 商品購入確認ページ---------------------------
@@ -40,3 +42,8 @@
 // ポスト詳細----------------------
 @import "modules/post__detail";
 // ---------------------------
+
+// カード情報------------------
+@import "modules/card";
+@import "modules/card-registration";
+//------------------------------
