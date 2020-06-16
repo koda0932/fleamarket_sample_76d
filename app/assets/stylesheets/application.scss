@@ -26,6 +26,10 @@
 @import "modules/top__footer";
 // ---------------------------
 
+// マイページ-------------------
+@import "modules/show";
+@import "modules/destroy";
+// -----------------------------
 // ポスト----------------------
 @import "modules/post-new";
 @import "modules/post-edit";
@@ -37,4 +41,7 @@
 @import "modules/post__detail";
 // ---------------------------
 
-
+// カード情報------------------
+@import "modules/card";
+@import "modules/card-registration";
+//------------------------------

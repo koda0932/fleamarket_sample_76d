@@ -1,0 +1,13 @@
+= render 'posts/top__header'
+
+.show-header
+  .show-header__contents  FURIMA > マイページ
+
+.show-main
+  .show-main__contents
+    .show-main__contents__right
+      =render 'cards/card'
+    = render 'users/show__left'
+  -# footer
+  = render 'posts/top__banner'
+  = render 'posts/top__footer'
