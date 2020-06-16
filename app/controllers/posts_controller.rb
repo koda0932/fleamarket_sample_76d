@@ -95,7 +95,7 @@ end
   end
 
   def buy
-    @address = UserAddress.where(user_id: current_user.id).first
+    @address = UserAddress.find_by(user_id: current_user.id)
   end
 
   def pay
