@@ -1,0 +1,60 @@
+.buy__main
+  .buy__main__header
+    =link_to "#" do
+      .buy__main__header__icon
+        = image_tag asset_path('logo.png'), height: '49', width: '185'
+  .buy__main__contents
+    .buy__main__contents__form
+      %section.buy__main__contents__form__confirmation
+        購入内容の確認
+      %section.buy__main__contents__form__products
+        .buy__main__contents__form__products__image
+        = image_tag asset_path("#{@post.post_images[0].image}"),height: "65",width: "65"
+        .buy__main__contents__form__products__right
+          .buy__main__contents__form__products__right__names
+          = @post.name
+          .buy__main__contents__form__products__right__price--details
+            %span 
+            (税込み)
+            - if @post.delivery_status == "購入者負担"
+              着払い
+            - else
+              送料込み
+      %section.buy__main__contents__form__bill
+        .buy__main__contents__form__bill__space
+          .buy__main__contents__form__bill__space__amount
+            支払い金額
+          .buy__main__contents__form__bill__space__detail
+            ¥
+            =@post.price
+      %section.buy__main__contents__form__address
+        .buy__main__contents__form__address__top
+          .buy__main__contents__form__address__top__method
+            配送先
+          = link_to "#", class: "buy__main__contents__form__address__top__change" do
+            変更する
+        .buy__main__contents__form__address__details
+          %p 
+          〒
+          = @address.postcode
+          %p
+            = @address.prefecture 
+            = @address.city 
+            = @address.address
+          %p 
+            = current_user.nickname
+      %section.buy__main__contents_form__button
+        .buy__main__contents__form__button__field
+          %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_62873b159b61e41f8452494b"}
+  .buy__main__footer
+    .buy__main__footer__top--info
+      %ul 
+        %li プライバシーポリシー
+        %li メルカリ利用規約
+        %li 特定商取引に関する表記
+      =link_to "#" do
+        .buy__main__footer__middle--info
+          = image_tag asset_path('logo-white.png'), height: '65', width: '185'
+    .buy__main__footer__bottom--info
+      %h2 ©️Furima,Inc.
+      

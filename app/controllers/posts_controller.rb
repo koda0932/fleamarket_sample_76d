@@ -60,6 +60,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def buy
+    # @address = UserAddress.find(params[:id])
+    @address = UserAddress.where(user_id: current_user.id).first
+  end
+
   private
   def post_params
     params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)

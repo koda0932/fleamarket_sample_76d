@@ -15,11 +15,13 @@ Rails.application.routes.draw do
   end
   
   resources :cards, only: [:new]
-  resources :posts
 
   resources :posts do
     collection do
       get :search
+    end
+    member do
+      get :buy
     end
   end
 end

@@ -24,7 +24,7 @@
         .post__detail__inner__top__item__buy
           - if user_signed_in? && current_user.id != @post.user_id
             .post__detail__inner__top__item__buy
-              =link_to "#" do
+              =link_to buy_post_path do
                 購入画面へ進む
         .post__detail__inner__top__item__change
           - if user_signed_in? && current_user.id == @post.user_id
