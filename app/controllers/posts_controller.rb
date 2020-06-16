@@ -19,6 +19,7 @@ class PostsController < ApplicationController
         redirect_to root_path
       else
         render :new
+        flash.now[:alert] = "画像がありません"
       end
   end
 
