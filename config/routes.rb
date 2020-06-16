@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   end
   
   resources :cards, only: [:index, :new]
-  resources :posts
 
   resources :posts do
     collection do

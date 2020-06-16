@@ -21,7 +21,7 @@ $(function () {
   });
 
   // 編集ページ読み込み時に販売手数料と販売金額を表示する
-  if (document.location.href.match(/\/posts\/\d+\/edit/)) {
+  if (document.location.href.match(/\/posts\/\d/)) {
     // 金額を取得
     var p_input = $("#money-input").val();
     // 金額があるなら表示する
