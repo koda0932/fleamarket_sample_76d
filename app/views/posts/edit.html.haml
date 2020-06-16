@@ -1,6 +1,4 @@
-
 .bgc-gray
-  -# カラム名をコメントアウトして書いてます。目印で書いてるので、消してokです！
   = render 'devise/shared/header'
   .post-new__main
     -# タイトル--------------------------------------------------------------------------------------
@@ -36,55 +34,4 @@
                         削除
 
       = render "edit__form", form: form
-      -# 商品画像イメージ-----------------------------------------------------------------------------
-      = form_with model: @post, local: true do |form|
-        .post-new__section
-          .post-new__field
-            %label
-              出品画像
-            %span.form-require
-              必須
-            %p 最大4枚までアップロードできます
-            .post-new__field__uploader
-              = form.fields_for :post_images do |image|
-                // 写真のプレビューとインプットボタンのul
-                %ul#previews.display-flex.width-100
-                  %li.input.width-100
-                  // 画像を取り込むインプットボタン
-                  %label.upload-label{for: "sampleId"}
-                    .upload-label__text
-                      %div
-                        %p ドラッグアンドドロップ
-                        %p またはクリックしてファイルをアップロード
-                    .input-area.display-none
-                      = image.file_field :name, class: "hidden image_upload", id: "sampleId"
-        -# 商品説明から送信までform
-        = render "form", form: form
-                      -# カテゴリと状態-------------------------------------------------------------------------------------
-        .post-new__section
-          .post-new__section--title
-            商品の詳細
-            %i.fa.fa-question-circle
-          .post-new__field
-            %label
-              カテゴリ
-            %span.form-require
-              必須
-            -# #category_id
-            #category_field
-              = @post.category.parent.parent.name
-              = @post.category.parent.parent.id
-              = @post.category.parent.name
-              = @post.category.parent.id
-              = @post.category.name
-              = @post.category.id
-              = @post.id
-              -# = form.collection_select :category_id, @parents, :id, :name, { prompt: "---" }, id: "category_form", class: "post-new__field--input"
-              -# = form.collection_select :category_id, @parents, :id, :name, { required: "require" }, id: "category_form", class: "post-new__field--input"
-              -# = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected:"" }, id: "category_form", class: "post-new__field--input"
-              = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected: "#{@post.category.parent.parent.id}" }, id: "category_form", class: "post-new__field--input"
-              = form.collection_select :category_id, @post.category.parent.siblings, :id, :name, { include_blank: "---", selected: "#{@post.category.parent.id}" }, id: "category_form", class: "post-new__field--input  child_category_id"
-              = form.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---"}, id: "category_form", class: "post-new__field--input gc_category_id"
-        -# 商品説明から送信までform
-        = render "form", form: form
   = render 'devise/shared/footer'

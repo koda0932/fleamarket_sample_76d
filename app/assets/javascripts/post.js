@@ -33,7 +33,7 @@ $(function () {
       $li.append(preview);
       // 生成したliの横幅を決める
       $('#previews li').css({
-        'width': `157.5px`
+        'width': `25%`
       })
 
       //プレビュー完了後は、inputを非表示にさせる。これによりプレビューだけが残る。

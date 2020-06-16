@@ -13,8 +13,6 @@ Rails.application.routes.draw do
       get :mypage, :logout
     end
   end
-  
-  resources :posts
 
   resources :posts do
     collection do
