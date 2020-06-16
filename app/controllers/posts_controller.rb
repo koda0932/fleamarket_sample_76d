@@ -23,7 +23,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def show
@@ -58,6 +57,17 @@ class PostsController < ApplicationController
         end
       end
     end
+  end
+
+  def pay
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    charge = Payjp::Charge.create(
+    amount: @post.price,
+    card: params['payjp-token'],
+    currency: 'jpy'
+    )
+    @post.update(purchased: true)
+    redirect_to root_path, notice: '購入しました！'
   end
 
   private

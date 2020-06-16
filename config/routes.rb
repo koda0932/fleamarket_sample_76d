@@ -14,13 +14,16 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :cards, only: [:index, :new]
   resources :posts
 
   resources :posts do
     collection do
       get :search
+      post 'pay/:id'=>   'posts#pay'
     end
   end
+
+  resources :cards, only: [:index, :new, :create, :destroy]
+
 end
 

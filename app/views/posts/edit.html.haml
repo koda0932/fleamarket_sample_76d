@@ -6,6 +6,36 @@
     -# タイトル--------------------------------------------------------------------------------------
     %h1.post-new--top 商品の情報を入力
     .post-new__form
+    = form_with model: @post, local: true do |form|
+      .post-new__section
+        .post-new__field
+          %label
+            商品名
+          %span.form-require
+            必須
+          %br
+          最大4枚までアップロードできます
+          .post-new__field__uploader
+            = form.fields_for :images do |image|
+              // 写真のプレビューとインプットボタンのul
+              %ul#previews.display-flex.width-100
+                - @post.post_images.each_with_index do |img, i|
+                  %li.image-preview
+                    %label.upload-label{style:"display: none;"}
+                      .upload-label__text
+                        %div
+                          %p ドラッグアンドドロップ
+                          %p またはクリックしてファイルをアップロード
+                      .input-area
+                        = image.file_field :image, value: img.image, class: "hidden image_upload"
+                        = image.hidden_field :id, value: img.id, name:"post[image][#{i}]"
+                    .image-preview__wrapper
+                      = image_tag img.image.to_s, class:"preview"
+                    .image-preview_btn
+                      .image-preview_btn_delete
+                        削除
+
+      = render "edit__form", form: form
       -# 商品画像イメージ-----------------------------------------------------------------------------
       = form_with model: @post, local: true do |form|
         .post-new__section
@@ -28,6 +58,33 @@
                         %p またはクリックしてファイルをアップロード
                     .input-area.display-none
                       = image.file_field :name, class: "hidden image_upload", id: "sampleId"
+        -# 商品説明から送信までform
+        = render "form", form: form
+                      -# カテゴリと状態-------------------------------------------------------------------------------------
+        .post-new__section
+          .post-new__section--title
+            商品の詳細
+            %i.fa.fa-question-circle
+          .post-new__field
+            %label
+              カテゴリ
+            %span.form-require
+              必須
+            -# #category_id
+            #category_field
+              = @post.category.parent.parent.name
+              = @post.category.parent.parent.id
+              = @post.category.parent.name
+              = @post.category.parent.id
+              = @post.category.name
+              = @post.category.id
+              = @post.id
+              -# = form.collection_select :category_id, @parents, :id, :name, { prompt: "---" }, id: "category_form", class: "post-new__field--input"
+              -# = form.collection_select :category_id, @parents, :id, :name, { required: "require" }, id: "category_form", class: "post-new__field--input"
+              -# = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected:"" }, id: "category_form", class: "post-new__field--input"
+              = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected: "#{@post.category.parent.parent.id}" }, id: "category_form", class: "post-new__field--input"
+              = form.collection_select :category_id, @post.category.parent.siblings, :id, :name, { include_blank: "---", selected: "#{@post.category.parent.id}" }, id: "category_form", class: "post-new__field--input  child_category_id"
+              = form.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---"}, id: "category_form", class: "post-new__field--input gc_category_id"
         -# 商品説明から送信までform
         = render "form", form: form
   = render 'devise/shared/footer'

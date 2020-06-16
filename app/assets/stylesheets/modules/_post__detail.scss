@@ -21,6 +21,7 @@
           align-items: center;
           margin: 16 auto 0;
           &__picture{
+            position: relative;
             object-fit: cover;
             height: 346px;
           }
