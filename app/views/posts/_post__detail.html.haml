@@ -28,28 +28,16 @@
           - if user_signed_in? && current_user.id != @post.user_id
             - if current_user.card.present?
               - if @post.purchased == true
-<<<<<<< Updated upstream
                 %a 購入済みです
-=======
-                =link_to "#" do
-                  購入済みで〜す
->>>>>>> Stashed changes
               - else
                 .post__detail__inner__top__item__buy
                   =link_to "#" do
                     購入画面へ進む
-<<<<<<< Updated upstream
                 -# 購入確認ページが完成したら以下の購入リンクを移動させます
                 = form_tag(action: :pay, method: :post) do
                   %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_62873b159b61e41f8452494b"}
             - else
               = link_to "カードを登録して下さい", cards_path
-=======
-                = form_tag(action: :pay, method: :post) do
-                  %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_62873b159b61e41f8452494b"}
-            - else
-              = link_to "カードを登録して", cards_path
->>>>>>> Stashed changes
         .post__detail__inner__top__item__change
           - if user_signed_in? && current_user.id == @post.user_id
             .post__detail__inner__top__item__change__edit

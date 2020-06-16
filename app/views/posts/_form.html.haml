@@ -26,7 +26,7 @@
       必須
     -# #category_id
     #category_field
-      = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected:"" }, id: "category_form", class: "post-new__field--input"
+      = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected:"" }, id: "category_form", class: "post-new__field--input", required: "require"
     -# = form.collection_select :category_id, @parents, :id, :name, { prompt: "---" }, id: "category_form", class: "post-new__field--input"
   .post-new__field
     %label
