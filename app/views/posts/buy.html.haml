@@ -46,7 +46,7 @@
       %section.buy__main__contents_form__button
         .buy__main__contents__form__button__field
           = form_tag(action: :pay, method: :post) do
-            %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_62873b159b61e41f8452494b"}
+            %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "購入する", "data-key": "pk_test_62873b159b61e41f8452494b"}
   .buy__main__footer
     .buy__main__footer__top--info
       %ul 
