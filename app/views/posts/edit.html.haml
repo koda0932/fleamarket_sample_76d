@@ -25,7 +25,7 @@
                           %p ドラッグアンドドロップ
                           %p またはクリックしてファイルをアップロード
                       .input-area
-                        = image.file_field :name, value: img.image, class: "hidden image_upload"
+                        = image.file_field :image, value: img.image, class: "hidden image_upload"
                         = image.hidden_field :id, value: img.id, name:"post[image][#{i}]"
                     .image-preview__wrapper
                       = image_tag img.image.to_s, class:"preview"

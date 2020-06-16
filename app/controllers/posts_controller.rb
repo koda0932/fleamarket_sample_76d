@@ -28,12 +28,10 @@ class PostsController < ApplicationController
   end
 
   def edit
-
+    
   end
 
-
   def update
-    @parents = Category.where(ancestry: nil)
     # each do で並べた画像が image
     # 新しくinputに追加された画像が image_attributes
     # この二つがない時はupdateしない
@@ -55,13 +53,12 @@ class PostsController < ApplicationController
             PostImage.find(before_img_id).destroy 
           end
       end
-
       @post.update(post_params)
       redirect_to root_path, notice: "更新しました"
 
-    # else
-    #   flash.now[:alert] = "画像がなし"
-    #   render 'edit'
+    else
+      flash.now[:alert] = "画像がありません"
+      render 'edit'
     end
 
   else
@@ -69,6 +66,7 @@ class PostsController < ApplicationController
     render 'edit'
   end
 end
+
 
   def destroy
     if @post.destroy
@@ -79,6 +77,7 @@ end
     end
   end
   
+
   def search
     respond_to do |format|
       format.html
@@ -96,6 +95,8 @@ end
   def post_params
     params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
+  
+  
 
   def set_post
     @post = Post.find(params[:id])
