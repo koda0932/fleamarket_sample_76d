@@ -15,7 +15,7 @@
           %br
           最大4枚までアップロードできます
           .post-new__field__uploader
-            = form.fields_for :images do |image|
+            = form.fields_for :post_images do |image|
               // 写真のプレビューとインプットボタンのul
               %ul#previews.display-flex.width-100
                 %li.input.width-100
@@ -26,7 +26,7 @@
                         %p ドラッグアンドドロップ
                         %p またはクリックしてファイルをアップロード
                     .input-area.display-none
-                      = image.file_field :name, class: "hidden image_upload"
+                      = image.file_field :image, class: "hidden image_upload"
       -# 商品説明から送信までform
       = render "form", form: form
   = render 'devise/shared/footer'
