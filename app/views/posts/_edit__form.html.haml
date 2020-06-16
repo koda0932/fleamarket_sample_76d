@@ -35,7 +35,7 @@
     %span.form-require
       必須
     -# #status
-    = form.select :status, Post.statuses.keys, class: "post-new__field--input", required: "require"
+    = form.select :status, Post.statuses.keys, { include_blank: "---"}, class: "post-new__field--input", required: "require"
 -# 配送関係-------------------------------------------------------------------------------------
 .post-new__section
   .post-new__section--title
@@ -47,21 +47,21 @@
     %span.form-require
       必須
     -# #delivery_status
-    = form.select :delivery_status, Post.delivery_statuses.keys, class: "post-new__field--input", required: "require"
+    = form.select :delivery_status, Post.delivery_statuses.keys, { include_blank: "---"}, class: "post-new__field--input", required: "require"
   .post-new__field
     %label
       発送元の地域
     %span.form-require
       必須
     -# #user_address
-    = form.select :user_address, Post.user_addresses.keys, class: "post-new__field--input", required: "require"
+    = form.select :user_address, Post.user_addresses.keys, { include_blank: "---"}, class: "post-new__field--input", required: "require"
   .post-new__field
     %label
       発送までの日数
     %span.form-require
       必須
     -# #shipping
-    = form.select :shipping, Post.shippings.keys, class: "post-new__field--input", required: "require"
+    = form.select :shipping, Post.shippings.keys, { include_blank: "---"}, class: "post-new__field--input", required: "require"
 -# 価格---------------------------------------------------------------------------------
 .post-new__section
   .post-new__section--title
