@@ -45,7 +45,8 @@
             = current_user.nickname
       %section.buy__main__contents_form__button
         .buy__main__contents__form__button__field
-          %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_62873b159b61e41f8452494b"}
+          = form_tag(action: :pay, method: :post) do
+            %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_62873b159b61e41f8452494b"}
   .buy__main__footer
     .buy__main__footer__top--info
       %ul 
@@ -57,4 +58,3 @@
           = image_tag asset_path('logo-white.png'), height: '65', width: '185'
     .buy__main__footer__bottom--info
       %h2 ©️Furima,Inc.
-      
