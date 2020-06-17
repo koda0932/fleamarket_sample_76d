@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create, :search]
   before_action :set_parents, only: [:new, :create, :edit, :update]
   before_action :authenticate_user!, only: [:new]
+  before_action :purchased_item, only: [:buy, :pay]
 
   def index
     @posts = Post.includes(:post_images).last(3).reverse
@@ -29,10 +30,6 @@ class PostsController < ApplicationController
 
   def show
     @images = @post.post_images.includes(:post)
-  end
-
-  def edit
-    
   end
 
   def update
@@ -114,14 +111,18 @@ end
     params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
   
-  
-
   def set_post
     @post = Post.find(params[:id])
   end
 
   def set_parents
     @parents = Category.where(ancestry: nil)
+  end
+
+  def purchased_item
+    if @post.purchased == true
+      redirect_to root_path, notice: "その商品は既に購入されています"
+    end
   end
 
 end
