@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :block_current_user, only: [:buy, :pay]
   before_action :other_user, only: [:edit, :update, :destroy]
+  before_action :purchased_item, only: [:buy, :pay]
 
   def index
     @posts = Post.includes(:post_images).last(3).reverse
@@ -31,10 +32,6 @@ class PostsController < ApplicationController
 
   def show
     @images = @post.post_images.includes(:post)
-  end
-
-  def edit
-    
   end
 
   def update
@@ -116,8 +113,6 @@ end
     params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
   
-  
-
   def set_post
     @post = Post.find(params[:id])
   end
@@ -126,6 +121,12 @@ end
     @parents = Category.where(ancestry: nil)
   end
 
+  def purchased_item
+    if @post.purchased == true
+      redirect_to root_path, notice: "その商品は既に購入されています"
+    end
+  end
+  
   def block_current_user
     if @post.user_id == current_user.id
       flash[:alert] = "指定のページへは飛べません"
