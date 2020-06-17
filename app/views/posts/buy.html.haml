@@ -42,8 +42,7 @@
             = @address.city 
             = @address.address
           %p 
-            = @address.apartment_family_name
-            = @address.apartment_first_name
+            = current_user.nickname
       %section.buy__main__contents_form__button
         .buy__main__contents__form__button__field
           = form_tag(action: :pay, method: :post) do

@@ -30,22 +30,6 @@
           %span.form-require
             必須
           = f.text_field :address, class: "user-new__field--input", placeholder: "例）大石1-1-1"
-          .user-new__field
-          %label.user-new__field--text
-            送付先お名前(全角) 
-          %span.form-require
-            必須
-          .display-flex
-            = f.text_field :apartment_family_name, class: "user-new__field--input user-new__field--half", placeholder: "例）大石"
-            = f.text_field :apartment_first_name, class: "user-new__field--input user-new__field--half", placeholder: "例）海渡"
-        .user-new__field
-          %label.user-new__field--text
-            送付先お名前カナ(全角) 
-          %span.form-require
-            必須
-          .display-flex
-            = f.text_field :apartment_family_name_kana, class: "user-new__field--input user-new__field--half", placeholder: "例）オオイシ"
-            = f.text_field :apartment_first_name_kana, class: "user-new__field--input user-new__field--half", placeholder: "例）カイト"
         .user-new__field
           %label.user-new__field--text
             建物名
