@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create, :search]
   before_action :set_parents, only: [:new, :create, :edit, :update]
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :block_current_user, only: [:buy, :pay]
+  before_action :other_user, only: [:edit, :update, :destroy]
   before_action :purchased_item, only: [:buy, :pay]
 
   def index
@@ -122,6 +124,20 @@ end
   def purchased_item
     if @post.purchased == true
       redirect_to root_path, notice: "その商品は既に購入されています"
+    end
+  end
+  
+  def block_current_user
+    if @post.user_id == current_user.id
+      flash[:alert] = "指定のページへは飛べません"
+      redirect_to post_path
+    end
+  end
+
+  def other_user
+    if @post.user_id != current_user.id
+      flash[:alert] = "指定されたアクションは動きません"
+      redirect_to post_path
     end
   end
 
