@@ -58,6 +58,10 @@ ActiveRecord::Schema.define(version: 2020_06_15_032616) do
     t.string "prefecture"
     t.string "city"
     t.string "address"
+    t.string "apartment_first_name"
+    t.string "apartment_first_name_kana"
+    t.string "apartment_family_name"
+    t.string "apartment_family_name_kana"
     t.string "apartment"
     t.string "telephone"
     t.bigint "user_id", null: false
