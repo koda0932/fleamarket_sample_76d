@@ -7,7 +7,6 @@ $(function () {
     //inputの要素はクリックされておらず、inputの親要素であるdivが押されている。
     //だからdivのクラス名をclickした時にイベントが作動。
     //div（this）から要素を辿ればinputを指定することが可能。
-
     //$liに追加するためのプレビュー画面のHTML。横長でないとバグる
     var preview = $('<div class="image-preview__wapper"><img class="preview"></div><div class="image-preview_btn"><div class="image-preview_btn_delete">削除</div></div>');
     //次の画像を読み込むためのinput。 
@@ -37,7 +36,6 @@ $(function () {
       })
 
       //プレビュー完了後は、inputを非表示にさせる。これによりプレビューだけが残る。
-
       $label.css('display', 'none'); // inputを非表示
       $li.removeClass('input');     // inputのクラスはjQueryで数を数える時に邪魔なので除去
       $li.addClass('image-preview'); // inputのクラスからプレビュー用のクラスに変更した
@@ -75,7 +73,6 @@ $(function () {
 
     //"li"ごと削除して、previewとinputを削除させる。
     $li.remove();
-
     $lis = $ul.find('.image-preview'); // クラス変更が完了したところで、プレビューの数を数える。 
 
     // 画像が4枚以内なら文字とインプットを追加
