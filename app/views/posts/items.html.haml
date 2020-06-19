@@ -8,3 +8,12 @@
     .top__main__pickupcategory--main
       .top__main__pickupcategory--main.items-index
         = render @posts
+
+
+.top__camera__icon
+  = link_to new_post_path, class: "td-none" do
+    %ul.top__camera__icon--list
+      %li.top__camera__icon--list--text
+        出品する
+      %li.top__camera__icon--list--image
+        = image_tag asset_path("icon_camera.png"), class: "top__camera__icon--list--image--item"
