@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     collection do
-      get :search
+      get :search, :items
       post 'pay/:id'=>   'posts#pay'
     end
     member do

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, except: [:index, :new, :create, :search]
+  before_action :set_post, except: [:index, :new, :create, :search, :items]
   before_action :set_parents, only: [:new, :create, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :block_current_user, only: [:buy, :pay]
@@ -99,6 +99,10 @@ class PostsController < ApplicationController
     )
     @post.update(purchased: true)
     redirect_to root_path, notice: '購入しました！'
+  end
+
+  def items
+    @posts = Post.includes([:post_images, :user]).order('created_at desc')
   end
 
   private

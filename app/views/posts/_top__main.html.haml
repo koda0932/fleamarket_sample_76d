@@ -38,7 +38,9 @@
     .top__main__pickupcategory
     .top__main__pickupcategory--top
       .top__main__pickupcategory--top--title ピックアップカテゴリー
-      = link_to "新規投稿商品", "#", class: "top__main__pickupcategory--top--archiver" 
+      .top__main__pickupcategory--top--link
+        = link_to "新規投稿商品", "#", class: "top__main__pickupcategory--top--link--archiver" 
+        = link_to "もっと見る", items_posts_path, class: "top__main__pickupcategory--top--link--right"
     .top__main__pickupcategory--main
       .top__main__pickupcategory--main
         = render @posts
@@ -50,7 +52,9 @@
   .top__main__pickupbrand
     .top__main__pickupbrand--top
       .top__main__pickupbrand--top--title ピックアップブランド
-      = link_to "アーカイバ", "#", class: "top__main__pickupbrand--top--archiver"
+      .top__main__pickupcategory--top--link
+        = link_to "アーカイバ", "#", class: "top__main__pickupbrand--top--link--archiver"
+        = link_to "もっと見る", items_posts_path, class: "top__main__pickupcategory--top--link--right"
     .top__main__pickupbrand--main
       =render @posts
   -# -----------------------------------------------------------------
