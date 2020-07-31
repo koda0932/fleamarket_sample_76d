@@ -27,4 +27,3 @@
 /config/master.key
 .DS_store
 public/uploads/*
-/config/credentials.yml.enc
