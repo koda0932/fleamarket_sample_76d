@@ -29,7 +29,12 @@
             .post__detail__inner__top__item__buy
             - if current_user.card.present?
               - if @post.purchased == true
-                %a 購入済みです
+                -# 取引ページへのリンクを実装中
+                -# - if Transaction.where(post_id: @post.id, buyer_id: current_user.id, seller_id: @post.user_id)
+                - if false
+                  = link_to "取引画面へ進む", transaction_room_path(@post.id)
+                - else
+                  %a 購入済みです
               - else
                 .post__detail__inner__top__item__buy
                   =link_to buy_post_path do
@@ -49,7 +54,7 @@
         .post__detail__inner__top__item__table
           %table
             %tr
-              %th 出品者  
+              %th 出品者
               %td
                 = @post.user.nickname
             %tr

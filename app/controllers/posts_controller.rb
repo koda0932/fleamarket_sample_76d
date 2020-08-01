@@ -97,17 +97,11 @@ class PostsController < ApplicationController
     card: params['payjp-token'],
     currency: 'jpy'
     )
-    # 一旦、取引ページのデータ検証のため購入済みアクションをコメントアウト
-    # @post.update(purchased: true)
-
+    @post.update(purchased: true)
     # ここから取引ページを作成
-    # @transaction = Transaction.create
     @transaction_room = TransactionRoom.create
     Transaction.create!(buyer_id: current_user.id, seller_id: @post.user_id, post_id: @post.id, transaction_room_id: @transaction_room.id)
-    # @transaction(buyer_id: current_user.id, seller_id: @post.user_id, post_id: @post.id, transaction_room_id: @transaction_room.id)
-    # Transaction.create(transaction_params)
-    # params.require(:post).permit(post_id: id, seller_id: user_id).merge(user_id: current_user.id)
-    redirect_to @post, notice: '購入しました！'
+    redirect_to @transaction_room, notice: '購入しました！'
   end
 
   def items
