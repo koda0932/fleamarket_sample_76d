@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :block_current_user, only: [:buy, :pay]
   before_action :other_user, only: [:edit, :update, :destroy]
+  before_action :purchased_block, only: [:edit, :update, :destroy]
   before_action :purchased_item, only: [:buy]
 
   def index
@@ -142,6 +143,10 @@ class PostsController < ApplicationController
       flash[:alert] = "指定されたアクションは動きません"
       redirect_to post_path
     end
+  end
+
+  def purchased_block
+    redirect_to root_path, alert: "売却済みなので編集・削除はできません" if (@post.purchased == true)
   end
 
 end

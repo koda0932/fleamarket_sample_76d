@@ -11,7 +11,7 @@ class TransactionRoomsController < ApplicationController
       @message = TransactionMessage.new
       # binding.pry
     else
-      flash[:alert] = "不正な操作です"
+      flash[:alert] = "取引ページへアクセス権限がありません。"
       redirect_back(fallback_location: root_path)
     end
   end
