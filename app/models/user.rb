@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :first_name_kana, :family_name_kana, format: {with: /\A[ァ-ヶー－]+\z/}
   has_one :user_address
   has_one :card
+  has_many :transactions
+  has_many :transaction_messages
 end

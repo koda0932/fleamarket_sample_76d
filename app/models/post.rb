@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
   has_many :post_images, dependent: :destroy
+  has_many :transactions
 
   validates :name, presence: true
   validates :introduce, presence: true
@@ -30,7 +31,7 @@ class Post < ApplicationRecord
                         "埼玉県": 10,
                         "千葉県": 11,
                         "東京都": 12,
-                        "神奈川県":13, 
+                        "神奈川県":13,
                         "新潟県": 14,
                         "富山県": 15,
                         "石川県": 16,
