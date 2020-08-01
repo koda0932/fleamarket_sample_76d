@@ -29,10 +29,8 @@
             .post__detail__inner__top__item__buy
             - if current_user.card.present?
               - if @post.purchased == true
-                -# 取引ページへのリンクを実装中
-                -# - if Transaction.where(post_id: @post.id, buyer_id: current_user.id, seller_id: @post.user_id)
-                - if false
-                  = link_to "取引画面へ進む", transaction_room_path(@post.id)
+                - if @transaction && @transaction.buyer_id == current_user.id && @transaction.post_id == @post.id
+                  = link_to "取引画面へ進む", transaction_room_path(@transaction.transaction_room_id)
                 - else
                   %a 購入済みです
               - else
