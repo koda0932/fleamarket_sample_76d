@@ -53,19 +53,19 @@ ActiveRecord::Schema.define(version: 2020_08_01_022026) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "transaction_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "room_id"
+    t.bigint "transaction_room_id"
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_transaction_messages_on_room_id"
+    t.index ["transaction_room_id"], name: "index_transaction_messages_on_transaction_room_id"
     t.index ["user_id"], name: "index_transaction_messages_on_user_id"
+  end
+
+  create_table "transaction_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_022026) do
   add_foreign_key "post_images", "posts"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
-  add_foreign_key "transaction_messages", "rooms"
+  add_foreign_key "transaction_messages", "transaction_rooms"
   add_foreign_key "transaction_messages", "users"
   add_foreign_key "transactions", "posts"
   add_foreign_key "transactions", "users", column: "buyer_id"

@@ -1,0 +1,2 @@
+class TransactionRoom < ApplicationRecord
+end
