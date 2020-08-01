@@ -9,7 +9,6 @@ class TransactionRoomsController < ApplicationController
       # roomのメッセージを全て取得
       @messages = @room.transaction_messages.includes(:user).order("created_at asc")
       @message = TransactionMessage.new
-      # binding.pry
     else
       flash[:alert] = "取引ページへアクセス権限がありません。"
       redirect_back(fallback_location: root_path)

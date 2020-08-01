@@ -19,7 +19,7 @@
       #tabs
         .tab-first
           .contains
-            %ul.menu
+            %ul.menu.height72
               %li
                 %a.about.menu_item.active お知らせ
               %li
@@ -34,7 +34,7 @@
           購入した商品
         .tab-first
           .contains
-            %ul.menu
+            %ul.menu.height72
               %li
                 %a.trade.menu_item.move 取引中
               %li
@@ -42,9 +42,8 @@
             %ul.contents
               %li.content_bottom.show
                 - if @posts.present?
-                  -# = render @posts
-                  - @posts.each do |p|
-                    = link_to "取引画面へ進む", transaction_room_path(p.transaction_room.id)
+                  -# @postsだけど、views/transactions/_transactionにrenderされてます！
+                  = render @posts
                 - else
                   現在取引している商品がありません。
               %li.content_bottom
