@@ -1,0 +1,8 @@
+- if transaction_message.user.id == current_user.id
+  %div 投稿者(右)
+  = transaction_message.user.nickname
+  = transaction_message.content
+- else
+  %div 投稿者(左)
+  = transaction_message.user.nickname
+  = transaction_message.content

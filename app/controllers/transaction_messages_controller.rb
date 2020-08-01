@@ -1,21 +1,16 @@
 class TransactionMessagesController < ApplicationController
-  # before_action :set_room
-  # before_action :set_message
+  before_action :set_room
 
   def create
     @message = TransactionMessage.create(message_params)
-    redirect_to @message
+    redirect_to @room
   end
 
   private
 
-  # def set_room
-  #   @room = TransactionRoom.find(params[:Transaction_message][:room_id])
-  # end
-
-  # def set_message
-  #   @message = TransactionMessage.find(params[:id])
-  # end
+  def set_room
+    @room = TransactionRoom.find(params[:transaction_message][:transaction_room_id])
+  end
 
   # def gets_entries_all_messages
   #   @messages = @room.messages.includes(:user).order("created_at asc")
