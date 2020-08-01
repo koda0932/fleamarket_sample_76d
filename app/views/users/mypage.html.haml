@@ -5,7 +5,7 @@
 
 .show-main
   .show-main__contents
-    .show-main__contents__right 
+    .show-main__contents__right
       .show-main__contents__right__top
         .show-main__contents__right__top__contents
           .show-main__contents__right__top__icon
@@ -41,10 +41,15 @@
                 %a.trade.menu_item 過去の取引
             %ul.contents
               %li.content_bottom.show
-                現在取引している商品がありません。
+                - if @posts.present?
+                  -# = render @posts
+                  - @posts.each do |p|
+                    = link_to "取引画面へ進む", transaction_room_path(p.transaction_room.id)
+                - else
+                  現在取引している商品がありません。
               %li.content_bottom
                 過去に取引した商品がありません。
-    = render 'show__left'    
+    = render 'show__left'
 
   -# footer
   = render 'posts/top__banner'

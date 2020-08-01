@@ -1,1 +1,4 @@
 transactioin_show
+= form_with(model: @message, local: true) do |form|
+  = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
+  = form.submit
