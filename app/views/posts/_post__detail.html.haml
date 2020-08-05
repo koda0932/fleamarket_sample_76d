@@ -29,7 +29,10 @@
             .post__detail__inner__top__item__buy
             - if current_user.card.present?
               - if @post.purchased == true
-                %a 購入済みです
+                - if @transaction && @transaction.buyer_id == current_user.id && @transaction.post_id == @post.id
+                  = link_to "取引画面へ進む", transaction_room_path(@transaction.transaction_room_id)
+                - else
+                  %a 購入済みです
               - else
                 .post__detail__inner__top__item__buy
                   =link_to buy_post_path do
@@ -38,18 +41,21 @@
               = link_to "カードを登録して下さい", cards_path
         .post__detail__inner__top__item__change
           - if user_signed_in? && current_user.id == @post.user_id
-            .post__detail__inner__top__item__change__edit
-              = link_to edit_post_path(@post) do
-                商品の編集
-            .post__detail__inner__top__item__change__delete
-              = link_to post_path(@post), method: :delete do
-                この商品を削除する
+            - if @post.purchased == true
+              商品売却済みなので編集・削除ができません
+            - else
+              .post__detail__inner__top__item__change__edit
+                = link_to edit_post_path(@post) do
+                  商品の編集
+              .post__detail__inner__top__item__change__delete
+                = link_to post_path(@post), method: :delete do
+                  この商品を削除する
         .post__detail__inner__top__item__introduce
           = @post.introduce
         .post__detail__inner__top__item__table
           %table
             %tr
-              %th 出品者  
+              %th 出品者
               %td
                 = @post.user.nickname
             %tr

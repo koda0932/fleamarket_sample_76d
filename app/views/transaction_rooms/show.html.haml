@@ -1,0 +1,15 @@
+transactioin_show
+%br/
+商品名【
+= link_to @post.name, @post
+】
+紹介【
+= @post.introduce
+】
+%br/
+◎メッセージ
+= render @messages
+= form_with(model: @message, local: true) do |form|
+  = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
+  = form.hidden_field :transaction_room_id, value: @room.id
+  = form.submit

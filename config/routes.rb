@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :cards, only: [:index, :new, :create, :destroy]
-
+  resources :transaction_rooms, only: :show
+  resources :transaction_messages, only: [:create]
 end
 

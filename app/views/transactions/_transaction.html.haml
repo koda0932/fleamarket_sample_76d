@@ -1,0 +1,14 @@
+-# @tweetsがeachされて、transactionになってます。
+= link_to transaction_room_path(transaction.transaction_room.id), class: "transaction" do
+  = image_tag asset_path("#{transaction.post.post_images[0].image}"), class: "transaction--left"
+  .transaction__right
+    .transaction__right--name
+      「
+      = transaction.post.name
+      」を購入しました
+    .transaction__right--link
+      取引画面へ移動
+
+-# .transaction
+-# = image_tag asset_path("#{transaction.post.post_images[0].image}"), class: "transaction--left"
+-# = link_to transaction_room_path(transaction.transaction_room.id), class: "transaction__right" do

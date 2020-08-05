@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_032616) do
+ActiveRecord::Schema.define(version: 2020_08_01_025551) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -53,6 +53,34 @@ ActiveRecord::Schema.define(version: 2020_06_15_032616) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "transaction_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "transaction_room_id"
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transaction_room_id"], name: "index_transaction_messages_on_transaction_room_id"
+    t.index ["user_id"], name: "index_transaction_messages_on_user_id"
+  end
+
+  create_table "transaction_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "buyer_id"
+    t.bigint "seller_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "transaction_room_id"
+    t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
+    t.index ["post_id"], name: "index_transactions_on_post_id"
+    t.index ["seller_id"], name: "index_transactions_on_seller_id"
+    t.index ["transaction_room_id"], name: "index_transactions_on_transaction_room_id"
+  end
+
   create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode"
     t.string "prefecture"
@@ -91,4 +119,10 @@ ActiveRecord::Schema.define(version: 2020_06_15_032616) do
   add_foreign_key "post_images", "posts"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
+  add_foreign_key "transaction_messages", "transaction_rooms"
+  add_foreign_key "transaction_messages", "users"
+  add_foreign_key "transactions", "posts"
+  add_foreign_key "transactions", "transaction_rooms"
+  add_foreign_key "transactions", "users", column: "buyer_id"
+  add_foreign_key "transactions", "users", column: "seller_id"
 end
