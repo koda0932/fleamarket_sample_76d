@@ -15,17 +15,19 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    collection do
-      get :search, :items
-      post 'pay/:id'=>   'posts#pay'
-    end
     member do
       get :buy
+    end
+    collection do
+      get :search, :items
+      post 'buy/:id' => 'posts#pay'
     end
   end
 
   resources :cards, only: [:index, :new, :create, :destroy]
+
   resources :transaction_rooms, only: :show
+  post 'transaction_rooms/:id' => 'transactions#acceptance'
   resources :transaction_messages, only: [:create]
 end
 

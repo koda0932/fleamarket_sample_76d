@@ -42,7 +42,7 @@
             %ul.contents
               %li.content_bottom.show
                 - if @posts.present?
-                  -# @postsだけど、コンラで呼び出したモデルがtransactionなので、views/transactions/_transactionにrenderされてます！
+                  -# @postsだけど、コンラで呼び出したモデルがtransactionなので、render先はviews/transactions/_transactionです！
                   -# 上記の理由で変数名は@postsがtransactionになります
                   = render @posts
                 - else
