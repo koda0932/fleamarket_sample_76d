@@ -1,4 +1,7 @@
 transactioin_show
+- if @transaction.acceptance == true
+  この取引は終了しています
+
 %br/
 商品名【
 = link_to @post.name, @post
@@ -9,7 +12,11 @@ transactioin_show
 %br/
 ◎メッセージ
 = render @messages
-= form_with(model: @message, local: true) do |form|
+= form_with(model: @message, local: true ) do |form|
   = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
   = form.hidden_field :transaction_room_id, value: @room.id
   = form.submit
+
+- if @transaction.acceptance == false
+  = form_tag({ :controller => 'transactions', :action => 'acceptance'}, local: true, data: { confirm: '商品を受け取りましたか？ 一度受け取ると取り消せません' }) do
+    %button
