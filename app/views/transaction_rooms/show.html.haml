@@ -1,4 +1,5 @@
 transactioin_show
+%br/
 - if @transaction.acceptance == true
   この取引は終了しています
 
@@ -16,11 +17,6 @@ transactioin_show
   = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
   = form.hidden_field :transaction_room_id, value: @room.id
   = form.submit
-
-- if @transaction.review == "good"
-  良いw
-- else
-  悪いn
 
 - if @transaction.acceptance == false
   = form_with(controller: 'transactions', action: 'acceptance', local: true, data: { confirm: '商品を受け取りましたか？ 一度受け取ると取り消せません' }) do |f|
