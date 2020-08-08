@@ -1,4 +1,5 @@
 transactioin_show
+%br/
 - if @transaction.acceptance == true
   この取引は終了しています
 
@@ -18,5 +19,9 @@ transactioin_show
   = form.submit
 
 - if @transaction.acceptance == false
-  = form_tag({ :controller => 'transactions', :action => 'acceptance'}, local: true, data: { confirm: '商品を受け取りましたか？ 一度受け取ると取り消せません' }) do
-    %button
+  = form_with(controller: 'transactions', action: 'acceptance', local: true, data: { confirm: '商品を受け取りましたか？ 一度受け取ると取り消せません' }) do |f|
+    = f.label "良い", for: "review_good"
+    = f.radio_button :review, :good, checked: true
+    = f.label "悪い", for: "review_bad"
+    = f.radio_button :review, :bad
+    = f.submit

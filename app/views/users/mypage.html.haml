@@ -12,9 +12,13 @@
           %h3.show-main__contents__right__top__contents--name
             = current_user.nickname
           .show-main__contents__right__top__evaluation
-            評価 0
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+            = @good_review_count
+            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+            = @bad_review_count
           .show-main__contents__right__top__goods
-            出品数 0
+            出品数
+            = @posts_count
       .show-main__contents__right__mypage-tabs
       #tabs
         .tab-first
