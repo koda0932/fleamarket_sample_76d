@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create, :search, :items]
+  # application_controllerで@parentsを定義してますが、理解しにくいので2重で記述
   before_action :set_parents, only: [:new, :create, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :block_current_user, only: [:buy, :pay]

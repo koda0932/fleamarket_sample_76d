@@ -1,5 +1,5 @@
 // ビジュアル---------------------------------------
-.top__main__visual{
+.top__main__visual {
   background-image: image-url("bg-mainVisual-pict_pc.jpg");
   height: 560px;
   background-size: cover;
@@ -9,40 +9,48 @@
   padding: 0 60px;
   display: flex;
   align-items: center;
-  &__content{
+
+  &__content {
     max-width: 1280px;
     width: 100%;
     margin: 0 auto;
     padding: 35px 0 0 0;
-    &__subtitle{
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+
+    &__subtitle {
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
       font-size: 60px;
       line-height: 1.2;
       color: #fff;
     }
-    &__text{
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+
+    &__text {
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
       font-size: 18px;
       color: #fff;
       line-height: 1.77778;
       margin: 16px 0 0 0;
     }
-    &__btn{
+
+    &__btn {
       display: flex;
       margin: 24px 0 0 0;
-      &__abtn{
+
+      &__abtn {
         margin-right: 10px;
         padding-top: 10px;
       }
     }
   }
 }
+
 // -----------------------------------------------------
 
 // イントロダクション---------------------------------------
-.top__main__introduction{
+.top__main__introduction {
   padding: 60px 20px;
-  &__subtitle{
+  background: rgb(245, 245, 245);
+
+  &__subtitle {
     text-align: center;
     font-size: 26px;
     line-height: 1.4;
@@ -51,27 +59,31 @@
     padding-bottom: 15px;
     position: relative;
   }
-  
-  &__lists{
+
+  &__lists {
     text-align: center;
     display: flex;
     max-width: 1020px;
     width: 100%;
     margin: 0 auto;
-    span{
+
+    span {
       color: #3ccace;
     }
-    &__list1{
+
+    &__list1 {
       width: 30%;
       margin: 16px 5% 0 0;
       text-align: left;
       display: flex;
       flex-direction: column;
       align-items: center;
-      &__picture{
+
+      &__picture {
         position: relative;
         margin-bottom: 20px;
-        &__number{
+
+        &__number {
           display: inline-block;
           position: absolute;
           top: 0;
@@ -85,29 +97,34 @@
           color: #fff;
         }
       }
-      &__text{
+
+      &__text {
         font-weight: bold;
         font-size: 24px;
         line-height: 50px;
         margin: 0 0 0 2px;
       }
-      &__description{
+
+      &__description {
         font-size: 18px;
         line-height: 1.5;
         margin: 16px 0 0;
       }
     }
-    &__list2{
+
+    &__list2 {
       width: 30%;
       margin: 16px 5% 0 0;
       text-align: left;
       display: flex;
       flex-direction: column;
       align-items: center;
-      &__picture{
+
+      &__picture {
         position: relative;
         margin-bottom: 20px;
-        &__number{
+
+        &__number {
           display: inline-block;
           position: absolute;
           top: 0;
@@ -121,29 +138,34 @@
           color: #fff;
         }
       }
-      &__text{
+
+      &__text {
         font-weight: bold;
         font-size: 24px;
         line-height: 50px;
         margin: 0 0 0 2px;
       }
-      &__description{
+
+      &__description {
         font-size: 18px;
         line-height: 1.5;
         margin: 16px 0 0;
       }
     }
-    &__list3{
+
+    &__list3 {
       width: 30%;
       margin: 16px 5% 0 0;
       text-align: left;
       display: flex;
       flex-direction: column;
       align-items: center;
-      &__picture{
+
+      &__picture {
         position: relative;
         margin-bottom: 20px;
-        &__number{
+
+        &__number {
           display: inline-block;
           position: absolute;
           top: 0;
@@ -157,13 +179,15 @@
           color: #fff;
         }
       }
-      &__text{
+
+      &__text {
         font-weight: bold;
         font-size: 24px;
         line-height: 50px;
         margin: 0 0 0 2px;
       }
-      &__description{
+
+      &__description {
         font-size: 18px;
         line-height: 1.5;
         margin: 16px 0 0;
@@ -171,39 +195,46 @@
     }
   }
 }
+
 // ------------------------------------------------
 
 // ミドル-------------------------------------------
-.top__main__middle{
+.top__main__middle {
   background-image: image-url("bg-topMiddleDl-pict.jpg");
   background-position: bottom right;
   height: 400px;
   background-size: cover;
   display: flex;
   align-items: center;
-  &__inner{
+
+  &__inner {
     color: #fff;
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     text-align: left;
     max-width: 1040px;
     width: 100%;
     margin: 0 auto;
-    &__subtitle{
+
+    &__subtitle {
       font-size: 27px;
       font-weight: bold;
       line-height: 1.4;
     }
-    &__text{
+
+    &__text {
       font-size: 18px;
       margin: 20px 0 30px;
       line-height: 1.5;
     }
-    &__btn{
+
+    &__btn {
       display: flex;
-      &__abtn{
+
+      &__abtn {
         padding-top: 10px;
       }
     }
   }
 }
+
 // ------------------------------------------------------

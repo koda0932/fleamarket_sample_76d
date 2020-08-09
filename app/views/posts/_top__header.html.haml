@@ -11,12 +11,32 @@
             =image_tag asset_path('icon-search 1.png'), height: '20', width: '20', class: 'top__header__inner__main__search__box__submit__btn'
     .top__header__inner__nav
       %ul.top__header__inner__nav__left
-        %li.top__header__inner__nav__left__category
-          =link_to "#" do
-            カテゴリー
+        -# %li.top__header__inner__nav__left__category#header__category
+        %li.h-category
+          =link_to "#", class: "h-category-top" do
+            %h2 カテゴリーから探す
+          %ul.h-category__modal
+            - @parents.each do |parent|
+              -# =link_to '/', class: "parent" do
+              %li.parent
+                %h3
+                  = parent.name
+                %ul.child-wrap
+                  - parent.children.each do |children|
+                    %li.child
+                      =link_to '/' do
+                        %span
+                          = children.name
+                      %ul.grand-child-wrap
+                        - children.children.each do |grandchild|
+                          %li.grand-child
+                            =link_to '/' do
+                              %span
+                                = grandchild.name
+
         %li.top__header__inner__nav__left__brand
           =link_to "#" do
-            ブランド
+            ブランドから探す
       - if user_signed_in?
         .top__header__inner__nav__right
           %li.top__header__inner__nav__right__new
@@ -24,6 +44,6 @@
       - else
         %ul.top__header__inner__nav__right
           %li.top__header__inner__nav__right__login
-            =link_to "ログイン", new_user_session_path 
+            =link_to "ログイン", new_user_session_path
           %li.top__header__inner__nav__right__new
-            =link_to "新規会員登録", new_user_registration_path 
+            =link_to "新規会員登録", new_user_registration_path
