@@ -16,13 +16,14 @@ $(document).ready(function () {
   $(".parent").hover(
     function () {
       $(this).addClass("active");
-      $(this).addClass("parent-hover");
+      // $(this).addClass("parent-hover");
+      $(this).children(".parent-link").addClass("parent-hover");
       var children = $(".active").children(".child-wrap");
       children.show();
     },
     function () {
       $(this).removeClass("active");
-      $(this).removeClass("parent-hover");
+      $(this).children(".parent-link").removeClass("parent-hover");
       $(this).children(".child-wrap").hide();
     }
   );

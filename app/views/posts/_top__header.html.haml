@@ -17,20 +17,19 @@
             %h2 カテゴリーから探す
           %ul.h-category__modal
             - @parents.each do |parent|
-              -# =link_to '/', class: "parent" do
               %li.parent
-                %h3
+                =link_to '#', class: "parent-link" do
                   = parent.name
                 %ul.child-wrap
                   - parent.children.each do |children|
                     %li.child
-                      =link_to '/' do
+                      =link_to '##' do
                         %span
                           = children.name
                       %ul.grand-child-wrap
                         - children.children.each do |grandchild|
                           %li.grand-child
-                            =link_to '/' do
+                            =link_to '###' do
                               %span
                                 = grandchild.name
 
