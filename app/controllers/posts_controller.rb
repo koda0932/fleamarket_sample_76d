@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   before_action :purchased_item, only: [:buy]
 
   def index
-    @posts = Post.includes([:post_images, :user]).last(3).reverse
+    @posts = Post.includes([:post_images, :user, :category, :transactions]).last(3).reverse
+    @posts = Post.last(3).reverse
   end
 
   def new
