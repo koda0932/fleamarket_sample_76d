@@ -16,7 +16,6 @@ $(document).ready(function () {
   $(".parent").hover(
     function () {
       $(this).addClass("active");
-      // $(this).addClass("parent-hover");
       $(this).children(".parent-link").addClass("parent-hover");
       var children = $(".active").children(".child-wrap");
       children.show();

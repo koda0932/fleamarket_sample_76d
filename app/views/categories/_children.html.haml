@@ -1,0 +1,7 @@
+%li.child
+  =link_to '##' do
+    %span
+      = children.name
+  %ul.grand-child-wrap
+    -# = render partial: "categories/grandchild", collection: children.children
+    = render partial: "categories/grandchild", collection: children.children, as: "grandchild"
