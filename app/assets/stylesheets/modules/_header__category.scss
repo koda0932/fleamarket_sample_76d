@@ -12,19 +12,23 @@
     display: none;
     z-index: 100;
     position: absolute;
-    background: blue;
+    margin-top: 6px;
   }
 
 }
 
 .parent {
-  width: 200px;
-  display: block;
-  // 下記を付けると子と孫が相対位置固定になる
-  // position: relative;
-  line-height: 44px;
-  background: #fff;
-  padding-left: 5px;
+
+  &-link {
+    width: 200px;
+    display: block;
+    // 下記を付けると子と孫が相対位置固定になる
+    // position: relative;
+    height: 44px;
+    line-height: 44px;
+    background: #fff;
+    padding-left: 5px;
+  }
 
   &-hover {
     background-color: rgb(234, 53, 45);
@@ -39,21 +43,19 @@
   left: 200px;
   bottom: 0;
 
-  .child {
+  .child-link {
     width: 200px;
     display: block;
     background: #fff;
+    height: 30px;
     line-height: 30px;
+    padding-left: 5px;
+    text-decoration: none;
 
     &:hover {
       background-color: rgb(239, 239, 239);
     }
 
-    span {
-      padding-left: 5px;
-      text-decoration: none;
-      color: #333;
-    }
   }
 }
 
@@ -66,13 +68,7 @@
   background: #fff;
 
   .grand-child {
-    background: #fff;
     width: 300px;
-    z-index: 100;
-
-    &:hover {
-      background-color: rgb(239, 239, 239);
-    }
 
   }
 }

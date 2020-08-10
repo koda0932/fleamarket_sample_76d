@@ -1,0 +1,20 @@
+-# %li.parent
+-#   =link_to '#', class: "parent-link" do
+-#     = parent.name
+-#   %ul.child-wrap
+-#     -# = render partial: "categories/children", collection: parent.children
+-#     = render partial: "categories/children", collection: parent.children, as: "children"
+
+-# %li.parent
+-#   =link_to '#', class: "parent-link" do
+-#     = parent.name
+-#   %ul.child-wrap
+-#     - parent.children.each do |children|
+-#       %li.child
+-#         =link_to '##', class: "child-link" do
+-#           = children.name
+-#         %ul.grand-child-wrap
+-#           - children.children.each do |grandchild|
+-#             %li.grand-child
+-#               =link_to '###', class: 'child-link grand-child' do
+-#                 = grandchild.name
