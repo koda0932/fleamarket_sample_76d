@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   resources :transaction_rooms, only: :show
   post 'transaction_rooms/:id' => 'transactions#acceptance'
   resources :transaction_messages, only: [:create]
+  resources :categories, only: [:index, :show]
 end
 
