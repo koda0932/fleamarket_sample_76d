@@ -1,4 +1,3 @@
 %li.grand-child
-  =link_to '###' do
-    %span
-      = grandchild.name
+  =link_to '###', class: 'child-link grand-child' do
+    = grandchild.name

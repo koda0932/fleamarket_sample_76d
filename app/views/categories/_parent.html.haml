@@ -2,4 +2,5 @@
   =link_to '#', class: "parent-link" do
     = parent.name
   %ul.child-wrap
+    -# = render partial: "categories/children", collection: parent.children
     = render partial: "categories/children", collection: parent.children, as: "children"

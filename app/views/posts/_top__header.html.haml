@@ -28,15 +28,13 @@
             -#     %ul.child-wrap
             -#       - parent.children.each do |children|
             -#         %li.child
-            -#           =link_to '##' do
-            -#             %span
-            -#               = children.name
+            -#           =link_to '##', class: "child-link" do
+            -#             = children.name
             -#           %ul.grand-child-wrap
             -#             - children.children.each do |grandchild|
             -#               %li.grand-child
-            -#                 =link_to '###' do
-            -#                   %span
-            -#                     = grandchild.name
+            -#                 =link_to '###', class: 'child-link grand-child' do
+            -#                   = grandchild.name
 
         %li.top__header__inner__nav__left__brand
           =link_to "#" do
