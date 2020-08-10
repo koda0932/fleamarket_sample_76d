@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def header_category
-    @parents = Category.where(ancestry: nil).includes([:posts])
+    @parents = Category.where(ancestry: nil)
   end
 
   protected

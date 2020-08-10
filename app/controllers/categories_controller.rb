@@ -1,22 +1,50 @@
 class CategoriesController < ApplicationController
   def index
-
+    @categories = Category.all
   end
 
   def show
     @category = Category.find(params[:id])
-    # @all_posts = Post.include([:user, :category, :post_image])
+    @posts = []
+    @all_posts = Post.includes([:post_images, :category])
+    # postsを1個ずつ取り出す。category_idかparent_idかroot_idが同じなら配列postsに代入
+    @all_posts.each do |post|
+      # if post.category.id == @category.id
+      #   @posts << post
+      # elsif post.category.parent_id == @category.id
+      #   @posts << post
+      # elsif post.category.root_id == @category.id
+      #   @posts << post
+      # end
 
-    # @all_posts.each do |post|
-    #   post.category
-    # end
+      case post.category_id
+      when post.category_id == @category.id
+        @posts << post
+      when post.category.parent_id == @category.id
+        @posts << post
+      when true
+        @posts << post
+        binding.pry
+      else
+        @p = post.category.root
+        @c = post.category.parent
+        @g = post.category
+      end
 
-    # if @category.parent.parent.present?
-    #   @posts = Post.where(category_id: @category.id)
-    # elsif @category.parent.present?
-    #   @posts = Post.where(category_id: @category.id)
-    # else
-    #   @posts = Post.where(category_id: @category.id)
-    # end
+    end
+
+        # case post
+        # when post.category.id == @category.id
+        #   @posts << post
+        # when post.category.parent_id == @category.id
+        #   @posts << post
+        # when post.category.root_id == @category.id
+        #   @posts << post
+        #   binding.pry
+        # else
+        #   @p = post.category.root
+        #   @c = post.category.parent
+        #   @g = post.category
+
   end
 end

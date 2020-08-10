@@ -1,6 +1,5 @@
 %li.child
-  =link_to '##', class: "child-link" do
+  =link_to category_path(children.id), class: "child-link" do
     = children.name
   %ul.grand-child-wrap
-    -# = render partial: "categories/grandchild", collection: children.children
-    = render partial: "categories/grandchild", collection: children.children, as: "grandchild"
+    -# = render partial: "categories/grandchild", collection: children.children, as: "grandchild"

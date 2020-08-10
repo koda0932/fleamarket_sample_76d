@@ -1,6 +1,17 @@
 %li.parent
-  =link_to '#', class: "parent-link" do
+  =link_to category_path(parent.id), class: "parent-link" do
     = parent.name
   %ul.child-wrap
-    -# = render partial: "categories/children", collection: parent.children
     = render partial: "categories/children", collection: parent.children, as: "children"
+-# Completed 200 OK in 5972ms (Views: 3088.7ms | ActiveRecord: 2838.7ms)
+  Category Load (1.0ms)  SELECT `categories`.* FROM `categories` WHERE `categories`.`ancestry` = '13/1337'
+  ↳ app/views/posts/_top__header.html.haml:33
+    Category Load (4.2ms)  SELECT `categories`.* FROM `categories` WHERE `categories`.`ancestry` = '13/1330'
+  ↳ app/views/categories/_children.html.haml:5
+  Rendered collection of categories/_grandchild.html.haml [6 times] (1.7ms)
+
+  User Load (1.4ms)  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  ↳ app/views/posts/_top__header.html.haml:41
+  Category Load (32.6ms)  SELECT `categories`.* FROM `categories` WHERE `categories`.`ancestry` = '12'
+  ↳ app/views/categories/_parent.html.haml:5
+  Rendered collection of categories/_children.html.haml [7 times] (2.8ms)

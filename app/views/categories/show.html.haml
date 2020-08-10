@@ -4,7 +4,8 @@
   .top__main__pickupcategory
     .top__main__pickupcategory
     .top__main__pickupcategory--top
-      .top__main__pickupcategory--top--title 商品一覧
+      .top__main__pickupcategory--top--title
+        = @category.name
     .top__main__pickupcategory--main
       .top__main__pickupcategory--main.items-index
         = render @posts
