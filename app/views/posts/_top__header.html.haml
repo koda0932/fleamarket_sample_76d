@@ -18,23 +18,23 @@
           %ul.h-category__modal
             -#  下記renderするバージョン。なぜかこっちの方が読み込み遅い
             -# = render partial: "categories/parent", collection: @parents
-            = render partial: "categories/parent", collection: @parents, as: "parent"
+            -# = render partial: "categories/parent", collection: @parents, as: "parent"
 
             -# 下記renderしないでeachするバージョン。こっちの方が読み込み早い謎現象
-            -# - @parents.each do |parent|
-            -#   %li.parent
-            -#     =link_to '#', class: "parent-link" do
-            -#       = parent.name
-            -#     %ul.child-wrap
-            -#       - parent.children.each do |children|
-            -#         %li.child
-            -#           =link_to '##', class: "child-link" do
-            -#             = children.name
-            -#           %ul.grand-child-wrap
-            -#             - children.children.each do |grandchild|
-            -#               %li.grand-child
-            -#                 =link_to '###', class: 'child-link grand-child' do
-            -#                   = grandchild.name
+            - @parents.each do |parent|
+              %li.parent
+                =link_to '#', class: "parent-link" do
+                  = parent.name
+                %ul.child-wrap
+                  - parent.children.each do |children|
+                    %li.child
+                      =link_to '##', class: "child-link" do
+                        = children.name
+                      %ul.grand-child-wrap
+                        - children.children.each do |grandchild|
+                          %li.grand-child
+                            =link_to '###', class: 'child-link grand-child' do
+                              = grandchild.name
 
         %li.top__header__inner__nav__left__brand
           =link_to "#" do
