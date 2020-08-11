@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   resources :posts do
     member do
       get :buy
+      post :pay
     end
     collection do
       get :search, :items
-      post 'buy/:id' => 'posts#pay'
     end
   end
 

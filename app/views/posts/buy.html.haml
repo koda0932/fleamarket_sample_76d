@@ -2,7 +2,7 @@
   .buy__main__header
     =link_to "#" do
       .buy__main__header__icon
-        = image_tag asset_path('logo.png'), size: '185x49' 
+        = image_tag asset_path('logo.png'), size: '185x49'
   .buy__main__contents
     .buy__main__contents__form
       %section.buy__main__contents__form__confirmation
@@ -14,7 +14,7 @@
           .buy__main__contents__form__products__right__names
           = @post.name
           .buy__main__contents__form__products__right__price--details
-            %span 
+            %span
             (税込み)
             - if @post.delivery_status == "購入者負担"
               着払い
@@ -34,23 +34,23 @@
           = link_to "#", class: "buy__main__contents__form__address__top__change" do
             変更する
         .buy__main__contents__form__address__details
-          %p 
+          %p
           〒
           = @address.postcode
           %p
-            = @address.prefecture 
-            = @address.city 
+            = @address.prefecture
+            = @address.city
             = @address.address
-          %p 
+          %p
             = @address.apartment_family_name
             = @address.apartment_first_name
       %section.buy__main__contents_form__button
         .buy__main__contents__form__button__field
-          = form_tag(action: :pay, method: :post) do
-            %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "購入する", "data-key": "pk_test_62873b159b61e41f8452494b"}
+          = link_to pay_post_path(@post), method: :post do
+            購入する
   .buy__main__footer
     .buy__main__footer__top--info
-      %ul 
+      %ul
         %li プライバシーポリシー
         %li フリマ利用規約
         %li 特定商取引に関する表記

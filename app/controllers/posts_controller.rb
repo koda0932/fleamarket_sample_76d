@@ -98,9 +98,11 @@ class PostsController < ApplicationController
 
   def pay
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    card = Card.find_by(user_id: current_user.id)
+    customer = Payjp::Customer.retrieve(card.customer_id)
     charge = Payjp::Charge.create(
     amount: @post.price,
-    card: params['payjp-token'],
+    customer: customer.id,
     currency: 'jpy'
     )
     @post.update(purchased: true)

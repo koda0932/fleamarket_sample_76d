@@ -27,7 +27,7 @@ class CardsController < ApplicationController
     card.delete
     redirect_to cards_path
   end
-  
+
   private
 
   def set_payjp_key
