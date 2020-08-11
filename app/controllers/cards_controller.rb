@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_payjp_key, except: :new
+  before_action :block_has_card_user, only: [:new, :create]
 
   def index
     if current_user.card.present?
@@ -32,6 +33,10 @@ class CardsController < ApplicationController
 
   def set_payjp_key
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+  end
+
+  def block_has_card_user
+    redirect_to cards_path, alert: "既にカード情報を登録しているので、追加できません" if current_user.card.present?
   end
 
 end

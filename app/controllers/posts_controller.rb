@@ -157,7 +157,7 @@ class PostsController < ApplicationController
     if current_user.card.present?
       @card = Card.find_by(user_id: current_user.id)
     else
-    redirect_to new_card_path, alert: "カード情報を登録してください"
+      redirect_to new_card_path, alert: "カード情報を登録してください"
     end
   end
 
