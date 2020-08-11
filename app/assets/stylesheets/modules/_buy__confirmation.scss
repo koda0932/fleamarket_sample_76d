@@ -142,6 +142,6 @@
 }
 
 .buy-btn {
-  @include submit-btn(red);
+  @include submit-btn($red);
 
 }
