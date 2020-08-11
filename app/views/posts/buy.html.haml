@@ -1,6 +1,6 @@
 .buy__main
   .buy__main__header
-    =link_to "#" do
+    =link_to root_path do
       .buy__main__header__icon
         = image_tag asset_path('logo.png'), size: '185x49'
   .buy__main__contents
@@ -46,15 +46,15 @@
             = @address.apartment_first_name
       %section.buy__main__contents_form__button
         .buy__main__contents__form__button__field
-          = link_to pay_post_path(@post), method: :post do
-            購入する
+          = link_to pay_post_path(@post), method: :post, data: { confirm: '購入しますか？ 一度購入したら取り消せません' } do
+            %input{type: "button", class: "buy-btn", value: "購入する"}
   .buy__main__footer
     .buy__main__footer__top--info
       %ul
         %li プライバシーポリシー
         %li フリマ利用規約
         %li 特定商取引に関する表記
-      =link_to "#" do
+      =link_to root_path do
         .buy__main__footer__middle--info
           = image_tag asset_path('logo-white.png'), height: '65', width: '185'
     .buy__main__footer__bottom--info
