@@ -5,7 +5,7 @@ class CardsController < ApplicationController
 
   def index
     if current_user.card.present?
-      @cards = Card.where(user_id: current_user.id)
+      @cards = Card.find_by(user_id: current_user.id)
     end
   end
 
