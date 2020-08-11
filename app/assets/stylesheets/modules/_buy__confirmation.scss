@@ -1,48 +1,59 @@
-.buy__main{
+.buy__main {
   background-color: #f5f5f5;
   margin: 0 auto;
-  &__header{
+
+  &__header {
     height: 128px;
-    &__icon{
+
+    &__icon {
       height: 49px;
       width: 185px;
       margin: 0 auto;
       padding-top: 40px;
     }
   }
-  &__contents{
+
+  &__contents {
     width: 700px;
     background-color: white;
     margin: 0 auto;
-    &__form{
+
+    &__form {
       margin: 0 162.5px;
-      section{
+
+      section {
         padding: 32px 16px;
         justify-content: space-between;
         border-bottom: 1px solid rgb(245, 245, 245);
       }
-      &__confirmation{
+
+      &__confirmation {
         font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
         font-size: 24px;
         font-weight: bold;
         text-align: center;
         color: #333333;
       }
-      &__products{
-        &__image{
+
+      &__products {
+        &__image {
           float: left;
         }
-        &__right{
+
+        &__right {
           float: right;
         }
       }
-      &__bill{
+
+      &__bill {
         clear: both;
-        &__space{
+
+        &__space {
           width: 343px;
           height: 24px;
           position: relative;
-          &__amount{
+
+          &__amount {
             display: inline-block;
             position: absolute;
             left: 0;
@@ -50,7 +61,8 @@
             font-weight: bold;
             color: #333333;
           }
-          &__detail{
+
+          &__detail {
             display: inline-block;
             position: absolute;
             right: 0;
@@ -60,57 +72,76 @@
           }
         }
       }
-      &__address{
+
+      &__address {
         font-size: 14px;
-        &__top{
-          &__method{
+
+        &__top {
+          &__method {
             float: left;
             margin-bottom: 8px;
             font-weight: bold;
           }
-          &__change{
+
+          &__change {
             float: right;
             color: #0095EE;
             text-decoration: none;
           }
         }
-        &__details{
+
+        &__details {
           clear: both;
         }
       }
-      &__button{
-        &__field{
+
+      &__button {
+        &__field {
           text-align: center;
+
+          & a {
+            text-decoration: none;
+          }
         }
       }
     }
   }
-  &__footer{
+
+  &__footer {
     height: 139px;
     padding: 40px 0 41px 0;
-    
-    &__top--info{
-      ul{
+
+    &__top--info {
+      ul {
         margin-bottom: 30px;
         text-align: center;
-        li{
+
+        li {
           font-size: 12px;
           display: inline;
           margin: 16px 0 0 16px;
         }
       }
     }
-    &__middle--info{
+
+    &__middle--info {
       text-align: center;
     }
-    &__bottom--info{
+
+    &__bottom--info {
       text-align: center;
-      h2{
+
+      h2 {
         display: inline;
         font-size: 12px;
         padding: 0 auto;
-        
+
       }
     }
   }
+}
+
+.buy-btn {
+  @include submit-btn($red);
+
 }

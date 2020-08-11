@@ -16,8 +16,9 @@
                 = render @cards
         .show-main__container__link
           .show-main__container__link__btn
-            = link_to new_card_path do
-              カードを追加
+            - if current_user.card.blank?
+              = link_to new_card_path do
+                カードを追加
 
     = render 'users/show__left'
   -# footer
