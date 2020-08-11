@@ -5,7 +5,7 @@
         = image_tag asset_path("google-play-badge.png"), height: '20', width: '34',class: "card--image"
       .show-main__container__section__lists__list__top__delete
         = link_to "削除する", card_path(card), method: :delete, class: 'btn', data: { confirm: '削除してよろしいですか？' }
-        
+
     .show-main__container__section__lists__list__number
       - customer = Payjp::Customer.retrieve(card.customer_id)
       - @default_card_information = customer.cards.retrieve(card.card_id)

@@ -44,6 +44,17 @@
           %p
             = @address.apartment_family_name
             = @address.apartment_first_name
+      %section.buy__main__contents__form__button
+        .show-main__container__section__lists__list__number
+          購入に使用するクレジットカード
+          %br/
+          - customer = Payjp::Customer.retrieve(@card.customer_id)
+          - @default_card_information = customer.cards.retrieve(@card.card_id)
+          = "**** **** **** " + @default_card_information.last4
+        .show-main__container__section__lists__list__date
+          - exp_month = @default_card_information.exp_month.to_s
+          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+          = exp_month + " / " + exp_year
       %section.buy__main__contents_form__button
         .buy__main__contents__form__button__field
           = link_to pay_post_path(@post), method: :post, data: { confirm: '購入しますか？ 一度購入したら取り消せません' } do
