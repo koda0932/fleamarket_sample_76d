@@ -1,4 +1,20 @@
-= render @categories
--# = render partial: "category", collection: @categories, as: "category"
--# - @categories.each do |category|
--#   = render 'category', category: category
+= render 'posts/top__header'
+
+.category-index
+  .title
+    カテゴリー一覧
+  .wrapper
+    %ul.parent-box
+      - @parents.each do |parent|
+        %li.parent-box-item
+          .parent-name
+            = link_to parent.name, category_path(parent.id)
+          %ul.children-box
+            - parent.children.each do |children|
+              %li.children-box-item
+                .children-box-name
+                  = link_to children.name, category_path(children.id)
+                %ul.grandchild-box
+                  - children.children.each do |grandchild|
+                    %li.grandchild-box-item
+                      = link_to grandchild.name, category_path(grandchild.id)

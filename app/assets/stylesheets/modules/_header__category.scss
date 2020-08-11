@@ -31,7 +31,8 @@
   }
 
   &-hover {
-    background-color: rgb(234, 53, 45);
+    background-color: $red;
+    color: white !important;
   }
 }
 
