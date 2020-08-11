@@ -1,2 +1,4 @@
--# = render @categories
-= render partial: "category", collection: @categories, as: "category"
+= render @categories
+-# = render partial: "category", collection: @categories, as: "category"
+-# - @categories.each do |category|
+-#   = render 'category', category: category

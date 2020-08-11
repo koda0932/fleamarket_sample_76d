@@ -13,12 +13,11 @@
       %ul.top__header__inner__nav__left
         -# %li.top__header__inner__nav__left__category#header__category
         %li.h-category
-          =link_to "#", class: "h-category-top" do
+          =link_to categories_path, class: "h-category-top" do
             %h2 カテゴリーから探す
           %ul.h-category__modal
             -#  下記renderするバージョン。なぜかこっちの方が読み込み遅い
-            = render partial: "categories/parent", collection: @parents
-            -# = render partial: "categories/parent", collection: @parents, as: "parent"
+            = render partial: "categories/parent", collection: @parents, as: "parent"
 
             -# 下記renderしないでeachするバージョン。こっちの方が読み込み早い謎現象
             -# - @parents.each do |parent|
