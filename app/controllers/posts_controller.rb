@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+  @post = Post.create!(post_params)
     # 投稿内容のsaveと、画像が投稿されてるか確認！（今回の場合は1枚以上）
       if @post.post_images.present? && @post.save
         redirect_to root_path
@@ -29,7 +29,6 @@ class PostsController < ApplicationController
         flash.now[:alert] = "画像がありません"
         render :new
       end
-      PostBrand.create(post_params)
   end
 
   def edit
