@@ -34,10 +34,17 @@
                           %li.grand-child
                             =link_to category_path(grandchild.id), class: 'child-link grand-child' do
                               = grandchild.name
-
         %li.top__header__inner__nav__left__brand
           =link_to "#" do
             ブランドから探す
+        %li.top__header__inner__nav__left__category
+          =link_to "#" do
+            カテゴリー
+        %li.top__header__inner__nav__left__brand 
+          =link_to post_brands_path do
+            ブランド
+          -# = link_to "#", post_brands_path 
+            -# ブランド
       - if user_signed_in?
         .top__header__inner__nav__right
           %li.top__header__inner__nav__right__new

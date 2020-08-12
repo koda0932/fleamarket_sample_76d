@@ -10,12 +10,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes([:post_images]).last(3).reverse
-    # @posts = Post.last(3).reverse
   end
 
   def new
     @post = Post.new
     @post.post_images.new
+    @post.post_brands.new
+    @post_brand = PostBrand.new
   end
 
   def create
@@ -28,6 +29,7 @@ class PostsController < ApplicationController
         flash.now[:alert] = "画像がありません"
         render :new
       end
+      PostBrand.create(post_params)
   end
 
   def edit
@@ -35,9 +37,11 @@ class PostsController < ApplicationController
 
   def show
     @images = @post.post_images
+    @post_brands = PostBrand.find(params[:id])
     if Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
       @transaction = Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
     end
+    
   end
 
   def update
@@ -117,7 +121,8 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id], post_brands_attributes: [:id, :name]).merge(user_id: current_user.id)
+    # params.require(:post_brand).permit(:name)
   end
 
   def set_post

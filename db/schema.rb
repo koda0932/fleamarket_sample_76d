@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 2020_08_08_042428) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "post_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "name"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_brands_on_post_id"
+  end
+
   create_table "post_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.string "image", null: false
@@ -118,6 +126,7 @@ ActiveRecord::Schema.define(version: 2020_08_08_042428) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "post_brands", "posts"
   add_foreign_key "post_images", "posts"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"

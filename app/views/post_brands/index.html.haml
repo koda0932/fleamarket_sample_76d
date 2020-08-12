@@ -1,0 +1,10 @@
+= render 'posts/top__header'
+.post__brand--contents
+  .post__brand--contents__box
+    %h1 ブランド一覧
+    - @post_brands.each do |post_brand|
+      %p
+        = post_brand.name
+
+= render 'posts/top__banner'
+= render 'posts/top__footer'
