@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   before_action :purchased_item, only: [:buy]
 
   def index
-    @posts = Post.includes([:post_images]).last(3).reverse
+    @posts = Post.includes([:post_images, :user]).last(3).reverse
+    @post_brands = PostBrand.all
   end
 
   def new
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @images = @post.post_images
+    @images = @post.post_images.includes(:post)
     @post_brands = PostBrand.find(params[:id])
     if Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
       @transaction = Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
