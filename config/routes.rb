@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   resources :cards, only: [:index, :new, :create, :destroy]
   resources :transaction_rooms, only: :show
   resources :transaction_messages, only: [:create]
+  resources :post_brands, only: [:index]
 end
 

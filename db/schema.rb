@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_01_025551) do
+ActiveRecord::Schema.define(version: 2020_08_06_060652) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2020_08_01_025551) do
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "post_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "name"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_brands_on_post_id"
   end
 
   create_table "post_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -116,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_025551) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "post_brands", "posts"
   add_foreign_key "post_images", "posts"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
