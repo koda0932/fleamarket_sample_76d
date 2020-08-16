@@ -1,0 +1,84 @@
+.category-index {
+  background: #fafafa;
+  padding-bottom: 100px;
+
+  .title {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .wrapper {
+    width: 800px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+
+    & a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .parent {
+    &-box {
+
+      &-item {
+        background-color: white;
+        border-radius: 20px;
+        margin-bottom: 30px;
+      }
+    }
+
+    &-name {
+      background-color: $red;
+      padding-left: 20px;
+      border-radius: 20px 20px 0 0;
+      font-size: 35px;
+
+      & a {
+        color: white;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .children {
+    &-box {
+      padding: 0px 40px 40px 40px;
+
+      &-name {
+        padding: 20px 0;
+        font-weight: bold;
+
+        & a {
+          color: #555;
+        }
+      }
+    }
+  }
+
+  .grandchild {
+    &-box {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+
+      &-item {
+        width: 50%;
+        padding: 5px 0;
+      }
+
+      & a {
+        color: $bootstrap_blue;
+        margin-left: 20px;
+      }
+    }
+  }
+}

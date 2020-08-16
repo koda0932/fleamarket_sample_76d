@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :set_parents, only: [:new, :create, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :block_current_user, only: [:buy, :pay]
+  before_action :set_payjp_card, only: [:buy, :pay]
   before_action :other_user, only: [:edit, :update, :destroy]
   before_action :purchased_block, only: [:edit, :update, :destroy]
   before_action :purchased_item, only: [:buy]
@@ -16,16 +17,11 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.post_images.new
     @post.post_brands.new
-
     @post_brand = PostBrand.new
-    # @post.build_post_brands
-
   end
 
   def create
-    @post = Post.new(post_params)
-    binding.pry
-    @post= Post.create!(post_params)
+  @post = Post.create!(post_params)
     # 投稿内容のsaveと、画像が投稿されてるか確認！（今回の場合は1枚以上）
       if @post.post_images.present? && @post.save
         redirect_to root_path
@@ -34,7 +30,6 @@ class PostsController < ApplicationController
         flash.now[:alert] = "画像がありません"
         render :new
       end
-      # PostBrand.create(post_params)
   end
 
   def edit
@@ -106,10 +101,11 @@ class PostsController < ApplicationController
   end
 
   def pay
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    @card = Card.find_by(user_id: current_user.id)
+    customer = Payjp::Customer.retrieve(@card.customer_id)
     charge = Payjp::Charge.create(
     amount: @post.price,
-    card: params['payjp-token'],
+    customer: customer.id,
     currency: 'jpy'
     )
     @post.update(purchased: true)
@@ -162,36 +158,13 @@ class PostsController < ApplicationController
     redirect_to root_path, alert: "売却済みなので編集・削除はできません" if (@post.purchased == true)
   end
 
-end
+  def set_payjp_card
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    if current_user.card.present?
+      @card = Card.find_by(user_id: current_user.id)
+    else
+      redirect_to new_card_path, alert: "カード情報を登録してください"
+    end
+  end
 
-  # def update
-  #   # each do で並べた画像が image
-  #   # 新しくinputに追加された画像が image_attributes
-  #   # この二つがない時はupdateしない
-  #   if params[:product].keys.include?("image") || params[:product].keys.include?("images_attributes")
-  #     if @product.valid?
-  #       # dbにある画像がedit画面で一部削除してるか確認
-  #       if params[:product].keys.include?("image")
-  #         update_images_ids = params[:product][:image].values #投稿済み画像
-  #         before_images_ids = @product.images.ids
-  #         #  商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
-  #         # @product.images.ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
-  #         before_images_ids.each do |before_img_id|
-  #           Image.find(before_img_id).destroy unless update_image_ids.include?("#{before_img_id}")
-  #         end
-  #       else
-  #         # imageハッシュがない = 投稿済みの画像をすべてedit画面で消しているので、商品に紐づく投稿済み画像を削除する。
-  #         # @product.images.destroy = nil と削除されないので、each do で一つずつ削除する
-  #         before_images_ids.each do |before_img_id|
-  #           Image.find(before_img_id).destroy
-  #         end
-  #       end
-  #       @product.update(product_params)
-  #       redirect_to item_product_path(@product), notice: "商品を更新しました"
-  #     else
-  #       render 'edit'
-  #     end
-  #   else
-  #     redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
-  #   end
-  # end
+end

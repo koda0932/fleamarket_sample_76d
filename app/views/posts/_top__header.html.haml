@@ -11,6 +11,32 @@
             =image_tag asset_path('icon-search 1.png'), height: '20', width: '20', class: 'top__header__inner__main__search__box__submit__btn'
     .top__header__inner__nav
       %ul.top__header__inner__nav__left
+        -# %li.top__header__inner__nav__left__category#header__category
+        %li.h-category
+          =link_to categories_path, class: "h-category-top" do
+            %h2 カテゴリーから探す
+          %ul.h-category__modal
+            -#  下記renderするバージョン。なぜかこっちの方が読み込み遅い
+            -# = render partial: "categories/parent", collection: @parents, as: "parent"
+
+            -# 下記renderしないでeachするバージョン。こっちの方が読み込み早い謎現象
+            - @parents.each do |parent|
+              %li.parent
+                =link_to category_path(parent.id) , class: "parent-link" do
+                  = parent.name
+                %ul.child-wrap
+                  - parent.children.each do |children|
+                    %li.child
+                      =link_to category_path(children.id), class: "child-link" do
+                        = children.name
+                      %ul.grand-child-wrap
+                        - children.children.each do |grandchild|
+                          %li.grand-child
+                            =link_to category_path(grandchild.id), class: 'child-link grand-child' do
+                              = grandchild.name
+        %li.top__header__inner__nav__left__brand
+          =link_to "#" do
+            ブランドから探す
         %li.top__header__inner__nav__left__category
           =link_to "#" do
             カテゴリー
@@ -26,6 +52,6 @@
       - else
         %ul.top__header__inner__nav__right
           %li.top__header__inner__nav__right__login
-            =link_to "ログイン", new_user_session_path 
+            =link_to "ログイン", new_user_session_path
           %li.top__header__inner__nav__right__new
-            =link_to "新規会員登録", new_user_registration_path 
+            =link_to "新規会員登録", new_user_registration_path

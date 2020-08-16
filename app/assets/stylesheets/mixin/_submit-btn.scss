@@ -1,4 +1,4 @@
-@mixin submit-btn($color){
+@mixin submit-btn($color) {
   background-color: $color;
   line-height: 48px;
   display: block;
@@ -7,7 +7,8 @@
   transition: all ease-out .3s;
   cursor: pointer;
   color: white;
+
   &:focus {
-    outline:0;
+    outline: 0;
   }
 }

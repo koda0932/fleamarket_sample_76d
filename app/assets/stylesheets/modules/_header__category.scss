@@ -1,0 +1,83 @@
+.h-category {
+  color: #333;
+  line-height: 32px;
+  width: 200px;
+  text-align: left;
+
+  &-top {
+    color: #0095EE;
+  }
+
+  &__modal {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    margin-top: 6px;
+  }
+
+}
+
+.parent {
+
+  &-link {
+    width: 200px;
+    display: block;
+    // 下記を付けると子と孫が相対位置固定になる
+    // position: relative;
+    height: 44px;
+    line-height: 44px;
+    background: #fff;
+    padding-left: 5px;
+  }
+
+  &-hover {
+    background-color: $red;
+    color: white !important;
+  }
+}
+
+.child-wrap {
+  display: none;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  bottom: 0;
+
+  .child-link {
+    width: 200px;
+    display: block;
+    background: #fff;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 5px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgb(239, 239, 239);
+    }
+
+  }
+}
+
+.grand-child-wrap {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  bottom: 0;
+  background: #fff;
+
+  .grand-child {
+    width: 300px;
+
+  }
+}
+
+.active {
+  display: block;
+}
+
+.active2 {
+  display: block;
+}

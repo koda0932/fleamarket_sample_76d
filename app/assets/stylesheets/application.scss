@@ -20,6 +20,7 @@
 
 // トップ----------------------
 @import "modules/top__header";
+@import "modules/header__category";
 @import "modules/top__contents";
 @import "modules/top__main";
 @import "modules/top__banner";
@@ -52,6 +53,8 @@
 @import "modules/items";
 // -------------------------------
 
+// カテゴリー一覧------------------------
+@import "modules/category-index";
 // ブランド一覧------------------------
 @import "modules/post_brand";
 // -------------------------------
