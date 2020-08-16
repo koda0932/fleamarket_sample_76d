@@ -16,14 +16,16 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.post_images.new
     @post.post_brands.new
-    
+
     @post_brand = PostBrand.new
     # @post.build_post_brands
-    
+
   end
 
   def create
     @post = Post.new(post_params)
+    binding.pry
+    @post= Post.create!(post_params)
     # 投稿内容のsaveと、画像が投稿されてるか確認！（今回の場合は1枚以上）
       if @post.post_images.present? && @post.save
         redirect_to root_path
@@ -32,7 +34,7 @@ class PostsController < ApplicationController
         flash.now[:alert] = "画像がありません"
         render :new
       end
-      PostBrand.create(post_params)
+      # PostBrand.create(post_params)
   end
 
   def edit
@@ -40,11 +42,11 @@ class PostsController < ApplicationController
 
   def show
     @images = @post.post_images.includes(:post)
-    @post_brands = PostBrand.find(params[:id])
+    # @post_brands = PostBrand.find(params[:id])
     if Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
       @transaction = Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
     end
-    
+
   end
 
   def update
@@ -123,7 +125,8 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id], post_brands_attributes: [:id, :name]).merge(user_id: current_user.id)
+    # params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id], post_brands_attributes: [:id, :name]).merge(user_id: current_user.id)
+    params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :id], post_brands_attributes: [:id, :name]).merge(user_id: current_user.id)
     # params.require(:post_brand).permit(:name)
   end
 
