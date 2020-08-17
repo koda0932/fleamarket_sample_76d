@@ -4,7 +4,8 @@
     %h1 ブランド一覧
     - @post_brands.each do |post_brand|
       %p
-        = post_brand.name
+        = link_to post_brand_path(post_brand.id) do
+          = post_brand.name
 
 = render 'posts/top__banner'
 = render 'posts/top__footer'

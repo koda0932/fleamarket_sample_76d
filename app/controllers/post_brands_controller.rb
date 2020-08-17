@@ -1,16 +1,18 @@
 class PostBrandsController < ApplicationController
 
 def index
-  @post_brands = PostBrand.all
+  @post_brands = PostBrand.includes(:post)
 end
 
-def new
-  @post_brand = PostBrand.new
+def show
+  @post_brand = PostBrand.find(params[:id])
+  # @posts = PostBrand.where(id: @post_brand.id)
+  # @posts = Post.joins(:post_brand)
+  # @posts = Post.joins(:post_brand).group_by(@post_brand)
+  @posts = Post.where(id: @post_brand.post_id)
+  # binding.pry
+  # @posts = Post.post_brand
 end
 
-def create
-  PostBrand.create(post_brand_params)
-  @post_brand.save
-end
 
 end

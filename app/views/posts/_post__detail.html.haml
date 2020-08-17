@@ -70,7 +70,8 @@
               %tr
                 %th ブランド
                 %td
-                  = @post.post_brand.name
+                  = link_to post_brand_path(@post.id) do
+                    = @post.post_brand.name
             %tr
               %th 商品の状態
               %td

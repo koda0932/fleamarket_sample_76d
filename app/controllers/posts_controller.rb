@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.post_images.new
-    @post.post_brands.new
+    # @post.post_brand.new
     @post_brand = PostBrand.new
   end
 
