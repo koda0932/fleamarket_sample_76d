@@ -37,7 +37,6 @@ class PostsController < ApplicationController
 
   def show
     @images = @post.post_images.includes(:post)
-    # @post_brands = PostBrand.find(params[:id])
     if Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
       @transaction = Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
     end

@@ -40,10 +40,10 @@
     -# #status
     = form.select :status, Post.statuses.keys, { include_blank: "---"}, class: "post-new__field--input"
   .post-new__field
-    = form.fields_for :post_brands do |brand|
+    = form.fields_for :post_brand do |brand|
       %label
         ブランド
-      %span.form-require
+      %span.form-any
         任意
       = brand.text_field :name, class: "post-new__field--input", placeholder: "ブランド名"
 -# 配送関係-------------------------------------------------------------------------------------

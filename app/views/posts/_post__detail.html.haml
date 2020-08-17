@@ -66,10 +66,11 @@
                 = @post.category.parent.name
                 %br
                 = @post.category.name
-            %tr
-              %th ブランド
-              %td
-                -# = @post_brands.name
+            - if @post.post_brand.present?
+              %tr
+                %th ブランド
+                %td
+                  = @post.post_brand.name
             %tr
               %th 商品の状態
               %td
