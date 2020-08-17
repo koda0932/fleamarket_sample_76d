@@ -8,9 +8,7 @@
         = @post_brand.name
     .top__main__pickupcategory--main
       .top__main__pickupcategory--main.items-index
-        -# = render @posts
         = render partial: "posts/post", collection: @posts, as: "post"
-        -# = render partial: "categories/grandchild", collection: children.children, as: "grandchild"
 
 
 .top__camera__icon

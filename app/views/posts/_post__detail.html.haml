@@ -61,11 +61,14 @@
             %tr
               %th カテゴリー
               %td
-                = @post.category.parent.parent.name
+                = link_to category_path(@post.category.parent.parent.id) do
+                  = @post.category.parent.parent.name
                 %br
-                = @post.category.parent.name
+                = link_to category_path(@post.category.parent.id) do
+                  = @post.category.parent.name
                 %br
-                = @post.category.name
+                = link_to category_path(@post.category.id) do
+                  = @post.category.name
             - if @post.post_brand.present?
               %tr
                 %th ブランド
