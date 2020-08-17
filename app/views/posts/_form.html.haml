@@ -40,7 +40,7 @@
     -# #status
     = form.select :status, Post.statuses.keys, { include_blank: "---"}, class: "post-new__field--input"
   .post-new__field
-    = form.fields_for :post_brand do |brand|
+    = form.fields_for :post_brands do |brand|
       %label
         ブランド
       %span.form-any

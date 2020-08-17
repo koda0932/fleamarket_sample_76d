@@ -10,14 +10,14 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes([:post_images, :user]).last(3).reverse
-    @post_brands = PostBrand.all
   end
 
   def new
     @post = Post.new
     @post.post_images.new
-    # @post.post_brand.new
-    @post_brand = PostBrand.new
+    # binding.pry
+    @post.post_brands.build
+    # @post_brand = PostBrand.new
   end
 
   def create

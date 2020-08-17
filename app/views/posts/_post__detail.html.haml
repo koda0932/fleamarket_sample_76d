@@ -69,12 +69,12 @@
                 %br
                 = link_to category_path(@post.category.id) do
                   = @post.category.name
-            - if @post.post_brand.present?
+            - if @post.post_brands.present?
               %tr
                 %th ブランド
                 %td
                   = link_to post_brand_path(@post.id) do
-                    = @post.post_brand.name
+                    = @post.post_brands[0].name
             %tr
               %th 商品の状態
               %td
