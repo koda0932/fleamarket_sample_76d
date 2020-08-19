@@ -199,36 +199,35 @@
       }
     }
   }
-}
 
-.transaction {
-  color: #333;
-  height: 70px;
-  width: 100%;
-  display: flex;
-  border-bottom: 1px solid #cccccc;
-  text-decoration: none;
-
-  &--left {
-    height: 70px;
-    width: 70px;
-  }
-
-  &__right {
+  .transaction {
+    color: #333;
+    height: 80px;
     width: 100%;
+    display: flex;
+    border-bottom: 1px solid #cccccc;
+    text-decoration: none;
 
-    &--name {
-      text-align: left;
+    &--left {
+      height: 70px;
+      width: 70px;
     }
 
-    &--link {
-      text-align: right;
-      line-height: 70px;
+    &__right {
+      width: 100%;
+
+      &--name {
+        text-align: left;
+      }
+
+      &--link {
+        @include transaction-btn($light_blue)
+      }
+
+      &--acceptance {
+        @include transaction-btn($light_gray)
+      }
     }
+
   }
-
-}
-
-.height72 {
-  height: 72px;
 }

@@ -1,27 +1,31 @@
-transactioin_show
-%br/
-- if @transaction.acceptance == true
-  この取引は終了しています
+.bgc-gray
+  = render 'devise/shared/header'
 
-%br/
-商品名【
-= link_to @post.name, @post
-】
-紹介【
-= @post.introduce
-】
-%br/
-◎メッセージ
-= render @messages
-= form_with(model: @message, local: true ) do |form|
-  = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
-  = form.hidden_field :transaction_room_id, value: @room.id
-  = form.submit
+  %br/
+  - if @transaction.acceptance == true
+    この取引は終了しています
 
-- if @transaction.acceptance == false
-  = form_with(controller: 'transactions', action: 'acceptance', local: true, data: { confirm: '商品を受け取りましたか？ 一度受け取ると取り消せません' }) do |f|
-    = f.label "良い", for: "review_good"
-    = f.radio_button :review, :good, checked: true
-    = f.label "悪い", for: "review_bad"
-    = f.radio_button :review, :bad
-    = f.submit
+  %br/
+  商品名【
+  = link_to @post.name, @post
+  】
+  紹介【
+  = @post.introduce
+  】
+  %br/
+  ◎メッセージ
+  = render @messages
+  = form_with(model: @message, local: true ) do |form|
+    = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
+    = form.hidden_field :transaction_room_id, value: @room.id
+    = form.submit
+
+  - if @transaction.acceptance == false
+    = form_with(controller: 'transactions', action: 'acceptance', local: true, data: { confirm: '受け取り確認をしますか？ 確認後は取り消せません' }) do |f|
+      = f.label "良い", for: "review_good"
+      = f.radio_button :review, :good, checked: true
+      = f.label "悪い", for: "review_bad"
+      = f.radio_button :review, :bad
+      = f.submit
+
+  = render 'devise/shared/footer'

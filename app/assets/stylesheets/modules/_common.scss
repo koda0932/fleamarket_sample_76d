@@ -1,23 +1,27 @@
-.display-flex{
+.display-flex {
   display: flex;
 }
 
-.display-none{
+.display-none {
   display: none;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 
-.td-none{
+.td-none {
   text-decoration: none;
 }
 
-.bgc-gray{
+.bgc-gray {
   background-color: $bgc-gray;
 }
 
-.width-100{
+.width-100 {
   width: 100%;
+}
+
+.height72 {
+  height: 72px;
 }
