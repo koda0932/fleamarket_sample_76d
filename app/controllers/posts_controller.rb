@@ -33,6 +33,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    # @post.post_brands.build
   end
 
   def show
