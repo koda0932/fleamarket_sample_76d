@@ -45,17 +45,13 @@
                 %a.trade.menu_item 過去の取引
             %ul.contents
               %li.content_bottom.show
-                - if @posts.present?
-                  -# @postsだけど、コンラで呼び出したモデルがtransactionなので、render先はviews/transactions/_transactionです！
-                  -# 上記の理由で変数名は@postsがtransactionになります
-                  = render @posts
+                - if @transaction_posts.present?
+                  = render partial: "transactions/transaction", collection: @transaction_posts, as: "transaction"
                 - else
                   現在取引している商品がありません。
               %li.content_bottom
-                - if @posts_acceptance.present?
-                  -# render先がtransactionなので変数名をtransactionに指定。変数名はpostじゃないです
-                  - @posts_acceptance.each do |transaction|
-                    = render "transactions/transaction", transaction: transaction
+                - if @acceptance_posts.present?
+                  = render partial: "transactions/acceptance", collection: @acceptance_posts, as: "acceptance"
                 - else
                   過去に取引した商品がありません。
     = render 'show__left'
