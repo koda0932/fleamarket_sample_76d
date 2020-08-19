@@ -55,6 +55,15 @@
       font-weight: bold;
       padding: 16px;
     }
+    .accept {
+      border-top: 1px solid #f3f3f3;
+      padding: 24px 8px;
+      background: #fff6de;
+      text-align: center;
+      & span {
+        color: $red;
+      }
+    }
     .messages {
       border-top: 1px solid #f3f3f3;
       padding: 16px;

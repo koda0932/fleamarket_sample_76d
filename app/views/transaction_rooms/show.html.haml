@@ -50,7 +50,11 @@
       .right-menu-title
         取引画面
       - if @transaction.acceptance == true
-        この取引は終了しています
+        .accept
+          %span
+            取引が完了しました
+          %br/
+          このたびはフリマのご利用ありがとうございました
       %ul.messages
         = render @messages
 
