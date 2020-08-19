@@ -8,6 +8,7 @@
 @import "mixin/form-input";
 @import "mixin/detail_btn";
 @import "mixin/change-btn";
+@import "mixin/transaction-btn";
 // ---------------------------
 
 // 共通のcss---------------------
@@ -55,6 +56,11 @@
 
 // カテゴリー一覧------------------------
 @import "modules/category-index";
+
 // ブランド一覧------------------------
 @import "modules/post_brand";
+// -------------------------------
+
+// 取引ページ------------------------
+@import "modules/transaction-rooms";
 // -------------------------------

@@ -1,84 +1,106 @@
-.post__detail{
+.post__detail {
   padding: 40px;
   margin: 0 auto;
   background-color: #f8f8f8;
-  &__inner{
+
+  &__inner {
     width: 700px;
     margin: 0 auto;
-    &__top{
-      &__item{
+
+    &__top {
+      &__item {
         background-color: white;
         padding: 20px 40px 40px;
-        &__name{
+
+        &__name {
           text-align: center;
           font-weight: bold;
           font-size: 24px;
         }
-        &__body{
+
+        &__body {
           display: flex;
           flex-direction: column;
           width: 100%;
           align-items: center;
           margin: 16 auto 0;
-          &__picture{
+
+          &__picture {
             position: relative;
             object-fit: cover;
             height: 346px;
           }
-          &__subpicture{
-            &__lists{
+
+          &__subpicture {
+            &__lists {
               display: flex;
-              &__list{
+
+              &__list {
                 margin: 0 10px;
               }
             }
           }
-          
+
         }
-        &__price{
+
+        &__price {
           margin: 0px 0 24px;
           text-align: center;
           display: flex;
           flex-direction: column;
           font-size: 46px;
           font-weight: bold;
-          &-detail{
+
+          &-detail {
             font-size: 16px;
             font-weight: normal;
           }
         }
-        &__buy{
+
+        &__buy {
           @include detail-btn(16px);
           background: #3CCACE;
           -webkit-transition: all ease-out .3s;
           transition: all ease-out .3s;
         }
-        &__change{
+
+        &__change {
           @include detail-btn(50px);
-          &__edit{
+
+          &__edit {
             @include change-btn(#3CCACE);
           }
-          &__delete{
+
+          &__delete {
             @include change-btn(#aaa);
           }
         }
-        &__introduce{
+
+        &__introduce {
           line-height: 1.5;
           font-size: 18px;
           margin-bottom: 30px;
         }
-        &__table{
+
+        &__table {
           margin-bottom: 20px;
-          table{
+
+          & a {
+            text-decoration: none;
+          }
+
+          table {
             width: 100%;
             height: 375px;
             border-collapse: collapse;
             border: 1px solid #f8f8f8;
-            tr{
+
+            tr {
               display: table-row;
               vertical-align: inherit;
               border-color: inherit;
-              th{
+
+              th {
                 width: 20%;
                 background-color: #eee;
                 font-weight: 400;
@@ -87,7 +109,8 @@
                 font-size: 14px;
                 text-align: center;
               }
-              td{
+
+              td {
                 width: 61%;
                 padding: 15px 15px;
                 border: 1px solid #dedede;
@@ -96,52 +119,61 @@
             }
           }
         }
-        &__option{
+
+        &__option {
           display: flex;
           justify-content: space-between;
-          &__favorite{
+
+          &__favorite {
             margin: 10px 0 0;
             display: flex;
             margin-right: auto;
             border-radius: 40px;
             color: #3CCACE;
             border: 1px solid #ffb340;
-            li{
+
+            li {
               padding: 6px 5px;
             }
           }
-          &__report{
+
+          &__report {
             margin: 10px 0 0;
             display: flex;
             border-radius: 4px;
             color: #333;
             border: 1px solid #333;
             text-decoration: none;
-            li{
+
+            li {
               padding: 6px 5px;
             }
           }
         }
       }
-      &__comment{
+
+      &__comment {
         padding: 24px;
         background-color: #fff;
         margin: 10px 0;
         text-align: center;
-        &__field{
-          &--input{
+
+        &__field {
+          &--input {
             width: 100%;
             min-height: 104px;
           }
         }
-        &__text{
+
+        &__text {
           padding: 8px;
           font-size: 14px;
           background-color: #f8f8f8;
           margin: 10px 0;
           text-align: left;
         }
-        &__btn{
+
+        &__btn {
           font-size: 18px;
           line-height: 48px;
           background: #3CCACE;
@@ -151,22 +183,26 @@
           font-size: 18px;
           border-radius: 100px;
         }
-        &__icon{
+
+        &__icon {
           color: white;
           position: relative;
           right: 280px;
         }
       }
     }
-    &__links{
+
+    &__links {
       display: flex;
       justify-content: space-between;
-      a{
+
+      a {
         color: #3CCACE;
         text-decoration: none;
       }
     }
-    &__relatedItems{
+
+    &__relatedItems {
       display: block;
       margin: 24px 0 8px;
       color: #3CCACE;

@@ -1,0 +1,8 @@
+@mixin transaction-btn($color) {
+  width: 112px;
+  text-align: left;
+  margin-top: 5px;
+  margin-left: 10px;
+  background-color: $color;
+  padding: 5px;
+}

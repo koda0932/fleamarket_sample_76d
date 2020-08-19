@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   validates :delivery_status, presence: true
   validates :user_address, presence: true
   validates :shipping, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, numericality: { greater_than: 0 , less_than: 10000000}
   validates :user_id, presence: true
 
 

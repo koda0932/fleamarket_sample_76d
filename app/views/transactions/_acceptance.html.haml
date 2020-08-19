@@ -1,0 +1,10 @@
+= link_to transaction_room_path(acceptance.transaction_room.id), class: "transaction" do
+  = image_tag asset_path("#{acceptance.post.post_images[0].image}"), class: "transaction--left"
+  .transaction__right
+    .transaction__right--name
+      「
+      = acceptance.post.name
+      」を購入しました
+    .display-flex{style: "justify-content: flex-end;"}
+      .transaction__right--acceptance
+        取引結果を見る
