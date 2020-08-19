@@ -62,7 +62,7 @@
         = form_with(model: @message, local: true ) do |form|
           = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true, class: "text-field"
           = form.hidden_field :transaction_room_id, value: @room.id
-          = form.submit class: "form-submit"
+          = form.submit class: "form-submit", value: "取引メッセージを送る"
 
       - if @transaction.acceptance == false
         .review
