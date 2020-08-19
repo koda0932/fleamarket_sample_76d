@@ -1,27 +1,83 @@
-transactioin_show
-%br/
-- if @transaction.acceptance == true
-  この取引は終了しています
+.bgc-gray
+  = render 'devise/shared/header'
+  %main.transaction-rooms-show
+    .left-menu
+      .left-menu-title
+        商品情報
+      %table.left-contents
+        %tr
+          %th
+            商品
+          %td
+            = link_to @post do
+              = image_tag asset_path("#{@post.post_images[0].image}"), class: "image"
+              = @post.name
+              %br/
+              ¥
+              = @post.price
+        %tr
+          %th
+            購入日
+          %td
+            = @transaction.created_at.strftime("%Y年%m月%d日")
+        %tr
+          %th
+            送料
+          %td
+            = @post.delivery_status
+        %tr
+          %th
+            お届け先
+          %td
+            〒
+            = @address.postcode
+            %br
+            = @address.prefecture
+            = @address.city
+            = @address.address
+            %br
+            = @address.apartment_first_name
+            = @address.apartment_family_name
+            様
+      .left-menu-title
+        出品者情報
+      .seller
+        .seller-name
+          = @post.user.nickname
 
-%br/
-商品名【
-= link_to @post.name, @post
-】
-紹介【
-= @post.introduce
-】
-%br/
-◎メッセージ
-= render @messages
-= form_with(model: @message, local: true ) do |form|
-  = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
-  = form.hidden_field :transaction_room_id, value: @room.id
-  = form.submit
 
-- if @transaction.acceptance == false
-  = form_with(controller: 'transactions', action: 'acceptance', local: true, data: { confirm: '商品を受け取りましたか？ 一度受け取ると取り消せません' }) do |f|
-    = f.label "良い", for: "review_good"
-    = f.radio_button :review, :good, checked: true
-    = f.label "悪い", for: "review_bad"
-    = f.radio_button :review, :bad
-    = f.submit
+    .right-menu
+      .right-menu-title
+        取引画面
+      - if @transaction.acceptance == true
+        .accept
+          %span
+            取引が完了しました
+          %br/
+          このたびはフリマのご利用ありがとうございました
+      %ul.messages
+        = render @messages
+
+      .message-form
+        = form_with(model: @message, local: true ) do |form|
+          = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true, class: "text-field"
+          = form.hidden_field :transaction_room_id, value: @room.id
+          = form.submit class: "form-submit", value: "取引メッセージを送る"
+
+      - if @transaction.acceptance == false
+        .review
+          .right-menu-title
+            商品の受取評価
+            = form_with(controller: 'transactions', action: 'acceptance', local: true, data: { confirm: '受け取り評価をしますか？ この操作は取り消せません' }) do |f|
+              .review-select
+                = f.label "良かった", for: "review_good"
+                = f.radio_button :review, :good, checked: true
+                = f.label "悪かった", for: "review_bad"
+                = f.radio_button :review, :bad
+              .review-form
+                = f.submit class: "submit", value: "販売者を評価する"
+
+  = render 'devise/shared/footer'
+
+
+
