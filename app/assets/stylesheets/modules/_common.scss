@@ -18,10 +18,20 @@
   background-color: $bgc-gray;
 }
 
+.bgc-yellow {
+  background: $light_yellow;
+}
+
 .width-100 {
   width: 100%;
 }
 
 .height72 {
   height: 72px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
 }
