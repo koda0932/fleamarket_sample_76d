@@ -1,31 +1,83 @@
 .bgc-gray
   = render 'devise/shared/header'
+  %main.transaction-rooms-show
+    .left-menu
+      .menu-title
+        取引情報
+      %table.left-contents
+        %tr
+          %th
+            商品
+          %td
+            = link_to @post do
+              = image_tag asset_path("#{@post.post_images[0].image}"), class: "image"
+              = @post.name
+              %br/
+              ¥
+              = @post.price
+        %tr
+          %th
+            送料
+          %td
+            = @post.delivery_status
+        %tr
+          %th
+            購入日
+          %td
+            = @post.created_at.strftime("%Y-%m-%d")
+        %tr
+          %th
+            商品番号
+          %td
+            = @post.id
+        %tr
+          %th
+            お届け先
+          %td
+            〒
+            = @address.postcode
+            %br
+            = @address.prefecture
+            = @address.city
+            = @address.address
+            %br
+            = @address.apartment_first_name
+            = @address.apartment_family_name
+            様
 
-  %br/
-  - if @transaction.acceptance == true
-    この取引は終了しています
 
-  %br/
-  商品名【
-  = link_to @post.name, @post
-  】
-  紹介【
-  = @post.introduce
-  】
-  %br/
-  ◎メッセージ
-  = render @messages
-  = form_with(model: @message, local: true ) do |form|
-    = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
-    = form.hidden_field :transaction_room_id, value: @room.id
-    = form.submit
+    .right-menu
+      .menu-title
+        取引情報
 
-  - if @transaction.acceptance == false
-    = form_with(controller: 'transactions', action: 'acceptance', local: true, data: { confirm: '受け取り確認をしますか？ 確認後は取り消せません' }) do |f|
-      = f.label "良い", for: "review_good"
-      = f.radio_button :review, :good, checked: true
-      = f.label "悪い", for: "review_bad"
-      = f.radio_button :review, :bad
-      = f.submit
+
+
 
   = render 'devise/shared/footer'
+-# %br/
+-# - if @transaction.acceptance == true
+-#   この取引は終了しています
+
+-# %br/
+-# 商品名【
+-# = link_to @post.name, @post
+-# 】
+-# 紹介【
+-# = @post.introduce
+-# 】
+-# %br/
+-# ◎メッセージ
+-# = render @messages
+-# = form_with(model: @message, local: true ) do |form|
+-#   = form.text_field :content, placeholder: "メッセージを入力して下さい", required: true
+-#   = form.hidden_field :transaction_room_id, value: @room.id
+-#   = form.submit
+
+-# - if @transaction.acceptance == false
+-#   = form_with(controller: 'transactions', action: 'acceptance', local: true, data: { confirm: '受け取り確認をしますか？ 確認後は取り消せません' }) do |f|
+-#     = f.label "良い", for: "review_good"
+-#     = f.radio_button :review, :good, checked: true
+-#     = f.label "悪い", for: "review_bad"
+-#     = f.radio_button :review, :bad
+-#     = f.submit
+

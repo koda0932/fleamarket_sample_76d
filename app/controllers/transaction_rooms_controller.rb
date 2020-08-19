@@ -6,6 +6,7 @@ class TransactionRoomsController < ApplicationController
     if Transaction.find_by(buyer_id: current_user.id, transaction_room_id: @room.id).present?
       @transaction = Transaction.find_by(transaction_room_id: @room.id)
       @post = Post.find_by(id: @transaction.post_id)
+      @address = current_user.user_address
       # roomのメッセージを全て取得
       @messages = @room.transaction_messages.includes(:user).order("created_at asc")
       @message = TransactionMessage.new

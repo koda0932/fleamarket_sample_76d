@@ -1,0 +1,42 @@
+.transaction-rooms-show {
+  width: 70%;
+  margin: 50px auto;
+  display: flex;
+  .menu-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 16px;
+  }
+  .left-menu {
+    width: 30%;
+    background-color: white;
+    margin-right: 50px;
+    border: 1px solid #ebebeb;
+    .left-contents {
+      width: 100%;
+      & tr {
+        display: flex;
+        border-top: 1px solid #f3f3f3;
+        & th {
+          width: 35%;
+          padding: 16px;
+        }
+        & td {
+          width: 65%;
+          padding: 16px;
+          .image {
+            height: 148px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .right-menu {
+    width: 70%;
+    background-color: white;
+    border: 1px solid #ebebeb;
+  }
+}
