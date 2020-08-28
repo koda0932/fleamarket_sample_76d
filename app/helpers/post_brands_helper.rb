@@ -1,0 +1,2 @@
+module PostBrandsHelper
+end

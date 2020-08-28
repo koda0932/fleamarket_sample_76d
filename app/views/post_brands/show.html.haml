@@ -1,0 +1,20 @@
+= render 'posts/top__header'
+
+.top__main
+  .top__main__pickupcategory
+    .top__main__pickupcategory
+    .top__main__pickupcategory--top
+      .top__main__pickupcategory--top--title
+        = @post_brand.name
+    .top__main__pickupcategory--main
+      .top__main__pickupcategory--main.items-index
+        = render partial: "posts/post", collection: @posts, as: "post"
+
+
+.top__camera__icon
+  = link_to new_post_path, class: "td-none" do
+    %ul.top__camera__icon--list
+      %li.top__camera__icon--list--text
+        出品する
+      %li.top__camera__icon--list--image
+        = image_tag asset_path("icon_camera.png"), class: "top__camera__icon--list--image--item"

@@ -61,17 +61,20 @@
             %tr
               %th カテゴリー
               %td
-                = @post.category.parent.parent.name
+                = link_to category_path(@post.category.parent.parent.id) do
+                  = @post.category.parent.parent.name
                 %br
-                = @post.category.parent.name
+                = link_to category_path(@post.category.parent.id) do
+                  = @post.category.parent.name
                 %br
-                = @post.category.name
-            %tr
-              %th ブランド
-              %td
-            %tr
-              %th 商品のサイズ
-              %td
+                = link_to category_path(@post.category.id) do
+                  = @post.category.name
+            - if @post.post_brands.present?
+              %tr
+                %th ブランド
+                %td
+                  = link_to post_brand_path(@post.id) do
+                    = @post.post_brands[0].name
             %tr
               %th 商品の状態
               %td

@@ -2,7 +2,10 @@ class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
   has_many :post_images, dependent: :destroy
+  accepts_nested_attributes_for :post_images, allow_destroy: true
   has_many :transactions
+  has_many :post_brands, dependent: :destroy
+  accepts_nested_attributes_for :post_brands, allow_destroy: true
 
   validates :name, presence: true
   validates :introduce, presence: true
@@ -14,7 +17,6 @@ class Post < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than: 0 , less_than: 10000000}
   validates :user_id, presence: true
 
-  accepts_nested_attributes_for :post_images, allow_destroy: true
 
   enum status: { "新品/未使用": 0, "目立った汚れや傷なし": 1, "汚れ、傷あり": 2}
   enum delivery_status: { "購入者負担": 0, "出品者負担": 1}

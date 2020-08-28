@@ -9,17 +9,19 @@ class PostsController < ApplicationController
   before_action :purchased_item, only: [:buy]
 
   def index
-    @posts = Post.includes([:post_images]).last(3).reverse
-    # @posts = Post.last(3).reverse
+    @posts = Post.includes([:post_images, :user]).last(3).reverse
   end
 
   def new
     @post = Post.new
     @post.post_images.new
+    # binding.pry
+    @post.post_brands.build
+    # @post_brand = PostBrand.new
   end
 
   def create
-    @post = Post.new(post_params)
+  @post = Post.create!(post_params)
     # 投稿内容のsaveと、画像が投稿されてるか確認！（今回の場合は1枚以上）
       if @post.post_images.present? && @post.save
         redirect_to root_path
@@ -31,13 +33,15 @@ class PostsController < ApplicationController
   end
 
   def edit
+    # @post.post_brands.build
   end
 
   def show
-    @images = @post.post_images
+    @images = @post.post_images.includes(:post)
     if Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
       @transaction = Transaction.where(buyer_id: current_user.id, post_id: @post.id).first
     end
+
   end
 
   def update
@@ -117,7 +121,9 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    # params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :_destroy, :id], post_brands_attributes: [:id, :name]).merge(user_id: current_user.id)
+    params.require(:post).permit(:name, :introduce, :category_id, :user_address, :shipping, :price, :status, :delivery_status, post_images_attributes: [:image, :id], post_brands_attributes: [:id, :name]).merge(user_id: current_user.id)
+    # params.require(:post_brand).permit(:name)
   end
 
   def set_post
